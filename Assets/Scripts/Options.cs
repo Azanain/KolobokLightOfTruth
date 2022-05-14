@@ -4,27 +4,41 @@ using UnityEngine.UI;
 public class Options : MonoBehaviour
 {
     [SerializeField] private AudioMixerGroup mixer;
+    public static bool isPause { get; private set; } 
 
     [Header("Music")]
-    [SerializeField] private Text volumeMusicText;
     private bool musicVolumeEnabled;
-    //private float volumeValueMusic;
 
     [Header("Effects")]
-    [SerializeField] private Text volumeEffextsText;
     private bool effectsVolumeEnabled;
-    //private float volumeValueEffects;
 
     [Header("UI")]
     [SerializeField] private AudioSource clickButton;
     private bool uIVolumeEnabled;
 
+    private void Awake()
+    {
+        EventManager.PauseEvent += Pause;
+    }
     private void Start()
     {
         //заменить на загрузку данных
         musicVolumeEnabled = true;
         effectsVolumeEnabled = true;
         uIVolumeEnabled = true;
+    }
+    private void Pause()
+    {
+        if (isPause)
+        {
+            Time.timeScale = 1;
+            isPause = false;
+        }
+        else
+        {
+            Time.timeScale = 0;
+            isPause = true;
+        }
     }
     public void ClickAudio()
     {
@@ -82,5 +96,9 @@ public class Options : MonoBehaviour
             mixer.audioMixer.SetFloat("UIVolume", -80);
             uIVolumeEnabled = false;
         }
+    }
+    private void OnDestroy()
+    {
+        EventManager.PauseEvent -= Pause;
     }
 }
