@@ -402,6 +402,10 @@ PrefabInstance:
       propertyPath: loadingImage
       value: 
       objectReference: {fileID: 1067586272}
+    - target: {fileID: 5139756037279877316, guid: 4f8c9970bef7f914cae886dd3340a89a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8156057080151528931, guid: 4f8c9970bef7f914cae886dd3340a89a, type: 3}
       propertyPath: m_Type
       value: 3
@@ -417,6 +421,10 @@ PrefabInstance:
     - target: {fileID: 8156057081438726477, guid: 4f8c9970bef7f914cae886dd3340a89a, type: 3}
       propertyPath: m_Text
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 9083194760880373676, guid: 4f8c9970bef7f914cae886dd3340a89a, type: 3}
+      propertyPath: sceneID
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9176935693329283981, guid: 4f8c9970bef7f914cae886dd3340a89a, type: 3}
       propertyPath: m_Pivot.x

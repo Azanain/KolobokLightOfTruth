@@ -10,9 +10,9 @@ public class EventManager//евенты
     {
         NameEvent?.Invoke();
     }
-    public static void LoadGameScene(int idStage)//номер этажа
+    public static void LoadGameScene(int idFloor)//номер этажа
     {
-        LoadGameSceneEvent?.Invoke(idStage);
+        LoadGameSceneEvent?.Invoke(idFloor);
     }
 }
 

@@ -1287,9 +1287,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2925803175605399802, guid: 4f8c9970bef7f914cae886dd3340a89a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4885032806241573719, guid: 4f8c9970bef7f914cae886dd3340a89a, type: 3}
+      propertyPath: sceneID
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5139756037279877316, guid: 4f8c9970bef7f914cae886dd3340a89a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9083194760880373676, guid: 4f8c9970bef7f914cae886dd3340a89a, type: 3}
       propertyPath: sceneID
       value: 2
       objectReference: {fileID: 0}
@@ -1396,11 +1404,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 9176935693329283981, guid: 4f8c9970bef7f914cae886dd3340a89a, type: 3}
   m_PrefabInstance: {fileID: 694698263}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &694698265 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2925803175605399802, guid: 4f8c9970bef7f914cae886dd3340a89a, type: 3}
+--- !u!114 &694698265 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9083194760880373676, guid: 4f8c9970bef7f914cae886dd3340a89a, type: 3}
   m_PrefabInstance: {fileID: 694698263}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02efab14a9975fd468b7fa109389e0f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &701277056
 GameObject:
   m_ObjectHideFlags: 0
@@ -1888,16 +1902,16 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 694698265}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+        m_TargetAssemblyTypeName: SceneTransition, Assembly-CSharp
+        m_MethodName: LoadChosenScene
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
+          m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &779367065
 MonoBehaviour:
