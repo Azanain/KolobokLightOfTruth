@@ -8,14 +8,12 @@ public class Options : MonoBehaviour
     [Header("Music")]
     [SerializeField] private Text volumeMusicText;
     private bool musicVolumeEnabled;
-    private float volumeValueMusic;//от 0 до -80
-    private byte numberVolumeMusic;
+    //private float volumeValueMusic;
 
     [Header("Effects")]
     [SerializeField] private Text volumeEffextsText;
     private bool effectsVolumeEnabled;
-    private float volumeValueEffects;//от 0 до -80
-    private byte numberVolumeEffects;
+    //private float volumeValueEffects;
 
     [Header("UI")]
     [SerializeField] private AudioSource clickButton;
@@ -27,10 +25,6 @@ public class Options : MonoBehaviour
         musicVolumeEnabled = true;
         effectsVolumeEnabled = true;
         uIVolumeEnabled = true;
-
-        numberVolumeMusic = 10;
-        numberVolumeEffects = 10;
-        UpdateTextVolumeMusic();
     }
     public void ClickAudio()
     {
@@ -51,34 +45,17 @@ public class Options : MonoBehaviour
         {
             mixer.audioMixer.SetFloat("MusicVolume", -80);
             musicVolumeEnabled = false;
-        }   
-    }
-    private void UpdateTextVolumeMusic()
-    {
-        volumeMusicText.text = numberVolumeMusic.ToString();
-        volumeEffextsText.text = numberVolumeEffects.ToString();
-    }
-    public void MinusVolumeMusic()
-    {
-        if (numberVolumeMusic >= 1)
-        {
-            mixer.audioMixer.SetFloat("MusicVolume", volumeValueMusic);
-            volumeValueMusic -= 8;
-            numberVolumeMusic--;
-            UpdateTextVolumeMusic();
-        }
-    }
-    public void PlusVolumeMusic()
-    {
-        if (volumeValueMusic <= 9)
-        {
-            mixer.audioMixer.SetFloat("MusicVolume", volumeValueMusic);
-            volumeValueMusic += 8;
-            numberVolumeMusic++;
-            UpdateTextVolumeMusic();
         }
     }
 
+    public void ChangeVolumeMusic(float volume)
+    {
+        mixer.audioMixer.SetFloat("MusicVolume", Mathf.Lerp(-80, 0, volume));
+    }
+    public void ChangeVolumeEffects(float volume)
+    {
+        mixer.audioMixer.SetFloat("EffectsVolume", Mathf.Lerp(-80, 0, volume));
+    }
     public void ToggleVolumeEffects()
     {
         if (!effectsVolumeEnabled)
@@ -92,27 +69,7 @@ public class Options : MonoBehaviour
             effectsVolumeEnabled = false;
         }
     }
-    public void PlusVolumeEffects()
-    {
-        if (volumeValueEffects <= 9)
-        {
-            mixer.audioMixer.SetFloat("EffectsVolume", volumeValueEffects);
-            volumeValueEffects += 8;
-            numberVolumeEffects++;
-            UpdateTextVolumeMusic();
-        }
-    }
-    public void MinusEffects()
-    {
-        if (volumeValueEffects >= 1)
-        {
-            mixer.audioMixer.SetFloat("EffectsVolume", volumeValueEffects);
-            volumeValueEffects -= 8;
-            numberVolumeEffects--;
-            UpdateTextVolumeMusic();
-        }
-    }
-
+  
     public void ToggleVolumeUI()
     {
         if (!uIVolumeEnabled)
