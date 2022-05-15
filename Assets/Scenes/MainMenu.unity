@@ -484,6 +484,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f93617b11ca007e488981864623b95e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &601883262 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 529569564480492520, guid: 0a0d33d2a45c6d54a854d58a6fff14b8, type: 3}
+  m_PrefabInstance: {fileID: 5191245635930265911}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &613015466
 GameObject:
   m_ObjectHideFlags: 0
@@ -1610,11 +1615,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1090237354}
   m_CullTransparentMesh: 1
---- !u!1 &1202316809 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5191245634744778558, guid: 0a0d33d2a45c6d54a854d58a6fff14b8, type: 3}
-  m_PrefabInstance: {fileID: 5191245635930265911}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1202316810 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5191245634744778557, guid: 0a0d33d2a45c6d54a854d58a6fff14b8, type: 3}
@@ -1794,7 +1794,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1202316809}
+      - m_Target: {fileID: 601883262}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
