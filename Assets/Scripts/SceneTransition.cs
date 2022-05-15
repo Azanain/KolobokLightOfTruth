@@ -5,8 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class SceneTransition : MonoBehaviour
 {
-    //[Header("Загружаемая сцена")]
-    //public int sceneID;
     [Header("Остальные объекты")]
     [SerializeField] private Image loadingImage;
     [SerializeField] private Text progressText;
@@ -18,11 +16,6 @@ public class SceneTransition : MonoBehaviour
 
         EventManager.LoadGameSceneEvent += LoadChosenScene;
     }
-    //private void Start()
-    //{
-    //    //StartCoroutine(AsyncLoad());
-        
-    //}
     public void LoadChosenScene(int idFloor)
     {
         main.SetActive(true);
