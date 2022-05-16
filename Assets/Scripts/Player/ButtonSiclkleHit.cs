@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 public class ButtonSiclkleHit : MonoBehaviour, IDragHandler, IPointerDownHandler
 {
@@ -17,6 +16,7 @@ public class ButtonSiclkleHit : MonoBehaviour, IDragHandler, IPointerDownHandler
         }
         if (gameObject.CompareTag("RayOfHope"))
         {
+            EventManager.Shoot();
             EventManager.ButtonPressed(2);
         }
         if (gameObject.CompareTag("WordOfPower"))

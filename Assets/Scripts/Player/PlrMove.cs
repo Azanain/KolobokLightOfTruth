@@ -5,7 +5,7 @@ public class PlrMove : MonoBehaviour
 {
     [Header("ќсновные параметры")]
     [SerializeField] private float speed;
-    private float JumpCount;
+    private bool isJumping;
     [SerializeField] private float jumpForce;
 
     //—сылки на компоненты
@@ -17,14 +17,14 @@ public class PlrMove : MonoBehaviour
     [SerializeField] private float radiusSphere;
     [SerializeField] private LayerMask layers;
     [SerializeField] private float speedRotation;
-    private bool isLaserActive;
     private Transform nearest;
     private Vector2 range;
 
     public float offset;
     void OnCollisionEnter(Collision other)
     {
-        JumpCount = 0;
+        if(other.gameObject.CompareTag("Ground"))
+            isJumping = false;
     }
     private void Awake()
     {
@@ -39,7 +39,7 @@ public class PlrMove : MonoBehaviour
 
     private void FixedUpdate()
     {
-         Move();
+        Move();
         RotateToNearEnemy();
     }
 
@@ -48,19 +48,22 @@ public class PlrMove : MonoBehaviour
     /// </summary>
     private void Move()
     {
-        Vector3 moveInput = new Vector3(-mContr.Horizontal() * speed, rb.velocity.y, -mContr.Vertical() * speed);
-        rb.AddForce(moveInput);
+        if (!PlayerShoot.IsCheldActiv)
+        { 
+            Vector3 moveInput = new Vector3(-mContr.Horizontal() * speed, rb.velocity.y, -mContr.Vertical() * speed);
+            rb.AddForce(moveInput);
+        }
     }
     /// <summary>
     /// метод прыжка персонажа
     /// </summary>
     private void Jump()
     {
-        if (JumpCount < 1)
+        if (!isJumping)
         {
             Vector3 jump = new Vector3(0.0f, jumpForce, 0.0f);
             rb.AddForce(jump);
-            JumpCount++;
+            isJumping = true;
         }
     }
     /// <summary>
@@ -68,8 +71,8 @@ public class PlrMove : MonoBehaviour
     /// </summary>
     private void RotateToNearEnemy()
     {
-       // if (isLaserActive)
-       // {
+        if (PlayerShoot.IsLaserActiv)
+        {
             Collider[] colls = Physics.OverlapSphere(transform.position, radiusSphere, layers);
             if (colls.Length > 0)
             {
@@ -88,7 +91,7 @@ public class PlrMove : MonoBehaviour
                     }
                 }
             }
-       // }
+        }
     }
     private void LookAtNearestEnemy(Transform nearest)
     {

@@ -9,20 +9,18 @@ public class PlayerShoot : MonoBehaviour
     [SerializeField] GameObject[] weapons;//1 - щит, 2 - лазер, 3 - слово силы
     [SerializeField] private Transform firePointLaser;
     private byte numberWeapon;
-  // [SerializeField] private GameObject bulletLazer;
     Pool pool;
 
-    public static bool isCheldActiv { get; private set; }
-
+    public static bool IsCheldActiv { get; private set; }
+    public static bool IsLaserActiv { get; private set; }
     private void Awake()
-    {
-        //weapons[2].SetActive(true);
-        explosion = GetComponentInChildren<Explosion>();
+    { 
         EventManager.ButtonEvent += CheckWeapons;
-        playerAudio = GetComponent<PlayerAudio>();
         EventManager.ShootEvent += ShootLaser;
-       // weapons[2].SetActive(false);
+        explosion = GetComponentInChildren<Explosion>();
+        playerAudio = GetComponent<PlayerAudio>();
         pool = GetComponent<Pool>();
+        CheckWeapons(0);
     }
 
     private void CheckWeapons(byte numWeapon)
@@ -34,27 +32,33 @@ public class PlayerShoot : MonoBehaviour
                 weapons[0].SetActive(true);
                 weapons[1].SetActive(false);
                 weapons[2].SetActive(false);
+                IsLaserActiv = false;
                 StartCoroutine(TimerActivationSheld());
                 break;
             case 2:
                 weapons[0].SetActive(false);
                 weapons[1].SetActive(true);
                 weapons[2].SetActive(false);
-                isCheldActiv = false;
+                IsCheldActiv = false;
+                IsLaserActiv = true;
                 break;
             case 3:
                 weapons[0].SetActive(false);
                 weapons[1].SetActive(false);
                 weapons[2].SetActive(true);
-                isCheldActiv = false;
+                IsCheldActiv = false;
+                IsLaserActiv = false;
+                EventManager.Jump();
                 StartCoroutine(TimerActivationWord());
                 break;
 
             default:
-                isCheldActiv = false;
+                IsCheldActiv = false;
                 for (int i = 0; i < weapons.Length; i++)
                 {
                     weapons[i].SetActive(false);
+                    IsLaserActiv = false;
+                    IsCheldActiv = false;
                 }
                 break;
         }
@@ -71,7 +75,7 @@ public class PlayerShoot : MonoBehaviour
         }
         if (scale >= 1)
         {
-            isCheldActiv = true;
+            IsCheldActiv = true;
             StopCoroutine(TimerActivationSheld());
         }
     }
@@ -88,6 +92,7 @@ public class PlayerShoot : MonoBehaviour
         }
         if (scale >= 9.9f)
         {
+           
             StopCoroutine(TimerActivationWord());
             StartCoroutine(TimerActivationWordRevers(scale));
         }
@@ -113,9 +118,8 @@ public class PlayerShoot : MonoBehaviour
     {
         if (numberWeapon == 2)
         {
-           // Instantiate(bulletLazer, firePointLaser.position, firePointLaser.rotation);
             pool.GetFreeElement(firePointLaser.transform.position, firePointLaser.transform.rotation);
-            playerAudio.ShootWeapon1();
+            playerAudio.ShootWeapon2();
         }
     }
 

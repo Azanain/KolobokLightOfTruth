@@ -7,16 +7,20 @@ TagManager:
   - Joystick
   - Enemy
   - PlayerBullet
+  - ShieldOfFaith
+  - RayOfHope
+  - WordOfPower
+  - Ground
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
   - Enemy
-  - 
-  - 
+  - PlayerBullet
+  - PlayerWeapon
   - 
   - 
   - 
