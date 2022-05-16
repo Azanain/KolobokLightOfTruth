@@ -6,7 +6,7 @@ public class MobileContr : MonoBehaviour, IDragHandler, IPointerUpHandler, IPoin
 {
     [SerializeField] private Image joystick;
     private Image joystickBG;
-    private Vector2 inputVector; //получение координаты джостика
+    [HideInInspector] public Vector2 inputVector; //получение координаты джостика
 
     private void Start()
     {

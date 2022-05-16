@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PlrMove : MonoBehaviour
 {
-    //Основные параметры
+    [Header("Основные параметры")]
     [SerializeField] private float speed;
     private float JumpCount;
     [SerializeField] private float jumpForce;
@@ -12,6 +12,16 @@ public class PlrMove : MonoBehaviour
     private Rigidbody rb;
     private MobileContr mContr;
 
+    [Header("Лазер")]
+    [SerializeField] private GameObject laserWeapon;
+    [SerializeField] private float radiusSphere;
+    [SerializeField] private LayerMask layers;
+    [SerializeField] private float speedRotation;
+    private bool isLaserActive;
+    private Transform nearest;
+    private Vector2 range;
+
+    public float offset;
     void OnCollisionEnter(Collision other)
     {
         JumpCount = 0;
@@ -30,6 +40,7 @@ public class PlrMove : MonoBehaviour
     private void FixedUpdate()
     {
          Move();
+        RotateToNearEnemy();
     }
 
     /// <summary>
@@ -37,7 +48,7 @@ public class PlrMove : MonoBehaviour
     /// </summary>
     private void Move()
     {
-        Vector3 moveInput = new Vector3(mContr.Horizontal() * speed, rb.velocity.y, mContr.Vertical() * speed);
+        Vector3 moveInput = new Vector3(-mContr.Horizontal() * speed, rb.velocity.y, -mContr.Vertical() * speed);
         rb.AddForce(moveInput);
     }
     /// <summary>
@@ -56,11 +67,44 @@ public class PlrMove : MonoBehaviour
     /// поворот к ближайшнму врагу
     /// </summary>
     private void RotateToNearEnemy()
-    { 
-        
+    {
+       // if (isLaserActive)
+       // {
+            Collider[] colls = Physics.OverlapSphere(transform.position, radiusSphere, layers);
+            if (colls.Length > 0)
+            {
+                float dist = Mathf.Infinity;
+                nearest = colls[0].transform;
+                foreach (var foe in colls)
+                {
+                    range = foe.transform.position - transform.position;
+                    float curDistance = range.sqrMagnitude;
+                    if (curDistance < dist)
+                    {
+                        nearest = foe.transform;
+                        dist = curDistance;
+                        LookAtNearestEnemy(nearest);
+                        Debug.Log(nearest.name);
+                    }
+                }
+            }
+       // }
+    }
+    private void LookAtNearestEnemy(Transform nearest)
+    {
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(nearest.position + new Vector3(offset,0,0)), speedRotation * Time.deltaTime); 
+
+        //Vector3 direction = nearest.position - transform.position;
+        //Quaternion rotation = Quaternion.LookRotation(direction);
+        //transform.rotation = Quaternion.Lerp(transform.rotation, rotation, speedRotation * Time.deltaTime); ;
     }
     private void OnDestroy()
     {
         EventManager.JumpEvent -= Jump;
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(transform.position, radiusSphere);
     }
 }
