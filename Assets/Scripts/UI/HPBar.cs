@@ -3,7 +3,7 @@ using UnityEngine.UI;
 public class HPBar : MonoBehaviour
 {
     private int currentHp;
-    private int MaxHp = 100;
+    private int MaxHp;
     [SerializeField] private Image hpBar;
     private Text textHP;
     private void Awake()
@@ -12,7 +12,9 @@ public class HPBar : MonoBehaviour
         EventManager.TakeHPEvent += TakeHP;
 
         textHP = GetComponentInChildren<Text>();
+        MaxHp = PlayerParametrs.MaxHp;
         currentHp = MaxHp;
+        UpdateUI();
     }
     private void TakeDamage(int damage)
     {

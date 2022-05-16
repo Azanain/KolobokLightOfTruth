@@ -1,26 +1,18 @@
-using System.Collections;
 using UnityEngine;
 
 public class PlrMove : MonoBehaviour
 {
     [Header("Основные параметры")]
-    [SerializeField] private float speed;
+    private float speed;
     private bool isJumping;
     [SerializeField] private float jumpForce;
+    private float forceShieldOfFaith;
+    private Vector3 moveInput;
 
     //Ссылки на компоненты
     private Rigidbody rb;
     private MobileContr mContr;
-
-    [Header("Лазер")]
-    [SerializeField] private GameObject laserWeapon;
-    [SerializeField] private float radiusSphere;
-    [SerializeField] private LayerMask layers;
-    [SerializeField] private float speedRotation;
-    private Transform nearest;
-    private Vector2 range;
-
-    public float offset;
+    private RotateToNearTarget rotate;
     void OnCollisionEnter(Collision other)
     {
         if(other.gameObject.CompareTag("Ground"))
@@ -28,7 +20,10 @@ public class PlrMove : MonoBehaviour
     }
     private void Awake()
     {
+        forceShieldOfFaith = 3;
+        rotate = GetComponent<RotateToNearTarget>();
         EventManager.JumpEvent += Jump;
+        speed = PlayerParametrs.Speed;
     }
 
     private void Start()
@@ -40,7 +35,7 @@ public class PlrMove : MonoBehaviour
     private void FixedUpdate()
     {
         Move();
-        RotateToNearEnemy();
+        rotate.RotateToNearEnemy();
     }
 
     /// <summary>
@@ -49,10 +44,16 @@ public class PlrMove : MonoBehaviour
     private void Move()
     {
         if (!PlayerShoot.IsCheldActiv)
-        { 
-            Vector3 moveInput = new Vector3(-mContr.Horizontal() * speed, rb.velocity.y, -mContr.Vertical() * speed);
+        {
+            moveInput = new Vector3(-mContr.Horizontal() * speed, rb.velocity.y, -mContr.Vertical() * speed);
             rb.AddForce(moveInput);
         }
+        //else
+        //{
+        //    moveInput = new Vector3(-mContr.Horizontal() * speed, rb.velocity.y, -mContr.Vertical() * speed * forceShieldOfFaith);
+        //    rb.AddForce(moveInput);
+        //    Debug.Log("Force");
+        //}
     }
     /// <summary>
     /// метод прыжка персонажа
@@ -66,48 +67,8 @@ public class PlrMove : MonoBehaviour
             isJumping = true;
         }
     }
-    /// <summary>
-    /// поворот к ближайшнму врагу
-    /// </summary>
-    private void RotateToNearEnemy()
-    {
-        if (PlayerShoot.IsLaserActiv)
-        {
-            Collider[] colls = Physics.OverlapSphere(transform.position, radiusSphere, layers);
-            if (colls.Length > 0)
-            {
-                float dist = Mathf.Infinity;
-                nearest = colls[0].transform;
-                foreach (var foe in colls)
-                {
-                    range = foe.transform.position - transform.position;
-                    float curDistance = range.sqrMagnitude;
-                    if (curDistance < dist)
-                    {
-                        nearest = foe.transform;
-                        dist = curDistance;
-                        LookAtNearestEnemy(nearest);
-                        Debug.Log(nearest.name);
-                    }
-                }
-            }
-        }
-    }
-    private void LookAtNearestEnemy(Transform nearest)
-    {
-        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(nearest.position + new Vector3(offset,0,0)), speedRotation * Time.deltaTime); 
-
-        //Vector3 direction = nearest.position - transform.position;
-        //Quaternion rotation = Quaternion.LookRotation(direction);
-        //transform.rotation = Quaternion.Lerp(transform.rotation, rotation, speedRotation * Time.deltaTime); ;
-    }
     private void OnDestroy()
     {
         EventManager.JumpEvent -= Jump;
-    }
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawSphere(transform.position, radiusSphere);
     }
 }
