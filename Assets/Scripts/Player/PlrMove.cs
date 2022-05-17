@@ -3,10 +3,10 @@ using UnityEngine;
 public class PlrMove : MonoBehaviour
 {
     [Header("ќсновные параметры")]
-    private float speed;
+    public float speed;
     private bool isJumping;
     [SerializeField] private float jumpForce;
-    private float forceShieldOfFaith;
+  //  private float forceShieldOfFaith;
     private Vector3 moveInput;
 
     //—сылки на компоненты
@@ -20,7 +20,7 @@ public class PlrMove : MonoBehaviour
     }
     private void Awake()
     {
-        forceShieldOfFaith = 3;
+        //forceShieldOfFaith = 3;
         rotate = GetComponent<RotateToNearTarget>();
         EventManager.JumpEvent += Jump;
         speed = PlayerParametrs.Speed;
@@ -46,6 +46,7 @@ public class PlrMove : MonoBehaviour
         if (!PlayerShoot.IsCheldActiv)
         {
             moveInput = new Vector3(-mContr.Horizontal() * speed, rb.velocity.y, -mContr.Vertical() * speed);
+            // moveInput = new Vector3(-mContr.Horizontal() * 0, rb.velocity.y, -mContr.Vertical() * 0);
             rb.AddForce(moveInput);
         }
         //else

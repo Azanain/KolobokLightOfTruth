@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PlayerShoot : MonoBehaviour
 {
-    //private Explosion explosion;
+    private Explosion explosion;
     private PlayerAudio playerAudio;
 
     [Header("WeaponsData")]
@@ -20,7 +20,7 @@ public class PlayerShoot : MonoBehaviour
         //reloadScills = GetComponent<ReloadScills>();
         EventManager.ButtonEvent += CheckWeapons;
         EventManager.ShootEvent += ShootLaser;
-        //explosion = GetComponentInChildren<Explosion>();
+        explosion = GetComponentInChildren<Explosion>();
         playerAudio = GetComponent<PlayerAudio>();
         pool = GetComponent<Pool>();
         CheckWeapons(0);
@@ -50,8 +50,8 @@ public class PlayerShoot : MonoBehaviour
                 weapons[2].SetActive(true);
                 IsCheldActiv = false;
                 IsLaserActiv = false;
-                EventManager.Jump();
-               // StartCoroutine(TimerActivationWord());
+               // EventManager.Jump();
+               StartCoroutine(TimerActivationWord());
                 break;
 
             default:
@@ -107,39 +107,39 @@ public class PlayerShoot : MonoBehaviour
     //}
 
 
-    //private IEnumerator TimerActivationWord()
-    //{
-    //    float scale = 0;
-    //    while (scale < 11)
-    //    {
-    //        weapons[2].transform.localScale = new Vector3(scale, scale, scale);
-    //        explosion.Explode(scale);
-    //        yield return new WaitForSeconds(0.05f);
-    //        scale += 3f;
-    //    }
-    //    if (scale >= 9.9f)
-    //    {
-           
-    //        StopCoroutine(TimerActivationWord());
-    //        StartCoroutine(TimerActivationWordRevers(scale));
-    //    }
-    //}
+    private IEnumerator TimerActivationWord()
+    {
+        float scale = 0;
+        while (scale < 11)
+        {
+            weapons[2].transform.localScale = new Vector3(scale, scale, scale);
+            explosion.Explode(scale);
+            yield return new WaitForSeconds(0.05f);
+            scale += 3f;
+        }
+        if (scale >= 9.9f)
+        {
 
-    //private IEnumerator TimerActivationWordRevers(float scale)
-    //{
-    //    while (scale > 0.5f)
-    //    {
-    //        weapons[2].transform.localScale = new Vector3(scale, scale, scale);
-    //        explosion.Explode(scale);
-    //        yield return new WaitForSeconds(0.05f);
-    //        scale -= 3f;
-    //    }
-    //    if (scale < 0.5f)
-    //    {
-    //        weapons[2].SetActive(false);
-    //        StopCoroutine(TimerActivationWordRevers(scale));
-    //    }
-    //}
+            StopCoroutine(TimerActivationWord());
+            StartCoroutine(TimerActivationWordRevers(scale));
+        }
+    }
+
+    private IEnumerator TimerActivationWordRevers(float scale)
+    {
+        while (scale > 0.5f)
+        {
+            weapons[2].transform.localScale = new Vector3(scale, scale, scale);
+            explosion.Explode(scale);
+            yield return new WaitForSeconds(0.05f);
+            scale -= 3f;
+        }
+        if (scale < 0.5f)
+        {
+            weapons[2].SetActive(false);
+            StopCoroutine(TimerActivationWordRevers(scale));
+        }
+    }
 
     private void ShootLaser()
     {

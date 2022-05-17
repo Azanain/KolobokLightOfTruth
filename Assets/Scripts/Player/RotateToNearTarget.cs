@@ -8,8 +8,15 @@ public class RotateToNearTarget : MonoBehaviour
     [SerializeField] private LayerMask layers;
     [SerializeField] private float speedRotation;
     [SerializeField] private float offsetX;
+    private PlrMove plrMove;
     private Transform nearest;
     private Vector2 range;
+
+    private void Awake()
+    {
+        plrMove = GetComponent<PlrMove>();
+    }
+
     /// <summary>
     /// поиск ближайшей цели
     /// </summary>
@@ -26,23 +33,28 @@ public class RotateToNearTarget : MonoBehaviour
                 {
                     range = foe.transform.position - transform.position;
                     float curDistance = range.sqrMagnitude;
-                    if (curDistance < dist)
+                    if (curDistance < dist && foe.CompareTag("Enemy"))
                     {
                         nearest = foe.transform;
                         dist = curDistance;
+                        plrMove.speed = 0;
+                        Debug.Log("enemyy");
                         LookAtNearestEnemy(nearest);
                     }
                 }
+                plrMove.speed = PlayerParametrs.Speed;
+                Debug.Log("управление востановлена");
             }
         }
     }
+    
     /// <summary>
     /// порот к ближайше цели
     /// </summary>
     /// <param name="nearest"></param>
     private void LookAtNearestEnemy(Transform nearest)
     {
-        Vector3 positionEnemy = new Vector3(nearest.position.x + offsetX, nearest.position.y, nearest.position.z);
+        Vector3 positionEnemy = new Vector3(nearest.position.x + offsetX, transform.position.y, nearest.position.z);
         transform.LookAt(positionEnemy);
     }
     private void OnDrawGizmos()
