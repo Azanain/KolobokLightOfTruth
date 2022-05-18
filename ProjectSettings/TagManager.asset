@@ -10,7 +10,11 @@ TagManager:
   - ShieldOfFaith
   - RayOfHope
   - WordOfPower
+  - ButtonCancel
   - Ground
+  - ShieldOfFaith_2
+  - RayOfHope_2
+  - WordOfPower_2
   layers:
   - Default
   - TransparentFX

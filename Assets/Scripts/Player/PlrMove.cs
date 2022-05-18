@@ -4,9 +4,9 @@ public class PlrMove : MonoBehaviour
 {
     [Header("ќсновные параметры")]
     public float speed;
-    private bool isJumping;
+    public static bool isJumping { get; private set; }
     [SerializeField] private float jumpForce;
-  //  private float forceShieldOfFaith;
+    //  private float forceShieldOfFaith;
     private Vector3 moveInput;
 
     //—сылки на компоненты
@@ -15,8 +15,7 @@ public class PlrMove : MonoBehaviour
     private RotateToNearTarget rotate;
     void OnCollisionEnter(Collision other)
     {
-        if(other.gameObject.CompareTag("Ground"))
-            isJumping = false;
+        isJumping = false;
     }
     private void Awake()
     {
@@ -28,10 +27,9 @@ public class PlrMove : MonoBehaviour
 
     private void Start()
     {
-       rb = GetComponent<Rigidbody>();
-       mContr = GameObject.FindGameObjectWithTag("Joystick").GetComponent<MobileContr>();
+        rb = GetComponent<Rigidbody>();
+        mContr = GameObject.FindGameObjectWithTag("Joystick").GetComponent<MobileContr>();
     }
-
     private void FixedUpdate()
     {
         Move();
@@ -59,11 +57,11 @@ public class PlrMove : MonoBehaviour
     /// <summary>
     /// метод прыжка персонажа
     /// </summary>
-    private void Jump()
+    private void Jump(byte modeAction)
     {
         if (!isJumping)
         {
-            Vector3 jump = new Vector3(0.0f, jumpForce, 0.0f);
+            Vector3 jump = new Vector3(0.0f, jumpForce * modeAction, 0.0f);
             rb.AddForce(jump);
             isJumping = true;
         }
