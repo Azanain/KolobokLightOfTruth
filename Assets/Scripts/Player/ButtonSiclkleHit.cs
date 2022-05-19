@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -8,6 +7,7 @@ public class ButtonSiclkleHit : MonoBehaviour, /*IDragHandler,*/ IPointerDownHan
     [SerializeField] private float checkTimer;
     [SerializeField] private float timerCancel;
     public static bool ButtonIsPressed { get; private set; }
+    public static bool ButtonLaserCharge { get; private set; }
     public virtual void OnPointerDown(PointerEventData ped)
     {
         ButtonIsPressed = true;
@@ -16,6 +16,7 @@ public class ButtonSiclkleHit : MonoBehaviour, /*IDragHandler,*/ IPointerDownHan
     public virtual void OnPointerUp(PointerEventData ped)
     {
         ButtonIsPressed = false;
+        ButtonLaserCharge = false;
     }
 
     public virtual void OnDrag(PointerEventData ped, byte mode)
@@ -37,13 +38,12 @@ public class ButtonSiclkleHit : MonoBehaviour, /*IDragHandler,*/ IPointerDownHan
             {
                 EventManager.Shoot();
                 EventManager.ButtonPressed(2);
-                Debug.Log("shoot");
             }
             else if (mode == 2)
             {
                 EventManager.ButtonPressed(5);
-                StartCoroutine(TimerChargeLazer());
-                Debug.Log("bigShoot");
+                EventManager.ChangeJoystick(2);
+                ButtonLaserCharge = true;
             }
         }
         else if (gameObject.CompareTag("WordOfPower"))
@@ -58,23 +58,7 @@ public class ButtonSiclkleHit : MonoBehaviour, /*IDragHandler,*/ IPointerDownHan
             }
         }
     }
-    private IEnumerator TimerChargeLazer()
-    {
-        float timer = 0;
-        while (ButtonIsPressed)
-        {
-            yield return new WaitForSeconds(0.05f);
-            timer += 0.05f;
-            EventManager.ChargingLazer(timer);
-        }
-        if (!ButtonIsPressed)
-        {
-
-            EventManager.ChargingLazer(timer);
-            StopCoroutine(TimerChargeLazer());
-        }
-    }
-
+  
     private IEnumerator TimerCheckButtonMode(PointerEventData ped)
     {
         float timer = 0;

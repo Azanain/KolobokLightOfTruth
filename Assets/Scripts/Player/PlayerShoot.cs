@@ -8,6 +8,7 @@ public class PlayerShoot : MonoBehaviour
     public GameObject[] weapons;//1 - щит, 2 - лазер, 3 - слово силы
     public GameObject weapon1_1;
     public GameObject weapon1_2;//scale x:1 y:0.5 z:0.2
+    [SerializeField] private GameObject chargedLaser;
     [SerializeField] private Transform firePointLaser;
     private byte numberWeapon;
     private Pool pool;
@@ -18,9 +19,9 @@ public class PlayerShoot : MonoBehaviour
     public static bool IsBackShieldActiv { get; private set; }
     private void Awake()
     {
-        EventManager.ShootChargeLazerEvent += ShootLaser_2;
         EventManager.ButtonEvent += CheckWeapons;
         EventManager.ShootEvent += ShootLaser;
+        EventManager.ShootChargedLaserEvent += ShootLaser_2;
         playerAudio = GetComponent<PlayerAudio>();
         pool = GetComponent<Pool>();
         CheckWeapons(0);
@@ -70,19 +71,15 @@ public class PlayerShoot : MonoBehaviour
             playerAudio.ShootWeapon2();
         }
     }
-    private void ShootLaser_2()
+    private void ShootLaser_2(int damage)
     {
-        if (numberWeapon == 2)
-        {
-            Debug.Log("shoot charge lazer");
-            //pool.GetFreeElement(firePointLaser.transform.position, firePointLaser.transform.rotation);
-            //playerAudio.ShootWeapon2();
-        }
+        Instantiate(chargedLaser, firePointLaser.position, firePointLaser.rotation);
+        playerAudio.ShootWeapon2();
     }
     private void OnDestroy()
     {
         EventManager.ShootEvent -= ShootLaser;
         EventManager.ButtonEvent -= CheckWeapons;
-        EventManager.ShootChargeLazerEvent -= ShootLaser_2;
+        EventManager.ShootChargedLaserEvent -= ShootLaser_2;
     }
 }

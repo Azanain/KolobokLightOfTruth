@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Pool : MonoBehaviour
 {
-    [SerializeField] private PoolObject[] prefabs;
+    [SerializeField] private PoolObject prefab;
 
     [SerializeField] private Transform container;
     [SerializeField] private int minCapacity;
@@ -37,14 +36,10 @@ public class Pool : MonoBehaviour
     private PoolObject CreateAllElement(bool isActiveByDefault = false)
     {
         PoolObject createdObject = null;
-        for (int i = 0; i < prefabs.Length; i++)
-        {
-            createdObject = Instantiate(prefabs[i], container);
-            createdObject.gameObject.SetActive(false);
-            pool.Add(createdObject);
-           
-        }
-         return createdObject;
+        createdObject = Instantiate(prefab, container);
+        createdObject.gameObject.SetActive(false);
+        pool.Add(createdObject);
+        return createdObject;
     }
     public bool TryGetElement(out PoolObject element)
     {

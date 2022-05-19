@@ -1,13 +1,16 @@
 using UnityEngine;
 
+
 public class PlrMove : MonoBehaviour
 {
+    public FixedJoystick joystickLaser;
+
     [Header("ќсновные параметры")]
     public float speed;
-    public static bool isJumping { get; private set; }
     [SerializeField] private float jumpForce;
     //  private float forceShieldOfFaith;
     private Vector3 moveInput;
+    public static bool isJumping { get; private set; }
 
     //—сылки на компоненты
     private Rigidbody rb;
@@ -20,6 +23,7 @@ public class PlrMove : MonoBehaviour
     private void Awake()
     {
         //forceShieldOfFaith = 3;
+        joystickLaser = GameObject.FindGameObjectWithTag("JoystickLaser").GetComponent<FixedJoystick>();
         rotate = GetComponent<RotateToNearTarget>();
         EventManager.JumpEvent += Jump;
         speed = PlayerParametrs.Speed;

@@ -4,19 +4,18 @@ public class EventManager
     public static event IntEventmanagerDel LoadGameSceneEvent;
     public static event IntEventmanagerDel TakeDamageEvent;
     public static event IntEventmanagerDel TakeHPEvent;
-    public static event IntEventmanagerDel ChargedLaserEvent;
+    public static event IntEventmanagerDel ShootChargedLaserEvent;
 
     public delegate void EventManagerDel();
     public static event EventManagerDel PauseEvent;
     public static event EventManagerDel ShootEvent;
-    public static event EventManagerDel ShootChargeLazerEvent;
-
-    public delegate void EventManagerFloatDel(float timer);
-    public static event EventManagerFloatDel ChargingLazerEvent;
 
     public delegate void EventManagerIntDel(byte value);
     public static event EventManagerIntDel ButtonEvent;
     public static event EventManagerIntDel JumpEvent;
+    public static event EventManagerIntDel ChangeJoystickEvent;
+
+    //public delegate void EventManagerDel
 
     public static void LoadGameScene(int idFloor)
     {
@@ -46,18 +45,13 @@ public class EventManager
     {
         ButtonEvent?.Invoke(numberButton);
     }
-
-    public static void ChargedLazer(int value)//?
+    public static void ShootChargedLaser(int damage)
     {
-        ChargedLaserEvent?.Invoke(value);
+        ShootChargedLaserEvent?.Invoke(damage);
     }
-    public static void ShchaootChargeLazer()//?
+    public static void ChangeJoystick(byte numerJoystick)
     {
-        ShootChargeLazerEvent?.Invoke();
-    }
-    public static void ChargingLazer(float timer)
-    {
-        ChargingLazerEvent?.Invoke(timer);
+        ChangeJoystickEvent?.Invoke(numerJoystick);
     }
 }
 

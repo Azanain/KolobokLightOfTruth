@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,9 +19,7 @@ public class ReloadScills : MonoBehaviour
     private Button buttonsWeapon3;
 
     private bool weapon1_2Isactive;
-    private bool weapon2_2Isactive;
     private bool weapon3_2Isactive;
-
     private void Awake()
     {
         EventManager.ButtonEvent += StartTimerReloadawapon;
@@ -45,6 +42,7 @@ public class ReloadScills : MonoBehaviour
         ImageWeapon1_1.fillAmount = 1;
         ImageWeapon2_1.fillAmount = 1;
         ImageWeapon3_1.fillAmount = 1;
+        ImageWeapon2_2.fillAmount = 0;
     }
     private void StartTimerReloadawapon(byte button)
     {
@@ -81,16 +79,6 @@ public class ReloadScills : MonoBehaviour
                     StartCoroutine(TimerActivationShield_2());
                 }
                 break;
-            case 5:
-                if (!weapon2_2Isactive)
-                {
-                    weapon2_2Isactive = true;
-                    Debug.Log("2_2");
-                    int min = PlayerParametrs.DamageWeapon2_2Min;
-                    int max = PlayerParametrs.DamageWeapon2_2Max;
-                    StartCoroutine(TimerChargeLazer(min, max));
-                }
-                break;
             case 6:
                 if (!weapon3_2Isactive)
                 {
@@ -106,7 +94,7 @@ public class ReloadScills : MonoBehaviour
         }
     }
 
-    //1 скил осн режим
+    //1_1 скил осн режим
     private IEnumerator TimerUpdateImageWeapon1(float timer)
     {
         float maxTimer = timer;
@@ -157,7 +145,7 @@ public class ReloadScills : MonoBehaviour
             StopCoroutine(TimerEndActivationShield());
         }
     }
-    //3 скил осн режим
+    //3_1 скил осн режим
     private IEnumerator TimerUpdateImageWeapon3(float timer)
     {
         float maxTimer = timer;
@@ -258,60 +246,6 @@ public class ReloadScills : MonoBehaviour
         if (scaleX <= 0.1f)
         {
             StopCoroutine(TimerEndActivationShield_2());
-        }
-    }
-
-    //2_2
-    //private void ChargingLazer(float value)
-    //{
-    //    fillAmountWeapon2_2 = value;
-    //    ImageWeapon1_2.fillAmount = fillAmountWeapon2_2;
-    //}
-
-    private IEnumerator TimerUpdateImageWeapon2_2()
-    {
-        float timer = 0;
-        while (ButtonSiclkleHit.ButtonIsPressed)
-        {
-            ImageWeapon2_2.fillAmount = timer / 10;
-            yield return new WaitForSeconds(0.05f);
-            timer -= 0.05f;
-        }
-        if (timer >= 10)
-        {
-            //ImageWeapon1_2.fillAmount = 1;
-            //weapon1_2Isactive = false;
-           // StartCoroutine(TimerEndActivationShield_2());
-            StopCoroutine(TimerUpdateImageWeapon2_2());
-        }
-    }
-    private IEnumerator TimerChargeLazer(int min, int max)
-    {
-        float timer = 0;
-        float damage = (float)min;
-        while (ButtonSiclkleHit.ButtonIsPressed)
-        {
-            yield return new WaitForSeconds(0.05f);
-            //imageChargerigLazer.fillAmount = timer / 10;
-            timer += 0.05f;
-        }
-        if (!ButtonSiclkleHit.ButtonIsPressed)
-        {
-            //отбрасывание перса * timer
-            damage *= timer + 1;
-            EventManager.ChargedLazer((int)damage);
-           // imageChargerigLazer.fillAmount = 0;
-            Debug.Log(damage);
-            StopCoroutine(TimerChargeLazer(0, 0));
-        }
-        else if (timer >= 10f)
-        {
-            //отбрасывание перса max
-            damage = max;
-            EventManager.ChargedLazer((int)damage);
-            //imageChargerigLazer.fillAmount = 0;
-            Debug.Log(damage);
-            StopCoroutine(TimerChargeLazer(0, 0));
         }
     }
     private void OnDestroy()
