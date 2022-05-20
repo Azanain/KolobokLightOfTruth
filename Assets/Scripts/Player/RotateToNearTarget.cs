@@ -20,8 +20,8 @@ public class RotateToNearTarget : MonoBehaviour
     /// </summary>
     public void RotateToNearEnemy()
     {
-        if (PlayerShoot.IsLaserActiv)
-        {
+        //if (ReloadScills.IsLaserActiv)
+        //{
             Collider[] colls = Physics.OverlapSphere(transform.position, radiusSphere, layers);
             if (colls.Length > 0)
             {
@@ -43,7 +43,7 @@ public class RotateToNearTarget : MonoBehaviour
                 plrMove.speed = PlayerParametrs.Speed;
                 Debug.Log("управление востановлена");
             }
-        }
+        //}
     }
     /// <summary>
     /// порот к ближайше цели

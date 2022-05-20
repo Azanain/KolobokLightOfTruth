@@ -55,7 +55,7 @@ public class PlrMove : MonoBehaviour
     /// </summary>
     private void Move()
     {
-        if (!PlayerShoot.IsCheldActiv)
+        if (!ReloadScills.Weapon1_1IsActive)
         {
             moveInput = new Vector3(-mContr.Horizontal() * speed, rb.velocity.y, -mContr.Vertical() * speed);
             rb.AddForce(moveInput);

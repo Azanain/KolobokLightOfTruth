@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ButtonSiclkleHit : MonoBehaviour, /*IDragHandler,*/ IPointerDownHandler, IPointerUpHandler
+public class ButtonSiclkleHit : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     [SerializeField] private float checkTimer;
     [SerializeField] private float timerCancel;
@@ -37,7 +37,6 @@ public class ButtonSiclkleHit : MonoBehaviour, /*IDragHandler,*/ IPointerDownHan
             if (mode == 1)
             {
                 EventManager.Shoot();
-                EventManager.ButtonPressed(2);
             }
             else if (mode == 2)
             {
