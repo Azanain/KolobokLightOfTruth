@@ -16,10 +16,10 @@ public class Options : MonoBehaviour
     [SerializeField] private AudioSource clickButton;
     private bool uIVolumeEnabled;
 
-    private void Awake()
-    {
-        EventManager.PauseEvent += Pause;
-    }
+    //private void Awake()
+    //{
+    //    EventManager.PauseEvent += Pause;
+    //}
     private void Start()
     {
         //заменить на загрузку данных
@@ -27,7 +27,7 @@ public class Options : MonoBehaviour
         effectsVolumeEnabled = true;
         uIVolumeEnabled = true;
     }
-    private void Pause()
+    public void Pause()
     {
         if (isPause)
         {
@@ -97,8 +97,8 @@ public class Options : MonoBehaviour
             uIVolumeEnabled = false;
         }
     }
-    private void OnDestroy()
-    {
-        EventManager.PauseEvent -= Pause;
-    }
+    //private void OnDestroy()
+    //{
+    //    EventManager.PauseEvent -= Pause;
+    //}
 }

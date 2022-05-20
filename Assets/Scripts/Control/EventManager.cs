@@ -5,10 +5,12 @@ public class EventManager
     public static event IntEventmanagerDel TakeDamageEvent;
     public static event IntEventmanagerDel TakeHPEvent;
     public static event IntEventmanagerDel ShootChargedLaserEvent;
+    public static event IntEventmanagerDel AddCurrentMoneyEvent;
+    public static event IntEventmanagerDel AddTotalMoneyEvent;
 
     public delegate void EventManagerDel();
-    public static event EventManagerDel PauseEvent;
     public static event EventManagerDel ShootEvent;
+    public static event EventManagerDel AuthorModeEvent;
 
     public delegate void EventManagerByteDel(byte value);
     public static event EventManagerByteDel ButtonEvent;
@@ -17,6 +19,9 @@ public class EventManager
     public delegate void EventManagerFloatDel(float value);
     public static event EventManagerFloatDel DiscardingEvent;//отбрасывание
     public static event EventManagerFloatDel DashEvent;
+
+    public delegate void EventManagerStringDel(string name);
+    public static event EventManagerStringDel ButtonNameEvent;
 
     public static void LoadGameScene(int idFloor)
     {
@@ -29,10 +34,6 @@ public class EventManager
     public static void TakeHP(int damage)
     {
         TakeHPEvent?.Invoke(damage);
-    }
-    public static void Pause()//?
-    {
-        PauseEvent?.Invoke();
     }
     public static void Shoot()
     {
@@ -57,6 +58,23 @@ public class EventManager
     public static void Dash(float force)
     {
         DashEvent?.Invoke(force);
+    }
+
+    public static void AddCurrentMoney(int money)
+    {
+        AddCurrentMoneyEvent?.Invoke(money);
+    }
+    public static void AddTotalMoney(int money)
+    {
+        AddTotalMoneyEvent?.Invoke(money);
+    }
+    public static void AuthorMode()
+    {
+        AuthorModeEvent?.Invoke();
+    }
+    public static void ButtonName(string name)
+    {
+        ButtonNameEvent?.Invoke(name);
     }
 }
 

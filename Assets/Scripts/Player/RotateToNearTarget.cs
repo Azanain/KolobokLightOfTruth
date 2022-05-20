@@ -43,6 +43,7 @@ public class RotateToNearTarget : MonoBehaviour
                 plrMove.speed = PlayerParametrs.Speed;
                 Debug.Log("управление востановлена");
             }
+        //
         //}
     }
     /// <summary>
