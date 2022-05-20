@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class RotateToNearTarget : MonoBehaviour
@@ -47,7 +45,6 @@ public class RotateToNearTarget : MonoBehaviour
             }
         }
     }
-    
     /// <summary>
     /// порот к ближайше цели
     /// </summary>

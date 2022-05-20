@@ -13,6 +13,8 @@ public class PlayerShoot : MonoBehaviour
     private byte numberWeapon;
     private Pool pool;
 
+//    [SerializeField] private float forceDiscarding;
+
     public static bool IsCheldActiv { get; private set; }
     public static bool IsLaserActiv { get; private set; }
     public static bool IsWordActiv { get; private set; }
@@ -67,6 +69,7 @@ public class PlayerShoot : MonoBehaviour
     {
         if (numberWeapon == 2)
         {
+            EventManager.Discarding(1);
             pool.GetFreeElement(firePointLaser.transform.position, firePointLaser.transform.rotation);
             playerAudio.ShootWeapon2();
         }
@@ -74,6 +77,7 @@ public class PlayerShoot : MonoBehaviour
     private void ShootLaser_2(int damage)
     {
         Instantiate(chargedLaser, firePointLaser.position, firePointLaser.rotation);
+        //EventManager.Discarding(forceDiscarding);
         playerAudio.ShootWeapon2();
     }
     private void OnDestroy()

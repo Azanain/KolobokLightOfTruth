@@ -42,7 +42,6 @@ public class ButtonSiclkleHit : MonoBehaviour, /*IDragHandler,*/ IPointerDownHan
             else if (mode == 2)
             {
                 EventManager.ButtonPressed(5);
-                EventManager.ChangeJoystick(2);
                 ButtonLaserCharge = true;
             }
         }

@@ -4,12 +4,13 @@ using UnityEngine.UI;
 
 public class MobileContr : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointerDownHandler
 {
-    [SerializeField] private Image joystick;
+    private Image joystick;
     private Image joystickBG;
     [HideInInspector] public Vector2 inputVector; //получение координаты джостика
 
     private void Start()
     {
+        joystick = GetComponentInChildren<Image>();
         joystickBG = GetComponent<Image>();
         joystick = transform.GetChild(0).GetComponent<Image>();
     }

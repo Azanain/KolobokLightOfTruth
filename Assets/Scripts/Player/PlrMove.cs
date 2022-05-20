@@ -1,15 +1,13 @@
 using UnityEngine;
 
-
 public class PlrMove : MonoBehaviour
 {
-    public FixedJoystick joystickLaser;
-
     [Header("ќсновные параметры")]
     public float speed;
     [SerializeField] private float jumpForce;
     //  private float forceShieldOfFaith;
     private Vector3 moveInput;
+    public GameObject frontPoint;
     public static bool isJumping { get; private set; }
 
     //—сылки на компоненты
@@ -22,22 +20,34 @@ public class PlrMove : MonoBehaviour
     }
     private void Awake()
     {
-        //forceShieldOfFaith = 3;
-        joystickLaser = GameObject.FindGameObjectWithTag("JoystickLaser").GetComponent<FixedJoystick>();
-        rotate = GetComponent<RotateToNearTarget>();
         EventManager.JumpEvent += Jump;
-        speed = PlayerParametrs.Speed;
-    }
+        EventManager.DiscardingEvent += Discarding;
+        EventManager.DashEvent += Dash;
 
-    private void Start()
-    {
-        rb = GetComponent<Rigidbody>();
+        //forceShieldOfFaith = 3;
+        rotate = GetComponent<RotateToNearTarget>();
+        speed = PlayerParametrs.Speed;
         mContr = GameObject.FindGameObjectWithTag("Joystick").GetComponent<MobileContr>();
+        rb = GetComponent<Rigidbody>();
     }
     private void FixedUpdate()
     {
-        Move();
+        if (!ButtonRay.AimingLaser)
+        {
+            speed = PlayerParametrs.Speed;
+            Move();
+        }
+        else
+        {
+            speed = 0;
+            RotateAimingLaser();
+        }
+
         rotate.RotateToNearEnemy();
+    }
+    private void RotateAimingLaser()
+    {
+        transform.rotation *= Quaternion.Euler(0, mContr.Horizontal(), 0);
     }
 
     /// <summary>
@@ -48,15 +58,18 @@ public class PlrMove : MonoBehaviour
         if (!PlayerShoot.IsCheldActiv)
         {
             moveInput = new Vector3(-mContr.Horizontal() * speed, rb.velocity.y, -mContr.Vertical() * speed);
-            // moveInput = new Vector3(-mContr.Horizontal() * 0, rb.velocity.y, -mContr.Vertical() * 0);
             rb.AddForce(moveInput);
         }
-        //else
-        //{
-        //    moveInput = new Vector3(-mContr.Horizontal() * speed, rb.velocity.y, -mContr.Vertical() * speed * forceShieldOfFaith);
-        //    rb.AddForce(moveInput);
-        //    Debug.Log("Force");
-        //}
+    }
+    private void Discarding(float force)
+    {
+        var moveDiscard = (frontPoint.transform.position - transform.position).normalized;
+        rb.AddForce(moveDiscard * force, ForceMode.Impulse);
+    }
+    private void Dash(float force)
+    {
+        var moveDiscard = (frontPoint.transform.position - transform.position).normalized;
+        rb.AddForce(moveDiscard * -force, ForceMode.Impulse);
     }
     /// <summary>
     /// метод прыжка персонажа
@@ -73,5 +86,7 @@ public class PlrMove : MonoBehaviour
     private void OnDestroy()
     {
         EventManager.JumpEvent -= Jump;
+        EventManager.DiscardingEvent -= Discarding;
+        EventManager.DashEvent -= Dash;
     }
 }

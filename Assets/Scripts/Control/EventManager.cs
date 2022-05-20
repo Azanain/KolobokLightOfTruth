@@ -10,12 +10,13 @@ public class EventManager
     public static event EventManagerDel PauseEvent;
     public static event EventManagerDel ShootEvent;
 
-    public delegate void EventManagerIntDel(byte value);
-    public static event EventManagerIntDel ButtonEvent;
-    public static event EventManagerIntDel JumpEvent;
-    public static event EventManagerIntDel ChangeJoystickEvent;
+    public delegate void EventManagerByteDel(byte value);
+    public static event EventManagerByteDel ButtonEvent;
+    public static event EventManagerByteDel JumpEvent;
 
-    //public delegate void EventManagerDel
+    public delegate void EventManagerFloatDel(float value);
+    public static event EventManagerFloatDel DiscardingEvent;//отбрасывание
+    public static event EventManagerFloatDel DashEvent;
 
     public static void LoadGameScene(int idFloor)
     {
@@ -49,9 +50,13 @@ public class EventManager
     {
         ShootChargedLaserEvent?.Invoke(damage);
     }
-    public static void ChangeJoystick(byte numerJoystick)
+    public static void Discarding(float force)
     {
-        ChangeJoystickEvent?.Invoke(numerJoystick);
+        DiscardingEvent?.Invoke(force);
+    }
+    public static void Dash(float force)
+    {
+        DashEvent?.Invoke(force);
     }
 }
 

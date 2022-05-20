@@ -20,6 +20,7 @@ public class ReloadScills : MonoBehaviour
 
     private bool weapon1_2Isactive;
     private bool weapon3_2Isactive;
+    [SerializeField] private float dashForce;
     private void Awake()
     {
         EventManager.ButtonEvent += StartTimerReloadawapon;
@@ -52,6 +53,7 @@ public class ReloadScills : MonoBehaviour
                 if (!PlayerShoot.IsCheldActiv)
                 { 
                     StartCoroutine((TimerUpdateImageWeapon1(PlayerParametrs.TimeReloadWeapon1)));
+                    EventManager.Dash(dashForce);
                     playerShoot.weapon1_1.SetActive(true);
                     StartCoroutine(TimerActivationShield());
                     playerShoot.SwitchIsChieldActiv(true);
@@ -61,14 +63,14 @@ public class ReloadScills : MonoBehaviour
             case 3:
                 if (!PlayerShoot.IsWordActiv)
                 {
-                    EventManager.Jump(1);
+                    EventManager.Discarding(3);
+                    //EventManager.Jump(1);
                     StartCoroutine((TimerUpdateImageWeapon3(PlayerParametrs.TimeReloadWeapon3)));
-                    StartCoroutine(TimerActivationWord());
+                    StartCoroutine(TimerActivationWord(5));
                     playerShoot.SwitchIsWordActiv(true);
                     buttonsWeapon3.interactable = false;
                 }
                 break;
-
             case 4:
                 if (!weapon1_2Isactive)
                 { 
@@ -83,10 +85,10 @@ public class ReloadScills : MonoBehaviour
                 if (!weapon3_2Isactive)
                 {
                     weapon3_2Isactive = true;
-                    Debug.Log("3_2");
-                    EventManager.Jump(2);
+                    EventManager.Discarding(8);
+                    //EventManager.Jump(2);
                     StartCoroutine((TimerUpdateImageWeapon3(PlayerParametrs.TimeReloadWeapon3)));
-                    StartCoroutine(TimerActivationWord());
+                    StartCoroutine(TimerActivationWord(10));
                     playerShoot.SwitchIsWordActiv(true);
                     buttonsWeapon3.interactable = false;
                 }
@@ -164,7 +166,7 @@ public class ReloadScills : MonoBehaviour
             StopCoroutine(TimerUpdateImageWeapon3(0));
         }
     }
-    private IEnumerator TimerActivationWord()
+    private IEnumerator TimerActivationWord(int damage)
     {
         float scale = 0;
         while (scale < 5)
@@ -176,8 +178,10 @@ public class ReloadScills : MonoBehaviour
         }
         if (scale >= 5)
         {
+            //нанесение урона 
+            EventManager.Discarding(3);
             StartCoroutine(TimerEndActivationWord());
-            StopCoroutine(TimerActivationWord());
+            StopCoroutine(TimerActivationWord(damage));
         }
     }
     private IEnumerator TimerEndActivationWord()
@@ -248,6 +252,8 @@ public class ReloadScills : MonoBehaviour
             StopCoroutine(TimerEndActivationShield_2());
         }
     }
+
+
     private void OnDestroy()
     {
         EventManager.ButtonEvent -= StartTimerReloadawapon;
