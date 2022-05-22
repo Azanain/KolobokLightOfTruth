@@ -9,11 +9,13 @@ public class PlrMove : MonoBehaviour
     [SerializeField] private GameObject frontPoint;
     [SerializeField] private GameObject body;
     public static bool isJumping { get; private set; }
+    public bool iPlayer1;
 
     //—сылки на компоненты
     private Rigidbody rb;
     private MobileContr mContr;
     private RotateToNearTarget rotate;
+
     void OnCollisionEnter(Collision other)
     {
         isJumping = false;
@@ -23,12 +25,20 @@ public class PlrMove : MonoBehaviour
         EventManager.JumpEvent += Jump;
         EventManager.DiscardingEvent += Discarding;
         EventManager.DashEvent += Dash;
-
-        rotate = GetComponent<RotateToNearTarget>();
+        
         speed = PlayerParametrs.Speed;
         mContr = GameObject.FindGameObjectWithTag("Joystick").GetComponent<MobileContr>();
         rb = GetComponent<Rigidbody>();
-        Instantiate(body, transform.position, Quaternion.identity);
+
+        if(!iPlayer1)
+            Instantiate(body, transform.position, Quaternion.identity);
+    }
+    private void Start()
+    {
+        if (iPlayer1)
+            rotate = GetComponent<RotateToNearTarget>();
+        else
+            rotate = body.GetComponent<RotateToNearTarget>();
     }
     private void FixedUpdate()
     {
@@ -42,7 +52,6 @@ public class PlrMove : MonoBehaviour
             speed = 0;
             RotateAimingLaser();
         }
-
         rotate.RotateToNearEnemy();
     }
     private void RotateAimingLaser()

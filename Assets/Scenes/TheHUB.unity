@@ -3652,6 +3652,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 190931006181041066, guid: 7f4a426d98d1cf64fa4a0a77b272c299, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 190931006181041067, guid: 7f4a426d98d1cf64fa4a0a77b272c299, type: 3}
       propertyPath: m_Name
       value: Enemy1
@@ -3678,7 +3682,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 190931006181041071, guid: 7f4a426d98d1cf64fa4a0a77b272c299, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 33.0758
+      value: 18.66
       objectReference: {fileID: 0}
     - target: {fileID: 190931006181041071, guid: 7f4a426d98d1cf64fa4a0a77b272c299, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6698,7 +6702,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5192158704636839746, guid: 7db8f952644c5f64f96bd95bcb5b00e5, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5192158704636839758, guid: 7db8f952644c5f64f96bd95bcb5b00e5, type: 3}
       propertyPath: m_RootOrder
@@ -6706,15 +6710,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5192158704636839758, guid: 7db8f952644c5f64f96bd95bcb5b00e5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.24
+      value: 1.45
       objectReference: {fileID: 0}
     - target: {fileID: 5192158704636839758, guid: 7db8f952644c5f64f96bd95bcb5b00e5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.95
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5192158704636839758, guid: 7db8f952644c5f64f96bd95bcb5b00e5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 16.73
+      value: 12.47
       objectReference: {fileID: 0}
     - target: {fileID: 5192158704636839758, guid: 7db8f952644c5f64f96bd95bcb5b00e5, type: 3}
       propertyPath: m_LocalRotation.w
@@ -9834,11 +9838,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5935551132663997910, guid: dcc377488826752458563b4a3d5315a8, type: 3}
       propertyPath: m_Name
-      value: Player
+      value: Player2
       objectReference: {fileID: 0}
     - target: {fileID: 5935551132663997910, guid: dcc377488826752458563b4a3d5315a8, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5935551132663997914, guid: dcc377488826752458563b4a3d5315a8, type: 3}
       propertyPath: m_RootOrder

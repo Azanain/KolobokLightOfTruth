@@ -588,8 +588,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   jumpForce: 250
-  SpeedMultiplier: 15
   frontPoint: {fileID: 7906515715765364101}
+  body: {fileID: 0}
+  iPlayer1: 1
 --- !u!114 &5192158704636839753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -741,6 +742,7 @@ MonoBehaviour:
     m_Bits: 64
   speedRotation: 5
   offsetX: 0.5
+  iPlayer1: 1
 --- !u!114 &5192158704636839734
 MonoBehaviour:
   m_ObjectHideFlags: 0
