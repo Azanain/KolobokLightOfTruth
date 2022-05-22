@@ -20,6 +20,7 @@ public class PlrMove : MonoBehaviour
     {
         isJumping = false;
     }
+
     private void Awake()
     {
         EventManager.JumpEvent += Jump;
@@ -33,6 +34,7 @@ public class PlrMove : MonoBehaviour
         if(!iPlayer1)
             Instantiate(body, transform.position, Quaternion.identity);
     }
+
     private void Start()
     {
         if (iPlayer1)
@@ -40,6 +42,7 @@ public class PlrMove : MonoBehaviour
         else
             rotate = body.GetComponent<RotateToNearTarget>();
     }
+
     private void FixedUpdate()
     {
         if (!ButtonRay.AimingLaser)
@@ -54,6 +57,7 @@ public class PlrMove : MonoBehaviour
         }
         rotate.RotateToNearEnemy();
     }
+
     private void RotateAimingLaser()
     {
         transform.rotation *= Quaternion.Euler(0, mContr.Horizontal(), 0);
@@ -81,6 +85,7 @@ public class PlrMove : MonoBehaviour
         var moveDiscard = (frontPoint.transform.position - transform.position).normalized;
         rb.AddForce(moveDiscard * -force, ForceMode.Impulse);
     }
+
     /// <summary>
     /// метод прыжка персонажа
     /// </summary>
