@@ -58,7 +58,8 @@ public class PlrMove : MonoBehaviour
         if (!ReloadScills.Weapon1_1IsActive)
         {
             moveInput = new Vector3(-mContr.Horizontal() * speed, rb.velocity.y, -mContr.Vertical() * speed);
-            rb.AddForce(moveInput);
+            rb.velocity = moveInput;
+           // rb.AddForce(moveInput);
         }
     }
     private void Discarding(float force)
