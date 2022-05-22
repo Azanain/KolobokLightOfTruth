@@ -4,19 +4,24 @@ public class EventManager
     public static event IntEventmanagerDel LoadGameSceneEvent;
     public static event IntEventmanagerDel TakeDamageEvent;
     public static event IntEventmanagerDel TakeHPEvent;
-    public static event IntEventmanagerDel ChargedLaserEvent;
+    public static event IntEventmanagerDel ShootChargedLaserEvent;
+    public static event IntEventmanagerDel AddCurrentMoneyEvent;
+    public static event IntEventmanagerDel AddTotalMoneyEvent;
 
     public delegate void EventManagerDel();
-    public static event EventManagerDel PauseEvent;
     public static event EventManagerDel ShootEvent;
-    public static event EventManagerDel ShootChargeLazerEvent;
+    public static event EventManagerDel AuthorModeEvent;
 
-    public delegate void EventManagerFloatDel(float timer);
-    public static event EventManagerFloatDel ChargingLazerEvent;
+    public delegate void EventManagerByteDel(byte value);
+    public static event EventManagerByteDel ButtonEvent;
+    public static event EventManagerByteDel JumpEvent;
 
-    public delegate void EventManagerIntDel(byte value);
-    public static event EventManagerIntDel ButtonEvent;
-    public static event EventManagerIntDel JumpEvent;
+    public delegate void EventManagerFloatDel(float value);
+    public static event EventManagerFloatDel DiscardingEvent;//отбрасывание
+    public static event EventManagerFloatDel DashEvent;
+
+    public delegate void EventManagerStringDel(string name);
+    public static event EventManagerStringDel ButtonNameEvent;
 
     public static void LoadGameScene(int idFloor)
     {
@@ -30,10 +35,6 @@ public class EventManager
     {
         TakeHPEvent?.Invoke(damage);
     }
-    public static void Pause()//?
-    {
-        PauseEvent?.Invoke();
-    }
     public static void Shoot()
     {
         ShootEvent?.Invoke();
@@ -46,18 +47,34 @@ public class EventManager
     {
         ButtonEvent?.Invoke(numberButton);
     }
+    public static void ShootChargedLaser(int damage)
+    {
+        ShootChargedLaserEvent?.Invoke(damage);
+    }
+    public static void Discarding(float force)
+    {
+        DiscardingEvent?.Invoke(force);
+    }
+    public static void Dash(float force)
+    {
+        DashEvent?.Invoke(force);
+    }
 
-    public static void ChargedLazer(int value)//?
+    public static void AddCurrentMoney(int money)
     {
-        ChargedLaserEvent?.Invoke(value);
+        AddCurrentMoneyEvent?.Invoke(money);
     }
-    public static void ShchaootChargeLazer()//?
+    public static void AddTotalMoney(int money)
     {
-        ShootChargeLazerEvent?.Invoke();
+        AddTotalMoneyEvent?.Invoke(money);
     }
-    public static void ChargingLazer(float timer)
+    public static void AuthorMode()
     {
-        ChargingLazerEvent?.Invoke(timer);
+        AuthorModeEvent?.Invoke();
+    }
+    public static void ButtonName(string name)
+    {
+        ButtonNameEvent?.Invoke(name);
     }
 }
 

@@ -4,12 +4,13 @@ using UnityEngine.UI;
 
 public class MobileContr : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointerDownHandler
 {
-    [SerializeField] private Image joystick;
+    private Image joystick;
     private Image joystickBG;
     [HideInInspector] public Vector2 inputVector; //получение координаты джостика
 
     private void Start()
     {
+        joystick = GetComponentInChildren<Image>();
         joystickBG = GetComponent<Image>();
         joystick = transform.GetChild(0).GetComponent<Image>();
     }
@@ -27,8 +28,8 @@ public class MobileContr : MonoBehaviour, IDragHandler, IPointerUpHandler, IPoin
 
     public virtual void OnDrag(PointerEventData ped)
     {
-        if (!PlayerShoot.IsCheldActiv)
-        {
+        //if (!ReloadScills.Weapon1_1IsActive)
+        //{
             Vector2 pos;
             if (RectTransformUtility.ScreenPointToLocalPointInRectangle(joystickBG.rectTransform, ped.position, ped.pressEventCamera, out pos))
             {
@@ -40,7 +41,7 @@ public class MobileContr : MonoBehaviour, IDragHandler, IPointerUpHandler, IPoin
 
                 joystick.rectTransform.anchoredPosition = new Vector2(inputVector.x * (joystickBG.rectTransform.sizeDelta.x / 2), inputVector.y * (joystickBG.rectTransform.sizeDelta.y / 2));
             }
-        }
+        //}
     }
 
     public float Horizontal()
