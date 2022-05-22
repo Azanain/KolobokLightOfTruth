@@ -5,6 +5,7 @@ public class PlrMove : MonoBehaviour
     [Header("Основные параметры")]
     public float speed;
     [SerializeField] private float jumpForce;
+    [SerializeField] private float SpeedMultiplier;
     //  private float forceShieldOfFaith;
     private Vector3 moveInput;
     public GameObject frontPoint;
@@ -58,7 +59,7 @@ public class PlrMove : MonoBehaviour
         if (!ReloadScills.Weapon1_1IsActive)
         {
             moveInput = new Vector3(-mContr.Horizontal() * speed, rb.velocity.y, -mContr.Vertical() * speed);
-            rb.AddForce(moveInput);
+            rb.AddForce(moveInput* SpeedMultiplier);
         }
     }
     private void Discarding(float force)
