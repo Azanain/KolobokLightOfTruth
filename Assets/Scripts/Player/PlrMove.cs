@@ -5,10 +5,9 @@ public class PlrMove : MonoBehaviour
     [Header("ќсновные параметры")]
     public float speed;
     [SerializeField] private float jumpForce;
-    [SerializeField] private float SpeedMultiplier;
-    //  private float forceShieldOfFaith;
     private Vector3 moveInput;
-    public GameObject frontPoint;
+    [SerializeField] private GameObject frontPoint;
+    [SerializeField] private GameObject body;
     public static bool isJumping { get; private set; }
 
     //—сылки на компоненты
@@ -25,11 +24,11 @@ public class PlrMove : MonoBehaviour
         EventManager.DiscardingEvent += Discarding;
         EventManager.DashEvent += Dash;
 
-        //forceShieldOfFaith = 3;
         rotate = GetComponent<RotateToNearTarget>();
         speed = PlayerParametrs.Speed;
         mContr = GameObject.FindGameObjectWithTag("Joystick").GetComponent<MobileContr>();
         rb = GetComponent<Rigidbody>();
+        Instantiate(body, transform.position, Quaternion.identity);
     }
     private void FixedUpdate()
     {
@@ -59,7 +58,7 @@ public class PlrMove : MonoBehaviour
         if (!ReloadScills.Weapon1_1IsActive)
         {
             moveInput = new Vector3(-mContr.Horizontal() * speed, rb.velocity.y, -mContr.Vertical() * speed);
-            rb.AddForce(moveInput* SpeedMultiplier);
+            rb.AddForce(moveInput);
         }
     }
     private void Discarding(float force)
