@@ -34,7 +34,7 @@ public class Gob01Follow : MonoBehaviour
         if (player != null)
         {
             float distance = Vector3.Distance(transform.position, player.transform.position);
-            if (distance < 3f)
+            if (distance < 0f)
             {
                 return 2;
             }
