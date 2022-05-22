@@ -42,7 +42,7 @@ public class Bullet : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            DestroyBullet();
+           DestroyBullet();
         }
     }
     private void DestroyBullet()
