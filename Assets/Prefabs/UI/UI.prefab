@@ -3763,7 +3763,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 607fe92708732ab4aa2a71f97e7d26d8, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5667,7 +5667,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 607fe92708732ab4aa2a71f97e7d26d8, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7898,6 +7898,10 @@ PrefabInstance:
     - target: {fileID: 3874753480303235587, guid: 58c18f28cd6700a4c92a59dfd04da7a2, type: 3}
       propertyPath: m_Color.r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6814885629688512221, guid: 58c18f28cd6700a4c92a59dfd04da7a2, type: 3}
+      propertyPath: offsetY
+      value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3874753479476432141, guid: 58c18f28cd6700a4c92a59dfd04da7a2, type: 3}

@@ -10,18 +10,16 @@ public class PlrMove : MonoBehaviour
     [SerializeField] private GameObject frontPoint;
     [SerializeField] private GameObject body;
     public static bool isJumping { get; private set; }
-    public bool iPlayer1;
+    //public bool iPlayer1;
 
     //—сылки на компоненты
     private Rigidbody rb;
     private MobileContr mContr;
     private RotateToNearTarget rotate;
-
     void OnCollisionEnter(Collision other)
     {
         isJumping = false;
     }
-
     private void Awake()
     {
         EventManager.JumpEvent += Jump;
@@ -32,16 +30,18 @@ public class PlrMove : MonoBehaviour
         mContr = GameObject.FindGameObjectWithTag("Joystick").GetComponent<MobileContr>();
         rb = GetComponent<Rigidbody>();
 
-        if(!iPlayer1)
-            Instantiate(body, transform.position, Quaternion.identity);
+        //if(!iPlayer1)
+        Instantiate(body, transform.position, Quaternion.identity);
     }
 
     private void Start()
     {
-        if (iPlayer1)
-            rotate = GetComponent<RotateToNearTarget>();
-        else
-            rotate = body.GetComponent<RotateToNearTarget>();
+        body = GameObject.FindGameObjectWithTag("PlayerBody");
+        rotate = body.GetComponent<RotateToNearTarget>();
+        //if (iPlayer1)
+        //    rotate = GetComponent<RotateToNearTarget>();
+        //else
+        //    rotate = body.GetComponent<RotateToNearTarget>();
     }
 
     private void FixedUpdate()
@@ -58,7 +58,6 @@ public class PlrMove : MonoBehaviour
         }
         rotate.RotateToNearEnemy();
     }
-
     private void RotateAimingLaser()
     {
         transform.rotation *= Quaternion.Euler(0, mContr.Horizontal(), 0);
@@ -85,7 +84,6 @@ public class PlrMove : MonoBehaviour
         var moveDiscard = (frontPoint.transform.position - transform.position).normalized;
         rb.AddForce(moveDiscard * -force, ForceMode.Impulse);
     }
-
     /// <summary>
     /// метод прыжка персонажа
     /// </summary>

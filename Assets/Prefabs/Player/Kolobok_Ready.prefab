@@ -172,10 +172,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3767875266846185189}
   - component: {fileID: 7607062216728614144}
-  - component: {fileID: 4741141081549938542}
+  - component: {fileID: -8078964633251766786}
   m_Layer: 0
   m_Name: Kolobok_Ready
-  m_TagString: Untagged
+  m_TagString: PlayerBody
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -215,7 +215,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22a2ae6296ba14e4bbf95742b6e93c14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4741141081549938542
+--- !u!114 &-8078964633251766786
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -234,6 +234,7 @@ MonoBehaviour:
   speedRotation: 5
   offsetX: 0.5
   iPlayer1: 0
+  body: {fileID: 0}
 --- !u!1 &5201266973408819061
 GameObject:
   m_ObjectHideFlags: 0

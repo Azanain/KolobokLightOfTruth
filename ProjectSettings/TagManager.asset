@@ -15,6 +15,7 @@ TagManager:
   - ShieldOfFaith_2
   - RayOfHope_2
   - WordOfPower_2
+  - PlayerBody
   layers:
   - Default
   - TransparentFX

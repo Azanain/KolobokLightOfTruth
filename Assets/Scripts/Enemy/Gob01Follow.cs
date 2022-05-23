@@ -9,12 +9,20 @@ public class Gob01Follow : MonoBehaviour
     public float speed;
     private Transform player;
     private NavMeshAgent meshAgent;
-    //private Animator animator;
+    private Animator animator;
     private int state;
+
+    [Header("Attack")]
+    [SerializeField] private int damage;
+    [SerializeField] private Transform attackPosition;
+    [SerializeField] private float attackRadius;
+    [SerializeField] private LayerMask layer;
+    [SerializeField] private float attackDistance;
+    private bool isAttacking;
 
     private void Start()
     {    
-       // animator = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         meshAgent = GetComponent<NavMeshAgent>();
     }
@@ -34,7 +42,7 @@ public class Gob01Follow : MonoBehaviour
         if (player != null)
         {
             float distance = Vector3.Distance(transform.position, player.transform.position);
-            if (distance < 0f)
+            if (distance < attackDistance)
             {
                 return 2;
             }
@@ -86,9 +94,27 @@ public class Gob01Follow : MonoBehaviour
         transform.LookAt(player);
         Debug.Log("Колобок, колобок, я тебя уничтожу!!");
         //animator.SetBool("Run", false);
-        //animator.SetTrigger("Attack");
+        if (!isAttacking)
+        {
+            isAttacking = true;
+            animator.SetTrigger("Attack");
+        }
+       
     }
-
+    public void OnAttack()
+    {
+        Collider[] players = Physics.OverlapSphere(attackPosition.position, attackRadius, layer);
+        for (int i = 0; i < players.Length; i++)
+        {
+            players[i].GetComponent<Player>().TakeDamage(damage);
+            Debug.Log(players[i]);
+            Debug.Log(damage);
+        }
+    }
+    private void EndAttack()
+    {
+        isAttacking = true;
+    }
     //private void AudioStart()
     //{
     //    if (gameObject.TryGetComponent<AudioSource>(out var audioSource))
@@ -96,4 +122,9 @@ public class Gob01Follow : MonoBehaviour
     //        audioSource.Play();
     //    }
     //}
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawSphere(attackPosition.position, attackRadius);
+    }
 }

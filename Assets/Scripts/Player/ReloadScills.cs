@@ -58,8 +58,8 @@ public class ReloadScills : MonoBehaviour
                 if (!Weapon3_1IsActive)
                 {
                     Weapon3_1IsActive = true;
-                    EventManager.Discarding(3);
-                    //EventManager.Jump(1);
+                    //EventManager.Discarding(3);
+                    EventManager.Jump(3);
                     StartCoroutine(TimerActivationWord(5));
                     StartCoroutine((TimerUpdateImageWeapon3(PlayerParametrs.TimeReloadWeapon3)));
                     playerShoot.weapons[3].SetActive(true);
@@ -82,8 +82,8 @@ public class ReloadScills : MonoBehaviour
                 if (!Weapon3_2IsActive)
                 {
                     Weapon3_2IsActive = true;
-                    EventManager.Discarding(8);
-                    //EventManager.Jump(2);
+                    //EventManager.Discarding(8);
+                    EventManager.Jump(5);
                     playerShoot.weapons[4].SetActive(true);
                     StartCoroutine((TimerUpdateImageWeapon3_2(PlayerParametrs.TimeReloadWeapon3_2)));
                     StartCoroutine(TimerActivationWord_2(10));

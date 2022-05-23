@@ -6,17 +6,19 @@ public class RotateToNearTarget : MonoBehaviour
     [SerializeField] private LayerMask layers;
     [SerializeField] private float speedRotation;
     [SerializeField] private float offsetX;
-    private PlrMove plrMove;
+   // private PlrMove plrMove;
     private Transform nearest;
     private Vector2 range;
-    public bool iPlayer1;
+    public static bool enemyFound;
+   // public bool iPlayer1;
 
     private void Start()
     {
-        if(!iPlayer1)
-            plrMove = GetComponentInParent<PlrMove>();
-        else
-            plrMove = GetComponent<PlrMove>();
+       // body = GameObject.FindGameObjectWithTag("PlayerBody");
+        //if(!iPlayer1)
+        //    plrMove = GetComponentInParent<PlrMove>();
+        //else
+        //    plrMove = GetComponent<PlrMove>();
     }
     /// <summary>
     /// поиск ближайшей цели
@@ -26,6 +28,7 @@ public class RotateToNearTarget : MonoBehaviour
         Collider[] colls = Physics.OverlapSphere(transform.position, radiusSphere, layers);
         if (colls.Length > 0)
         {
+            enemyFound = true;
             float dist = Mathf.Infinity;
             nearest = colls[0].transform;
             foreach (var foe in colls)
@@ -36,14 +39,16 @@ public class RotateToNearTarget : MonoBehaviour
                 {
                     nearest = foe.transform;
                     dist = curDistance;
-                    plrMove.speed = 0;
-                    Debug.Log("enemyy");
+                    //plrMove.speed = 0;
+                   // Debug.Log("enemyy");
                     LookAtNearestEnemy(nearest);
                 }
             }
-            plrMove.speed = PlayerParametrs.Speed;
-            Debug.Log("управление востановлена");
+            //plrMove.speed = PlayerParametrs.Speed;
+            //Debug.Log("управление востановлена");
         }
+        else
+            enemyFound = false;
     }
     /// <summary>
     /// порот к ближайше цели

@@ -335,6 +335,8 @@ GameObject:
   - component: {fileID: 5935551132663997856}
   - component: {fileID: 5935551132663997858}
   - component: {fileID: 8943504982222748728}
+  - component: {fileID: -7757869598009653476}
+  - component: {fileID: 6696423157180735759}
   m_Layer: 3
   m_Name: Player2
   m_TagString: Player
@@ -469,7 +471,6 @@ MonoBehaviour:
   SpeedMultiplier: 10
   frontPoint: {fileID: 8640304029923198737}
   body: {fileID: 4540189428939263071, guid: f5e358a416df8f048922382e4dd30bf3, type: 3}
-  iPlayer1: 0
 --- !u!114 &5935551132663997917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -629,6 +630,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   force: 30
   scale: {fileID: 0}
+--- !u!114 &-7757869598009653476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5935551132663997910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2de28ae250099746a21933b6c9b7158, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radiusSphere: 5
+  layers:
+    serializedVersion: 2
+    m_Bits: 64
+  speedRotation: 5
+  offsetX: 0.5
+--- !u!114 &6696423157180735759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5935551132663997910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2b454943d9b18b428b65101f44ef483, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5935551132712330701
 GameObject:
   m_ObjectHideFlags: 0
