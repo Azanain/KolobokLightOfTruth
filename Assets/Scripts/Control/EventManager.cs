@@ -11,6 +11,7 @@ public class EventManager
     public delegate void EventManagerDel();
     public static event EventManagerDel ShootEvent;
     public static event EventManagerDel AuthorModeEvent;
+    public static event EventManagerDel CallCapsuleTeleportEvent;
 
     public delegate void EventManagerByteDel(byte value);
     public static event EventManagerByteDel ButtonEvent;
@@ -75,6 +76,10 @@ public class EventManager
     public static void ButtonName(string name)
     {
         ButtonNameEvent?.Invoke(name);
+    }
+    public static void CallCapsuleTeleport()
+    {
+        CallCapsuleTeleportEvent?.Invoke();
     }
 }
 

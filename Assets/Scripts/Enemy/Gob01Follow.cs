@@ -122,9 +122,9 @@ public class Gob01Follow : MonoBehaviour
     //        audioSource.Play();
     //    }
     //}
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.blue;
-        Gizmos.DrawSphere(attackPosition.position, attackRadius);
-    }
+    //private void OnDrawGizmos()
+    //{
+    //    Gizmos.color = Color.blue;
+    //    Gizmos.DrawSphere(attackPosition.position, attackRadius);
+    //}
 }
