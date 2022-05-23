@@ -48,13 +48,13 @@ public class MobileContr : MonoBehaviour, IDragHandler, IPointerUpHandler, IPoin
 
     public float Horizontal()
     {
-        if (inputVector.x != 0) return inputVector.x + offsetX;
+        if (inputVector.x != 0) return -inputVector.y + offsetX;
         else return Input.GetAxis("Horizontal") ;
     }
 
     public float Vertical()
     {
-        if (inputVector.y != 0) return inputVector.y + offsetY;
+        if (inputVector.y != 0) return inputVector.x + offsetY;
         else return Input.GetAxis("Vertical");
     }
 }
