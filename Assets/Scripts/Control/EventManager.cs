@@ -11,6 +11,8 @@ public class EventManager
     public delegate void EventManagerDel();
     public static event EventManagerDel ShootEvent;
     public static event EventManagerDel AuthorModeEvent;
+    public static event EventManagerDel CallCapsuleTeleportEvent;
+    public static event EventManagerDel CanMoveEvent;
 
     public delegate void EventManagerByteDel(byte value);
     public static event EventManagerByteDel ButtonEvent;
@@ -22,6 +24,7 @@ public class EventManager
 
     public delegate void EventManagerStringDel(string name);
     public static event EventManagerStringDel ButtonNameEvent;
+    public static event EventManagerStringDel NameChosenLevelEvent;
 
     public static void LoadGameScene(int idFloor)
     {
@@ -75,6 +78,18 @@ public class EventManager
     public static void ButtonName(string name)
     {
         ButtonNameEvent?.Invoke(name);
+    }
+    public static void CallCapsuleTeleport()
+    {
+        CallCapsuleTeleportEvent?.Invoke();
+    }
+    public static void NameChosenLevel(string nameLevel)
+    {
+        NameChosenLevelEvent?.Invoke(nameLevel);
+    }
+    public static void CanMove()
+    {
+        CanMoveEvent?.Invoke();
     }
 }
 

@@ -81,6 +81,66 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &608048106221790773
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5674233286346104170}
+  m_Layer: 0
+  m_Name: FrontPoint
+  m_TagString: FrontPoint
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5674233286346104170
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 608048106221790773}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3767875266846185189}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1241052500492344177
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 71177025385832998}
+  m_Layer: 0
+  m_Name: FirePoint
+  m_TagString: FirePointLaser
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &71177025385832998
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1241052500492344177}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -0.6121, y: 0, z: 0.3463}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3767875266846185189}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &2024653055516261869
 GameObject:
   m_ObjectHideFlags: 0
@@ -172,10 +232,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3767875266846185189}
   - component: {fileID: 7607062216728614144}
-  - component: {fileID: 4741141081549938542}
+  - component: {fileID: -8078964633251766786}
   m_Layer: 0
   m_Name: Kolobok_Ready
-  m_TagString: Untagged
+  m_TagString: PlayerBody
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -200,6 +260,8 @@ Transform:
   - {fileID: 7048020472627680596}
   - {fileID: 737203523031198237}
   - {fileID: 8730391848217986139}
+  - {fileID: 71177025385832998}
+  - {fileID: 5674233286346104170}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -215,7 +277,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22a2ae6296ba14e4bbf95742b6e93c14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4741141081549938542
+--- !u!114 &-8078964633251766786
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -233,7 +295,6 @@ MonoBehaviour:
     m_Bits: 64
   speedRotation: 5
   offsetX: 0.5
-  iPlayer1: 0
 --- !u!1 &5201266973408819061
 GameObject:
   m_ObjectHideFlags: 0

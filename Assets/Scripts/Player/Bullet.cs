@@ -7,18 +7,18 @@ public class Bullet : MonoBehaviour
     private int damage;
     [SerializeField] private int lifeTime;
     [SerializeField] private bool isRicochet;
-
     private PoolObject poolObject;
     
     private void Awake()
     {
-        EventManager.ShootChargedLaserEvent += TakeValueDamage;
+        //EventManager.ShootChargedLaserEvent += TakeValueDamage;
+        damage = PlayerParametrs.DamageWeapon2;
         poolObject = GetComponent<PoolObject>();
     }
-    private void TakeValueDamage(int takeDamage)
-    {
-        damage = takeDamage;
-    }
+    //private void TakeValueDamage(int takeDamage)
+    //{
+    //    damage = takeDamage;
+    //}
     private void Update()
     {
         transform.Translate(Vector2.up * speed * Time.deltaTime);
@@ -40,17 +40,23 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Enemy"))
+        Enemy enemy = other.GetComponent<Enemy>();
+        if (enemy != null)
         {
-           DestroyBullet();
+            enemy.TakeDamage(damage);
+            DestroyBullet();
+        }
+        else if (other.CompareTag("Ground"))
+        {
+            DestroyBullet();
         }
     }
     private void DestroyBullet()
     {
         poolObject.ReturnToPool();
     }
-    private void OnDestroy()
-    {
-        EventManager.ShootChargedLaserEvent -= TakeValueDamage;
-    }
+    //private void OnDestroy()
+    //{
+    //    EventManager.ShootChargedLaserEvent -= TakeValueDamage;
+    //}
 }

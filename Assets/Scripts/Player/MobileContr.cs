@@ -6,6 +6,11 @@ public class MobileContr : MonoBehaviour, IDragHandler, IPointerUpHandler, IPoin
 {
     private Image joystick;
     private Image joystickBG;
+
+    //[Range(-1,1.1f)] [SerializeField] private float offsetX;
+    
+    //[Range(-1, 1.1f)] [SerializeField] private float offsetY;
+   
     [HideInInspector] public Vector2 inputVector; //получение координаты джостика
 
     private void Start()
@@ -43,13 +48,13 @@ public class MobileContr : MonoBehaviour, IDragHandler, IPointerUpHandler, IPoin
 
     public float Horizontal()
     {
-        if (inputVector.x != 0) return inputVector.x;
-        else return Input.GetAxis("Horizontal");
+        if (inputVector.x != 0) return -inputVector.y;
+        else return Input.GetAxis("Horizontal") ;
     }
 
     public float Vertical()
     {
-        if (inputVector.y != 0) return inputVector.y;
+        if (inputVector.y != 0) return inputVector.x;
         else return Input.GetAxis("Vertical");
     }
 }

@@ -2,8 +2,8 @@ using UnityEngine;
 using UnityEngine.UI;
 public class HPBar : MonoBehaviour
 {
-    private int currentHp;
-    private int MaxHp;
+    private float currentHp;
+    private float MaxHp;
     [SerializeField] private Image hpBar;
     private Text textHP;
     private void Awake()

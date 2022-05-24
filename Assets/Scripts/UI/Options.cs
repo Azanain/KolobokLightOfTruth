@@ -40,6 +40,10 @@ public class Options : MonoBehaviour
             isPause = true;
         }
     }
+    public void Hub()
+    {
+        EventManager.CallCapsuleTeleport();
+    }
     public void ClickAudio()
     {
         clickButton.Play();
