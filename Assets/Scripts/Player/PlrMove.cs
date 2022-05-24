@@ -7,7 +7,8 @@ public class PlrMove : MonoBehaviour
     [SerializeField] private float jumpForce;
     [SerializeField] private float SpeedMultiplier;
     private Vector3 moveInput;
-    [SerializeField] private GameObject frontPoint;
+    private bool canMove;
+    private GameObject frontPoint;
     [SerializeField] private GameObject body;
     public static bool isJumping { get; private set; }
     public static float moveVelosity { get; private set; }
@@ -25,45 +26,54 @@ public class PlrMove : MonoBehaviour
         EventManager.JumpEvent += Jump;
         EventManager.DiscardingEvent += Discarding;
         EventManager.DashEvent += Dash;
+        EventManager.CanMoveEvent += CanMove;
         
         speed = PlayerParametrs.Speed;
         mContr = GameObject.FindGameObjectWithTag("Joystick").GetComponent<MobileContr>();
         rb = GetComponent<Rigidbody>();
         Instantiate(body, transform.position, Quaternion.identity);
+        canMove = true;
     }
 
     private void Start()
     {
+        frontPoint = GameObject.FindGameObjectWithTag("FrontPoint");
         body = GameObject.FindGameObjectWithTag("PlayerBody");
         rotate = body.GetComponent<RotateToNearTarget>();
     }
-
     private void FixedUpdate()
     {
-        if (!ButtonRay.AimingLaser)
+        if (canMove)
         {
             speed = PlayerParametrs.Speed;
             Move();
         }
         else
         {
-            speed = 0;
+            //speed = 0;
             RotateAimingLaser();
         }
         rotate.RotateToNearEnemy();
         moveVelosity = rb.velocity.magnitude;
     }
+
+    private void CanMove()
+    {
+        if (canMove)
+            canMove = false;
+        else
+            canMove = true;
+    }
     private void RotateAimingLaser()
     {
         transform.rotation *= Quaternion.Euler(0, mContr.Horizontal(), 0);
     }
-
     /// <summary>
     /// метод перемещение персонажа
     /// </summary>
     private void Move()
     {
-        if (!ReloadScills.Weapon1_1IsActive)
+        if (canMove)//(!ReloadScills.Weapon1_1IsActive)
         {
             moveInput = new Vector3(-mContr.Horizontal() * speed, rb.velocity.y, -mContr.Vertical() * speed);
             rb.AddForce(moveInput* SpeedMultiplier);
@@ -77,7 +87,7 @@ public class PlrMove : MonoBehaviour
     private void Dash(float force)
     {
         var moveDiscard = (frontPoint.transform.position - transform.position).normalized;
-        rb.AddForce(moveDiscard * -force, ForceMode.Impulse);
+        rb.AddForce(moveDiscard * force, ForceMode.Impulse);
     }
     /// <summary>
     /// метод прыжка персонажа
@@ -96,5 +106,6 @@ public class PlrMove : MonoBehaviour
         EventManager.JumpEvent -= Jump;
         EventManager.DiscardingEvent -= Discarding;
         EventManager.DashEvent -= Dash;
+        EventManager.CanMoveEvent -= CanMove;
     }
 }

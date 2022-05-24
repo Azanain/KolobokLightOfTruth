@@ -10,7 +10,6 @@ public class ButtonRay : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     private bool isTimerWork;
     [Range(4,20)]private float forceDiscarding;
     [SerializeField] private float maxTimer;
-    public static bool AimingLaser { get; private set; }
     public static int WeaponDamage2_2 { get; private set; }
 
     private void Awake()
@@ -21,7 +20,7 @@ public class ButtonRay : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public void OnPointerDown(PointerEventData eventData)
     {
         isPressed = true;
-        AimingLaser = true;
+        EventManager.CanMove();
         if (!isTimerWork && ButtonSiclkleHit.ButtonLaserCharge)
         {
             int maxDamage = PlayerParametrs.DamageWeapon2_2Max;
@@ -32,14 +31,13 @@ public class ButtonRay : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
         ImageWeapon2_2.fillAmount = 0;
         isPressed = false;
-        AimingLaser = false;
+        EventManager.CanMove();
         isTimerWork = false;
     }
     private IEnumerator Timer()
     {
         float damage = 1;
         float timer = 0;
-        //WeaponDamage2_2 = PlayerParametrs.DamageWeapon2_2Min;
         while (isPressed)
         {
             ImageWeapon2_2.fillAmount = timer / maxTimer;
