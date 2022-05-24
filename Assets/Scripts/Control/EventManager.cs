@@ -12,6 +12,7 @@ public class EventManager
     public static event EventManagerDel ShootEvent;
     public static event EventManagerDel AuthorModeEvent;
     public static event EventManagerDel CallCapsuleTeleportEvent;
+    public static event EventManagerDel CanMoveEvent;
 
     public delegate void EventManagerByteDel(byte value);
     public static event EventManagerByteDel ButtonEvent;
@@ -85,6 +86,10 @@ public class EventManager
     public static void NameChosenLevel(string nameLevel)
     {
         NameChosenLevelEvent?.Invoke(nameLevel);
+    }
+    public static void CanMove()
+    {
+        CanMoveEvent?.Invoke();
     }
 }
 
