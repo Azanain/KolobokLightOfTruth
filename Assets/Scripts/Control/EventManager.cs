@@ -23,6 +23,7 @@ public class EventManager
 
     public delegate void EventManagerStringDel(string name);
     public static event EventManagerStringDel ButtonNameEvent;
+    public static event EventManagerStringDel NameChosenLevelEvent;
 
     public static void LoadGameScene(int idFloor)
     {
@@ -80,6 +81,10 @@ public class EventManager
     public static void CallCapsuleTeleport()
     {
         CallCapsuleTeleportEvent?.Invoke();
+    }
+    public static void NameChosenLevel(string nameLevel)
+    {
+        NameChosenLevelEvent?.Invoke(nameLevel);
     }
 }
 

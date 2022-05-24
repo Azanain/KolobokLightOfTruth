@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -5360334044762046102}
   m_Layer: 7
   m_Name: ChargedLaser
-  m_TagString: ChargedLaser
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

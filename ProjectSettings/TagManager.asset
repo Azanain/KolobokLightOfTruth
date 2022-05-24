@@ -17,7 +17,6 @@ TagManager:
   - WordOfPower_2
   - PlayerBody
   - FirePointLaser
-  - ChargedLaser
   layers:
   - Default
   - TransparentFX

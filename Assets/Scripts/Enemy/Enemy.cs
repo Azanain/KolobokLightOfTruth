@@ -13,12 +13,4 @@ public class Enemy : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("ChargedLaser"))
-        {
-            TakeDamage(ButtonRay.WeaponDamage2_2);
-            Debug.Log($"charged laser hit {ButtonRay.WeaponDamage2_2}");
-        }
-    }
 }
