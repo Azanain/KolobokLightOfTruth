@@ -3,9 +3,13 @@ using UnityEngine.AI;
 
 public class Gob01Follow : MonoBehaviour
 {
-    [SerializeField] private float paramDistan;
-    public float speed;
+    [SerializeField] private float agro; //радиус агро 
+    [SerializeField] private float amount;  //количество зайцев
+    private float radius = 20f;
+    [SerializeField] private LayerMask layerEnemy;
+    [HideInInspector] public float speed;
     private Transform player;
+    private Transform enemyHare; 
     private NavMeshAgent meshAgent;
     private Animator animator;
     private int state;
@@ -22,14 +26,41 @@ public class Gob01Follow : MonoBehaviour
     {    
         animator = GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        enemyHare = GameObject.FindGameObjectWithTag("Enemy").GetComponent<Transform>();
         meshAgent = GetComponent<NavMeshAgent>();
+        FindingNumberOfEnemies();
     }
 
     private void Update()
     {
         state = ChangeState();
-        State();
+        State();      
     }
+
+    /// <summary>
+    /// метод нахождения количество врагов
+    /// </summary>
+    private void FindingNumberOfEnemies()
+    {
+        Collider[] hares = Physics.OverlapSphere(transform.position, radius, layerEnemy);
+        foreach (var item in hares)
+        {
+            if (item.CompareTag("Enemy"))
+            {
+                Debug.Log(item);
+                amount++;
+                Debug.Log(amount);
+            }
+        }   
+    }
+    /// <summary>
+    /// метод присвоения агро
+    /// </summary>
+    private void AgroAppropriations()
+    {
+        agro = amount;
+    }
+
     /// <summary>
     /// метод изменения состояний действий
     /// </summary>
@@ -38,12 +69,13 @@ public class Gob01Follow : MonoBehaviour
     {
         if (player != null)
         {
+            AgroAppropriations();
             float distance = Vector3.Distance(transform.position, player.transform.position);
             if (distance < attackDistance)
             {
                 return 2;
             }
-            if (distance < paramDistan)
+            if (distance < agro)
             {
                 return 1;
             }
@@ -117,9 +149,10 @@ public class Gob01Follow : MonoBehaviour
     //        audioSource.Play();
     //    }
     //}
-    //private void OnDrawGizmos()
-    //{
-    //    Gizmos.color = Color.blue;
-    //    Gizmos.DrawSphere(attackPosition.position, attackRadius);
-    //}
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawSphere(attackPosition.position, attackRadius);
+    }
+
 }
