@@ -16,6 +16,8 @@ TagManager:
   - RayOfHope_2
   - WordOfPower_2
   - PlayerBody
+  - FirePointLaser
+  - ChargedLaser
   layers:
   - Default
   - TransparentFX

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -32,7 +30,6 @@ public class Gob01Follow : MonoBehaviour
         state = ChangeState();
         State();
     }
-
     /// <summary>
     /// метод изменения состояний действий
     /// </summary>
@@ -107,8 +104,6 @@ public class Gob01Follow : MonoBehaviour
         for (int i = 0; i < players.Length; i++)
         {
             players[i].GetComponent<Player>().TakeDamage(damage);
-            Debug.Log(players[i]);
-            Debug.Log(damage);
         }
     }
     private void EndAttack()

@@ -10,7 +10,7 @@ public class PlrMove : MonoBehaviour
     [SerializeField] private GameObject frontPoint;
     [SerializeField] private GameObject body;
     public static bool isJumping { get; private set; }
-    //public bool iPlayer1;
+    public static float moveVelosity { get; private set; }
 
     //—сылки на компоненты
     private Rigidbody rb;
@@ -29,8 +29,6 @@ public class PlrMove : MonoBehaviour
         speed = PlayerParametrs.Speed;
         mContr = GameObject.FindGameObjectWithTag("Joystick").GetComponent<MobileContr>();
         rb = GetComponent<Rigidbody>();
-
-        //if(!iPlayer1)
         Instantiate(body, transform.position, Quaternion.identity);
     }
 
@@ -38,10 +36,6 @@ public class PlrMove : MonoBehaviour
     {
         body = GameObject.FindGameObjectWithTag("PlayerBody");
         rotate = body.GetComponent<RotateToNearTarget>();
-        //if (iPlayer1)
-        //    rotate = GetComponent<RotateToNearTarget>();
-        //else
-        //    rotate = body.GetComponent<RotateToNearTarget>();
     }
 
     private void FixedUpdate()
@@ -57,6 +51,7 @@ public class PlrMove : MonoBehaviour
             RotateAimingLaser();
         }
         rotate.RotateToNearEnemy();
+        moveVelosity = rb.velocity.magnitude;
     }
     private void RotateAimingLaser()
     {

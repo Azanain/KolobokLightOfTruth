@@ -11,6 +11,8 @@ public class ButtonRay : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     [Range(4,20)]private float forceDiscarding;
     [SerializeField] private float maxTimer;
     public static bool AimingLaser { get; private set; }
+    public static int WeaponDamage2_2 { get; private set; }
+
     private void Awake()
     {
         ImageWeapon2_2 = GameObject.FindGameObjectWithTag("RayOfHope_2").GetComponent<Image>();
@@ -23,7 +25,7 @@ public class ButtonRay : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         if (!isTimerWork && ButtonSiclkleHit.ButtonLaserCharge)
         {
             int maxDamage = PlayerParametrs.DamageWeapon2_2Max;
-            StartCoroutine(Timer(maxDamage));
+            StartCoroutine(Timer());
         }
     }
     public void OnPointerUp(PointerEventData eventData)
@@ -33,29 +35,32 @@ public class ButtonRay : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         AimingLaser = false;
         isTimerWork = false;
     }
-    private IEnumerator Timer(int maxDamage)
+    private IEnumerator Timer()
     {
+        float damage = 1;
         float timer = 0;
-        float damage = PlayerParametrs.DamageWeapon2_2Min;
+        //WeaponDamage2_2 = PlayerParametrs.DamageWeapon2_2Min;
         while (isPressed)
         {
             ImageWeapon2_2.fillAmount = timer / maxTimer;
-            damage = maxDamage * ImageWeapon2_2.fillAmount;
+            damage = PlayerParametrs.DamageWeapon2_2Max * ImageWeapon2_2.fillAmount;
             forceDiscarding = 20 * ImageWeapon2_2.fillAmount;
             yield return new WaitForSecondsRealtime(0.1f);
             timer += 0.1f;
         }
         if (timer >= 10)
         {
-            EventManager.ShootChargedLaser(maxDamage);
+            WeaponDamage2_2 = (int)damage;
+            EventManager.ShootChargedLaser(WeaponDamage2_2);
             EventManager.Discarding(20);
-            StopCoroutine(Timer(maxDamage));
+            StopCoroutine(Timer());
         }
         if (!isPressed)
         {
-            EventManager.ShootChargedLaser((int)damage);
+            WeaponDamage2_2 = PlayerParametrs.DamageWeapon2_2Max;
+            EventManager.ShootChargedLaser((int)WeaponDamage2_2);
             EventManager.Discarding(forceDiscarding);
-            StopCoroutine(Timer(maxDamage));
+            StopCoroutine(Timer());
         }
     }
 }

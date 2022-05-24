@@ -17,6 +17,10 @@ public class PlayerShoot : MonoBehaviour
         playerAudio = GetComponent<PlayerAudio>();
         pool = GetComponent<Pool>();
     }
+    private void Start()
+    {
+        firePointLaser = GameObject.FindGameObjectWithTag("FirePointLaser").transform;
+    }
     private void ShootLaser()
     {
         EventManager.Discarding(1);
