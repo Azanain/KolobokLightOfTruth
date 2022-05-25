@@ -438,7 +438,6 @@ MonoBehaviour:
   speed: 0
   jumpForce: 250
   SpeedMultiplier: 10
-  frontPoint: {fileID: 0}
   body: {fileID: 4540189428939263071, guid: f5e358a416df8f048922382e4dd30bf3, type: 3}
 --- !u!114 &5935551132663997917
 MonoBehaviour:
@@ -458,7 +457,7 @@ MonoBehaviour:
   - {fileID: 5935551133995973130}
   - {fileID: 5935551133668137178}
   - {fileID: 1551586735975413278}
-  chargedLaser: {fileID: 6856596119867136048, guid: 8e6d311d8125949418acdf5fd87505d7, type: 3}
+  chargedLaser: {fileID: 122648, guid: df331c6bc2c9e3d4fbdf63c1c0be6834, type: 3}
   firePointLaser: {fileID: 0}
 --- !u!114 &5935551132663997857
 MonoBehaviour:
@@ -472,7 +471,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e03b0562020cd64bb7eb0f13b5b8ef6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 1647753658203792124, guid: 319014f2b2a8de24c876d562d717f263, type: 3}
+  prefab: {fileID: 738059577564237947, guid: 11530f2b0a0cd2442949827ecbb622f2, type: 3}
   container: {fileID: 0}
   minCapacity: 0
   maxCapacity: 2147483647
