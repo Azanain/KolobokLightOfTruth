@@ -234,7 +234,7 @@ GameObject:
   - component: {fileID: 7607062216728614144}
   - component: {fileID: -8078964633251766786}
   m_Layer: 0
-  m_Name: Kolobok_Ready
+  m_Name: Body
   m_TagString: PlayerBody
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

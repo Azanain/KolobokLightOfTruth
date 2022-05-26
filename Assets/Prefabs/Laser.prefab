@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 738059577564237947}
   - component: {fileID: 2173314248978048440}
   m_Layer: 0
-  m_Name: SingleLine-LightSaber
+  m_Name: Laser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
