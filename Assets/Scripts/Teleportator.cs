@@ -4,11 +4,11 @@ using UnityEngine;
 public class Teleportator : MonoBehaviour
 {
     [SerializeField] private GameObject capsule;
-    private float positionCapsuleY;
-    private Transform playerPosition;
-    private Transform player;
     [SerializeField] private GameObject botPosition;
-    [SerializeField] private Rigidbody rb;
+    [SerializeField] private float forcePlayer;
+    [SerializeField] private int numberScene;
+    private Transform player;
+    private float posY;
     private void Start()
     {
         EventManager.CallCapsuleTeleportEvent += CapsuleCall;
@@ -17,19 +17,33 @@ public class Teleportator : MonoBehaviour
     private void CapsuleCall()
     {
         EventManager.CanMove();
-        playerPosition = player.transform;
-        botPosition.transform.position = new Vector3(player.position.x, player.position.y +4, player.position.z);
-        botPosition.SetActive(true);
-        positionCapsuleY = playerPosition.position.y + 35f;
-        capsule.transform.position = new Vector3(playerPosition.position.x, positionCapsuleY, playerPosition.position.z);
+        transform.position = new Vector3(player.position.x, player.position.y + 4, player.position.z);
+        capsule.transform.position = new Vector3(player.position.x, player.position.y + 15, player.position.z);
         capsule.SetActive(true);
+        posY = player.position.y + 15;
+        botPosition.transform.position = new Vector3(player.position.x, player.position.y + 4, player.position.z);
+        botPosition.SetActive(true);
+        StartCoroutine(Timer());
+    }
+    private IEnumerator Timer()
+    {
+        while (posY > 8)
+        {
+            capsule.transform.position = new Vector3(player.position.x, posY, player.position.z);
+            posY -= 0.1f;
+            yield return new WaitForSeconds(0.01f);
+        }
+        if (posY <= 8)
+        {
+            player.transform.position = Vector3.MoveTowards(player.position, new Vector3(player.position.x, player.position.y + 4, player.position.z), forcePlayer);
+            EventManager.Jump(5);
+        }
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.name == "botPosition")
+        if (other.CompareTag("Player"))
         {
-            rb.useGravity = false;
-            Debug.Log("afafs");
+            EventManager.LoadGameScene(numberScene);
         }
     }
     private void OnDestroy()

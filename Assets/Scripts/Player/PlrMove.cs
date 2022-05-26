@@ -63,6 +63,7 @@ public class PlrMove : MonoBehaviour
             canMove = false;
         else
             canMove = true;
+           
     }
     private void RotateAimingLaser()
     {
