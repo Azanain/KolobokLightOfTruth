@@ -13,6 +13,7 @@ public class EventManager
     public static event EventManagerDel AuthorModeEvent;
     public static event EventManagerDel CallCapsuleTeleportEvent;
     public static event EventManagerDel CanMoveEvent;
+    public static event EventManagerDel SaveDataEvent;
 
     public delegate void EventManagerByteDel(byte value);
     public static event EventManagerByteDel ButtonEvent;
@@ -90,6 +91,10 @@ public class EventManager
     public static void CanMove()
     {
         CanMoveEvent?.Invoke();
+    }
+    private static void SaveData()
+    {
+        SaveDataEvent?.Invoke();
     }
 }
 

@@ -10,7 +10,7 @@ public class ButtonRay : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     private bool isTimerWork;
     [Range(4,20)]private float forceDiscarding;
     [SerializeField] private float maxTimer;
-    public static int WeaponDamage2_2 { get; private set; }
+    public static int DamageWeapon2_2 { get; private set; }
 
     private void Awake()
     {
@@ -46,18 +46,18 @@ public class ButtonRay : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             yield return new WaitForSecondsRealtime(0.1f);
             timer += 0.1f;
         }
-        if (timer >= 10)
+        if (!isPressed && timer < 10)
         {
-            WeaponDamage2_2 = (int)damage;
-            EventManager.ShootChargedLaser(WeaponDamage2_2);
-            EventManager.Discarding(20);
-            StopCoroutine(Timer());
-        }
-        if (!isPressed)
-        {
-            WeaponDamage2_2 = PlayerParametrs.DamageWeapon2_2Max;
-            EventManager.ShootChargedLaser((int)WeaponDamage2_2);
+            EventManager.ShootChargedLaser((int)damage);
+            DamageWeapon2_2 = (int)damage;
             EventManager.Discarding(forceDiscarding);
+            StopCoroutine(Timer());
+        
+        }
+        else if (!isPressed && timer >= 10)
+        {
+            EventManager.ShootChargedLaser(PlayerParametrs.DamageWeapon2_2Max);
+            EventManager.Discarding(20);
             StopCoroutine(Timer());
         }
     }

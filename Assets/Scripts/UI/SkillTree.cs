@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,6 +5,7 @@ public class SkillTree : MonoBehaviour
 {
     [SerializeField] private Button buySkill;
     private Text textDescription;
+    private Text textPriceSkill;
 
     private int priceSkill = 500;
     private string descriptionSkill;
@@ -14,93 +13,84 @@ public class SkillTree : MonoBehaviour
 
     private void Awake()
     {
-        //isSkillBought = new bool[19];
+        textDescription = GameObject.Find("TextDescriptionSkill").GetComponent<Text>();
+        textPriceSkill =  GameObject.Find("TextPriseSkill").GetComponent<Text>();
         EventManager.ButtonNameEvent += CheckNameSkill;
     }
-    private void CheckNameSkill(string name)
+    private void NumberSkill(string name)
+    { 
+        string result = name.Substring(name.IndexOf('_', 2));
+        result = result.Replace("_",null);
+        UpdateText();
+        CheckPrice(result);
+        Debug.Log($"name = {name}, number = {result}");
+    }
+    private void CheckNameSkill(string nameButton)
     {
-        switch (name)
+        switch (nameButton)
         {
+            //щит веры
             case "ButtonSkill_1":
                 descriptionSkill = "Подвижность I: + 10% к скорости и уклонению.";
-                name = name.Substring(name.Length - 2, 2);
-                //string numberSkill = numberSkill.Substring(numberSkill.Length - 2, 2);
-                Debug.Log($"name = {name}, number = {name}");
-                //UpdateText(name);
+                NumberSkill(nameButton);
                 break;
             case "ButtonSkill_2":
                 descriptionSkill = "Подвижность II: + 20% к скорости и уклонению.";
-                //UpdateText(name);
+                NumberSkill(nameButton);
                 break;
             case "ButtonSkill_3":
                 descriptionSkill = "Подвижность III: + 30% к скорости и уклонению.";
-                //UpdateText(name);
+                NumberSkill(nameButton);
                 break;
             case "ButtonSkill_4":
-                descriptionSkill = "Подвижность IV: + 50% к скорости и уклонению.";
-                //UpdateText(name);
+                descriptionSkill = "Дальность рывка + 25%";
+                NumberSkill(nameButton);
                 break;
+            //луч надежды
             case "ButtonSkill_5":
-                descriptionSkill = "Щит веры II: рывок.";
-                //UpdateText(name);
+                descriptionSkill = "Обжигание I: урон + 10%.";
+                NumberSkill(nameButton);
                 break;
             case "ButtonSkill_6":
-                descriptionSkill = "Дальность рывка.";
-                //UpdateText(name);
+                descriptionSkill = "Обжигание II: урон + 20%.";
+                NumberSkill(nameButton);
                 break;
             case "ButtonSkill_7":
-                descriptionSkill = "Скорость рывка.";
-                //UpdateText(name);
+                descriptionSkill = "Обжигание III: урон + 30%.";
+                NumberSkill(nameButton);
                 break;
-
             case "ButtonSkill_8":
-                descriptionSkill = "Разрушение: + 20% урон.";
-                //UpdateText(name);
+                descriptionSkill = "Обжигание IV: урон + 40%.";
+                NumberSkill(nameButton);
                 break;
             case "ButtonSkill_9":
-                descriptionSkill = "Разрушение: + 40% урон.";
-                //UpdateText(name);
+                descriptionSkill = "Луч надежды II: ярость солнца.";
+                NumberSkill(nameButton);
                 break;
             case "ButtonSkill_10":
-                descriptionSkill = "Слово силы: ударная волна";
-                //UpdateText(name);
+                descriptionSkill = "Разогрев: уменьшение времени зарядки.";
+                NumberSkill(nameButton);
                 break;
             case "ButtonSkill_11":
-                descriptionSkill = "Разрушение: + 60% урон.";
-                //UpdateText(name);
+                descriptionSkill = "Стойкость: уменьшение отдачи на 100%.";
+                NumberSkill(nameButton);
                 break;
+            //слово силы
             case "ButtonSkill_12":
-                descriptionSkill = "Отбрасывание: + 50% отбрасывание.";
-                //UpdateText(name);
+                descriptionSkill = "Разрушение: урон + 20%.";
+                NumberSkill(nameButton);
                 break;
-
             case "ButtonSkill_13":
-                descriptionSkill = "Обжигание: урон + 10%.";
-                //UpdateText(name);
+                descriptionSkill = "Разрушение: урон + 40%.";
+                NumberSkill(nameButton);
                 break;
             case "ButtonSkill_14":
-                descriptionSkill = "Обжигание: урон + 20%.";
-                //UpdateText(name);
+                descriptionSkill = "Разрушение: урон + 60%.";
+                NumberSkill(nameButton);
                 break;
             case "ButtonSkill_15":
-                descriptionSkill = "Луч надежды II: ярость солнца.";
-                //UpdateText(name);
-                break;
-            case "ButtonSkill_16":
-                descriptionSkill = "Обжигание: урон + 30%.";
-                //UpdateText(name);
-                break;
-            case "ButtonSkill_17":
-                descriptionSkill = "Обжигание: урон + 40%.";
-                //UpdateText(name);
-                break;
-            case "ButtonSkill_18":
-                descriptionSkill = "Разогрев: уменьшение времени зарядки на 25%.";
-                //UpdateText(name);
-                break;
-            case "ButtonSkill_19":
-                descriptionSkill = "Стойкость: уменьшение отдачи на 100%.";
-                //UpdateText(name);
+                descriptionSkill = "Отбрасывание + 50%.";
+                NumberSkill(nameButton);
                 break;
 
             default:
@@ -108,23 +98,23 @@ public class SkillTree : MonoBehaviour
                 break;
         }
     }
-    //private void UpdateText(string numberSkill)
-    //{
-    //    textDescription.text = descriptionSkill;
-    //    CheckPrice(descriptionSkill);
-    //}
-    //private void CheckPrice(string numberSkill)
-    //{
-    //    byte number = byte.Parse(numberSkill);
-    //    if (Bank.TotalMoney >= priceSkill && isSkillBought[number])
-    //    {
-    //        buySkill.interactable = true;
-    //    }
-    //    else if (Bank.TotalMoney < priceSkill || !isSkillBought[number])
-    //    {
-    //        buySkill.interactable = false;
-    //    }
-    //}
+    private void UpdateText()
+    {
+        textDescription.text = descriptionSkill;
+        textPriceSkill.text = Bank.TotalMoney + " / " +priceSkill;
+    }
+    private void CheckPrice(string numberSkill)
+    {
+        byte number = byte.Parse(numberSkill);
+        if (Bank.TotalMoney >= priceSkill && isSkillBought[number])
+        {
+            buySkill.interactable = true;
+        }
+        else if (Bank.TotalMoney < priceSkill || !isSkillBought[number])
+        {
+            buySkill.interactable = false;
+        }
+    }
     private void OnDestroy()
     {
         EventManager.ButtonNameEvent -= CheckNameSkill;

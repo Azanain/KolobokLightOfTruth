@@ -56,7 +56,9 @@ public class PlrMove : MonoBehaviour
         rotate.RotateToNearEnemy();
         moveVelosity = rb.velocity.magnitude;
     }
-
+    /// <summary>
+    /// запрет движения персонажа
+    /// </summary>
     private void CanMove()
     {
         if (canMove)
@@ -65,6 +67,9 @@ public class PlrMove : MonoBehaviour
             canMove = true;
            
     }
+    /// <summary>
+    /// поворот персонажа в режиме прицеливания лазером
+    /// </summary>
     private void RotateAimingLaser()
     {
         transform.rotation *= Quaternion.Euler(0, mContr.Horizontal(), 0);
@@ -74,21 +79,29 @@ public class PlrMove : MonoBehaviour
     /// </summary>
     private void Move()
     {
-        if (canMove)//(!ReloadScills.Weapon1_1IsActive)
+        if (canMove)
         {
             moveInput = new Vector3(-mContr.Horizontal() * speed, rb.velocity.y, -mContr.Vertical() * speed);
-            rb.AddForce(moveInput* SpeedMultiplier);
+            rb.AddForce(moveInput* SpeedMultiplier * PlayerParametrs.SpeedWeapon1);
         }
     }
+    /// <summary>
+    /// метод откидывания
+    /// </summary>
+    /// <param name="force"></param>
     private void Discarding(float force)
     {
         var moveDiscard = (frontPoint.transform.position - transform.position).normalized;
         rb.AddForce(moveDiscard * force, ForceMode.Impulse);
     }
+    /// <summary>
+    /// метод рывка
+    /// </summary>
+    /// <param name="force"></param>
     private void Dash(float force)
     {
         var moveDiscard = (frontPoint.transform.position - transform.position).normalized;
-        rb.AddForce(moveDiscard * force, ForceMode.Impulse);
+        rb.AddForce(moveDiscard * force * PlayerParametrs.DashRangeWeapon1, ForceMode.Impulse);
     }
     /// <summary>
     /// метод прыжка персонажа
@@ -102,6 +115,9 @@ public class PlrMove : MonoBehaviour
             isJumping = true;
         }
     }
+    /// <summary>
+    /// отписка от евентов
+    /// </summary>
     private void OnDestroy()
     {
         EventManager.JumpEvent -= Jump;

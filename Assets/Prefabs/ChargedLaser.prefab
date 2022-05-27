@@ -14,9 +14,10 @@ GameObject:
   - component: {fileID: 11475718}
   - component: {fileID: 738059577564237947}
   - component: {fileID: 2173314248978048440}
-  m_Layer: 0
+  - component: {fileID: -6995503217457582513}
+  m_Layer: 7
   m_Name: ChargedLaser
-  m_TagString: Untagged
+  m_TagString: PlayerBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -128,8 +129,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
-  mask:
-    serializedVersion: 2
-    m_Bits: 0
   lifeTime: 2
-  isRicochet: 0
+  IsCharge: 1
+--- !u!136 &-6995503217457582513
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 122648}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
