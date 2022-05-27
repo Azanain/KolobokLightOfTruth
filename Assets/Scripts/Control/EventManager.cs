@@ -14,6 +14,8 @@ public class EventManager
     public static event EventManagerDel CallCapsuleTeleportEvent;
     public static event EventManagerDel CanMoveEvent;
     public static event EventManagerDel SaveDataEvent;
+    public static event EventManagerDel AudioWeapon1Event;
+    public static event EventManagerDel AudioWeapon3Event;
 
     public delegate void EventManagerByteDel(byte value);
     public static event EventManagerByteDel ButtonEvent;
@@ -95,6 +97,14 @@ public class EventManager
     private static void SaveData()
     {
         SaveDataEvent?.Invoke();
+    }
+    public static void AudioWeapon1()
+    {
+        AudioWeapon1Event?.Invoke();
+    }
+    public static void AudioWeapon3()
+    {
+        AudioWeapon3Event.Invoke();
     }
 }
 

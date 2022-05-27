@@ -18,6 +18,7 @@ TagManager:
   - PlayerBody
   - FirePointLaser
   - FrontPoint
+  - Wall
   layers:
   - Default
   - TransparentFX

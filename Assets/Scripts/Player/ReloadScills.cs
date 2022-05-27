@@ -8,9 +8,9 @@ public class ReloadScills : MonoBehaviour
     private Image ImageWeapon2_1;
     private Image ImageWeapon3_1;
 
-    private Image ImageWeapon1_2;
+    //private Image ImageWeapon1_2;
     private Image ImageWeapon2_2;
-    private Image ImageWeapon3_2;
+    //private Image ImageWeapon3_2;
 
     private PlayerShoot playerShoot;
     private Explosion explosion;
@@ -30,9 +30,9 @@ public class ReloadScills : MonoBehaviour
         ImageWeapon2_1 = GameObject.FindGameObjectWithTag("RayOfHope").GetComponent<Image>();
         ImageWeapon3_1 = GameObject.FindGameObjectWithTag("WordOfPower").GetComponent<Image>();
 
-        ImageWeapon1_2 = GameObject.FindGameObjectWithTag("ShieldOfFaith_2").GetComponent<Image>();
+       // ImageWeapon1_2 = GameObject.FindGameObjectWithTag("ShieldOfFaith_2").GetComponent<Image>();
         ImageWeapon2_2 = GameObject.FindGameObjectWithTag("RayOfHope_2").GetComponent<Image>();
-        ImageWeapon3_2 = GameObject.FindGameObjectWithTag("WordOfPower_2").GetComponent<Image>();
+       // ImageWeapon3_2 = GameObject.FindGameObjectWithTag("WordOfPower_2").GetComponent<Image>();
         
         playerShoot.weapons[0].SetActive(true);
 
@@ -52,6 +52,7 @@ public class ReloadScills : MonoBehaviour
                     StartCoroutine((TimerUpdateImageWeapon1(PlayerParametrs.TimeReloadWeapon1)));
                     EventManager.Dash(50);
                     StartCoroutine(TimerActivationShield());
+                    EventManager.AudioWeapon1();
                 }
                 break;
             case 3://3_1
@@ -63,6 +64,7 @@ public class ReloadScills : MonoBehaviour
                     StartCoroutine(TimerActivationWord(5));
                     StartCoroutine((TimerUpdateImageWeapon3(PlayerParametrs.TimeReloadWeapon3)));
                     playerShoot.weapons[3].SetActive(true);
+                    EventManager.AudioWeapon3();
                 }
                 break;
             //case 4://1_2

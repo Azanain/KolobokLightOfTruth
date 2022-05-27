@@ -2,18 +2,24 @@ using UnityEngine;
 
 public class LoadSavedData : MonoBehaviour
 {
-    public static float TimeReloadWeapon1 { get; private set; } = 3;
-    public static float TimeReloadWeapon3 { get; private set; } = 5;
-    public static int DamageWeapon1 { get; private set; } = 10;
-    public static int DamageWeapon2 { get; private set; } = 2;
-    public static int DamageWeapon3 { get; private set; } = 5;
-    public static float TimeReloadWeapon2_2 { get; private set; } = 20;
-    public static int DamageWeapon2_2Max { get; private set; } = 30;
-    public static int MaxHp { get; private set; } = 100;
-    public static float Speed { get; private set; } = 5;
+    public static float TimeReloadWeapon1 { get; private set; }
+    public static float TimeReloadWeapon3 { get; private set; }
+    public static int DamageWeapon1 { get; private set; }
+    public static int DamageWeapon2 { get; private set; }
+    public static int DamageWeapon3 { get; private set; }
+    public static float TimeReloadWeapon2_2 { get; private set; }
+    public static int DamageWeapon2_2Max { get; private set; }
+    public static int MaxHp { get; private set; }
+    public static float Speed { get; private set; }
+    public static int TotalMoney { get; private set; }
 
-    public static byte DashRangeWeapon1 { get; private set; }
-    public static byte SpeedWeapon1 { get; private set; }
+    public static byte ImproveDashRangeWeapon1 { get; private set; }
+    public static byte ImproveSpeedWeapon1 { get; private set; }
+    public static byte ImproveSctageWeapon2 { get; private set; }
+    public static byte ImproveRecliningFromWeapon2_2 { get; private set; }
+    public static byte ImproveIimerReloadWeapon2_2 { get; private set; }
+    public static byte ImproveDamageWeapon3 { get; private set; }
+    public static byte ImproveForceJumpWeapon3 { get; private set; }
 
     private SavedData data;
     private Storage storage;
@@ -32,10 +38,16 @@ public class LoadSavedData : MonoBehaviour
         data.damageWeapon1 = DamageWeapon1;
         data.damageWeapon2 = DamageWeapon2;
         data.damageWeapon3 = DamageWeapon3;
+        data.totalMoney =  TotalMoney;
         data.timeReloadWeapon2_2 = TimeReloadWeapon2_2;
         data.damageWeapon2_2Max = DamageWeapon2_2Max;
-        data.dashRangeWeapon1 = DashRangeWeapon1;
-        data.speedWeapon1 = SpeedWeapon1;
+        data.improveDashRangeWeapon1 = ImproveDashRangeWeapon1;
+        data.improveSpeedWeapon1 = ImproveSpeedWeapon1;
+        data.improveSctageWeapon2 = ImproveSctageWeapon2;
+        data.improveRecliningFromWeapon2_2 =  ImproveRecliningFromWeapon2_2;
+        data.improveIimerReloadWeapon2_2 = ImproveIimerReloadWeapon2_2;
+        data.improveDamageWeapon3 = ImproveDamageWeapon3;
+        data.improveForceJumpWeapon3 = ImproveForceJumpWeapon3;
 
         storage.Save(data);
     }
@@ -48,10 +60,16 @@ public class LoadSavedData : MonoBehaviour
         DamageWeapon1 = data.damageWeapon1;
         DamageWeapon2 = data.damageWeapon2;
         DamageWeapon3 = data.damageWeapon3;
+        TotalMoney = data.totalMoney;
         TimeReloadWeapon2_2 = data.timeReloadWeapon2_2;
         DamageWeapon2_2Max = data.damageWeapon2_2Max;
-        DashRangeWeapon1 = data.dashRangeWeapon1;
-        SpeedWeapon1 = data.speedWeapon1;
+        ImproveDashRangeWeapon1 = data.improveDashRangeWeapon1;
+        ImproveSpeedWeapon1 = data.improveSpeedWeapon1;
+        ImproveSctageWeapon2 = data.improveSctageWeapon2;
+        ImproveRecliningFromWeapon2_2 = data.improveRecliningFromWeapon2_2;
+        ImproveIimerReloadWeapon2_2 = data.improveIimerReloadWeapon2_2;
+        ImproveDamageWeapon3 = data.improveDamageWeapon3;
+        ImproveForceJumpWeapon3 = data.improveForceJumpWeapon3;
     }
     private void OnDestroy()
     {

@@ -2,16 +2,61 @@ using UnityEngine;
 
 public class PlayerAudio : MonoBehaviour
 {
-    [SerializeField] private AudioSource shoot;
+    [SerializeField] private AudioSource shootWeapon1_1;
+    [SerializeField] private AudioSource shootWeapon1_2;
+    [SerializeField] private AudioSource wepon1;
+    [SerializeField] private AudioSource wepon3;
     [SerializeField] private AudioSource move;
+    [SerializeField] private AudioSource jump;
+    [SerializeField] private AudioSource landing;
+    [SerializeField] private AudioSource charging;
+    [SerializeField] private AudioSource hitWall;
 
-    public void ShootWeapon2()
+    private void Awake()
     {
-        shoot.Play();
+        EventManager.AudioWeapon1Event += ActivationWeapon1;
+        EventManager.AudioWeapon3Event += ActivationWeapon3;
     }
-
+    public void ShootWeapon2_1()
+    {
+        shootWeapon1_1.Play();
+    }
+    public void ShootWeapon2_2()
+    {
+        shootWeapon1_2.Play();
+    }
+    public void ActivationWeapon1()
+    {
+        wepon1.Play();
+    }
+    public void ActivationWeapon3()
+    {
+        wepon3.Play();
+    }
     public void Move()
     {
         move.Play();
+    }
+    public void Jump()
+    {
+        jump.Play();
+    }
+    public void Landing()
+    {
+        landing.Play();
+    }
+    public void ChargingLaser()
+    {
+        charging.Play();
+    }
+    public void HitWall()
+    {
+        hitWall.Play();
+    }
+
+    private void OnDestroy()
+    {
+        EventManager.AudioWeapon1Event -= ActivationWeapon1;
+        EventManager.AudioWeapon3Event -= ActivationWeapon3;
     }
 }

@@ -18,12 +18,20 @@ public class PlrMove : MonoBehaviour
 
     //—сылки на компоненты
     private Rigidbody rb;
-  //  private MobileContr mContr;
+    private MobileContr mContr;
     private RotateToNearTarget rotate;
 
     void OnCollisionEnter(Collision other)
     {
         isJumping = false;
+        if (other.gameObject.CompareTag("Ground"))
+        {
+            playerAudio.Landing();
+        }
+        else if (other.gameObject.CompareTag("Wall"))
+        {
+            playerAudio.HitWall();
+        }
     }
 
     private void Awake()
@@ -33,7 +41,7 @@ public class PlrMove : MonoBehaviour
         EventManager.DashEvent += Dash;
         EventManager.CanMoveEvent += CanMove;
 
-        playerAudio = GetComponent<PlayerAudio>();
+        playerAudio = GetComponentInChildren<PlayerAudio>();
         // speed = PlayerParametrs.Speed;
         //mContr = GameObject.FindGameObjectWithTag("Joystick").GetComponent<MobileContr>();
         joystick = GameObject.FindGameObjectWithTag("Joystick").GetComponent<Joystick>();
@@ -59,7 +67,7 @@ public class PlrMove : MonoBehaviour
         else
         {
             //speed = 0;
-            RotateAimingLaser();
+           // RotateAimingLaser();
         }
         rotate.RotateToNearEnemy();
         moveVelosity = rb.velocity.magnitude;
@@ -80,14 +88,14 @@ public class PlrMove : MonoBehaviour
         transform.rotation *= Quaternion.Euler(0, joystick.Horizontal, 0);
     }
 
-    private void OnCollisionExit(Collision collision)
+    //private void OnCollisionExit(Collision collision)
     /// <summary>
     /// поворот персонажа в режиме прицеливани€ лазером
     /// </summary>
-    private void RotateAimingLaser()
-    {
-        speed = 2f;
-    }
+    //private void RotateAimingLaser()
+    //{
+    //    speed = 2f;
+    //}
 
     /// <summary>
     /// метод перемещение персонажа
@@ -98,6 +106,7 @@ public class PlrMove : MonoBehaviour
         {
             moveInput = new Vector3(-mContr.Horizontal() * speed, rb.velocity.y, -mContr.Vertical() * speed);
             rb.AddForce(moveInput* SpeedMultiplier);
+            playerAudio.Move();
         }
     }
     /// <summary>
@@ -108,11 +117,13 @@ public class PlrMove : MonoBehaviour
     {
         var moveDiscard = (frontPoint.transform.position - transform.position).normalized;
         rb.AddForce(moveDiscard * force, ForceMode.Impulse);
+        playerAudio.Jump();
     }
     private void Dash(float force)
     {
         var moveDiscard = (frontPoint.transform.position - transform.position).normalized;
         rb.AddForce(moveDiscard * force * PlayerParametrs.DashRangeWeapon1, ForceMode.Impulse);
+        playerAudio.Jump();
     }
 
     /// <summary>
@@ -125,13 +136,14 @@ public class PlrMove : MonoBehaviour
             Vector3 jump = new Vector3(0.0f, jumpForce * modeAction, 0.0f);
             rb.AddForce(jump);
             isJumping = true;
+            playerAudio.Jump();
         }
     }
     /// <summary>
     /// отписка от евентов
     /// </summary>
     private void OnDestroy()
-    {
+    { 
         EventManager.JumpEvent -= Jump;
         EventManager.DiscardingEvent -= Discarding;
         EventManager.DashEvent -= Dash;

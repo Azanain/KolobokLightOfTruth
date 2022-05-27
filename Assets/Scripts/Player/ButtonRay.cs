@@ -8,7 +8,7 @@ public class ButtonRay : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     private Image ImageWeapon2_2;
     private bool isPressed;
     private bool isTimerWork;
-    [Range(4,20)]private float forceDiscarding;
+   // [Range(4,20)]private float forceDiscarding;
     [SerializeField] private float maxTimer;
     public static int DamageWeapon2_2 { get; private set; }
 
@@ -42,7 +42,7 @@ public class ButtonRay : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         {
             ImageWeapon2_2.fillAmount = timer / maxTimer;
             damage = PlayerParametrs.DamageWeapon2_2Max * ImageWeapon2_2.fillAmount;
-            forceDiscarding = 20 * ImageWeapon2_2.fillAmount;
+            //forceDiscarding = 20 * ImageWeapon2_2.fillAmount;
             yield return new WaitForSecondsRealtime(0.1f);
             timer += 0.1f;
         }
@@ -50,14 +50,14 @@ public class ButtonRay : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         {
             EventManager.ShootChargedLaser((int)damage);
             DamageWeapon2_2 = (int)damage;
-            EventManager.Discarding(forceDiscarding);
+            EventManager.Discarding(PlayerParametrs.RecliningFromWeapon2_2);
             StopCoroutine(Timer());
         
         }
         else if (!isPressed && timer >= 10)
         {
             EventManager.ShootChargedLaser(PlayerParametrs.DamageWeapon2_2Max);
-            EventManager.Discarding(20);
+            EventManager.Discarding(PlayerParametrs.RecliningFromWeapon2_2);
             StopCoroutine(Timer());
         }
     }

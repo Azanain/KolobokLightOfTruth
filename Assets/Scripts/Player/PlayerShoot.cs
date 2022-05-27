@@ -14,7 +14,7 @@ public class PlayerShoot : MonoBehaviour
     {
         EventManager.ShootEvent += ShootLaser;
         EventManager.ShootChargedLaserEvent += ShootLaser_2;
-        playerAudio = GetComponent<PlayerAudio>();
+        playerAudio = GetComponentInChildren<PlayerAudio>();
         pool = GetComponent<Pool>();
     }
     private void Start()
@@ -25,12 +25,12 @@ public class PlayerShoot : MonoBehaviour
     {
         EventManager.Discarding(1);
         pool.GetFreeElement(firePointLaser.transform.position, firePointLaser.transform.rotation);
-        playerAudio.ShootWeapon2();
+        playerAudio.ShootWeapon2_1();
     }
     private void ShootLaser_2(int damage)
     {
         Instantiate(chargedLaser, firePointLaser.position, firePointLaser.rotation);
-        playerAudio.ShootWeapon2();
+        //playerAudio.ShootWeapon2();
     }
     private void OnDestroy()
     {
