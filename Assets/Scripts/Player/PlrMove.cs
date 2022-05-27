@@ -13,23 +13,30 @@ public class PlrMove : MonoBehaviour
     public static bool isJumping { get; private set; }
     public static float moveVelosity { get; private set; }
 
+    private PlayerAudio playerAudio;
+    public Joystick joystick;
+
     //—сылки на компоненты
     private Rigidbody rb;
-    private MobileContr mContr;
+  //  private MobileContr mContr;
     private RotateToNearTarget rotate;
+
     void OnCollisionEnter(Collision other)
     {
         isJumping = false;
     }
+
     private void Awake()
     {
         EventManager.JumpEvent += Jump;
         EventManager.DiscardingEvent += Discarding;
         EventManager.DashEvent += Dash;
         EventManager.CanMoveEvent += CanMove;
-        
-        speed = PlayerParametrs.Speed;
-        mContr = GameObject.FindGameObjectWithTag("Joystick").GetComponent<MobileContr>();
+
+        playerAudio = GetComponent<PlayerAudio>();
+        // speed = PlayerParametrs.Speed;
+        //mContr = GameObject.FindGameObjectWithTag("Joystick").GetComponent<MobileContr>();
+        joystick = GameObject.FindGameObjectWithTag("Joystick").GetComponent<Joystick>();
         rb = GetComponent<Rigidbody>();
         Instantiate(body, transform.position, Quaternion.identity);
         canMove = true;
@@ -41,11 +48,12 @@ public class PlrMove : MonoBehaviour
         body = GameObject.FindGameObjectWithTag("PlayerBody");
         rotate = body.GetComponent<RotateToNearTarget>();
     }
+
     private void FixedUpdate()
     {
         if (canMove)
         {
-            speed = PlayerParametrs.Speed;
+           speed = PlayerParametrs.Speed;
             Move();
         }
         else
@@ -64,16 +72,23 @@ public class PlrMove : MonoBehaviour
         if (canMove)
             canMove = false;
         else
-            canMove = true;
-           
+            canMove = true;     
     }
+
+    private void RotateAimingLaser()
+    {
+        transform.rotation *= Quaternion.Euler(0, joystick.Horizontal, 0);
+    }
+
+    private void OnCollisionExit(Collision collision)
     /// <summary>
     /// поворот персонажа в режиме прицеливани€ лазером
     /// </summary>
     private void RotateAimingLaser()
     {
-        transform.rotation *= Quaternion.Euler(0, mContr.Horizontal(), 0);
+        speed = 2f;
     }
+
     /// <summary>
     /// метод перемещение персонажа
     /// </summary>
@@ -82,7 +97,7 @@ public class PlrMove : MonoBehaviour
         if (canMove)
         {
             moveInput = new Vector3(-mContr.Horizontal() * speed, rb.velocity.y, -mContr.Vertical() * speed);
-            rb.AddForce(moveInput* SpeedMultiplier * PlayerParametrs.SpeedWeapon1);
+            rb.AddForce(moveInput* SpeedMultiplier);
         }
     }
     /// <summary>
@@ -94,15 +109,12 @@ public class PlrMove : MonoBehaviour
         var moveDiscard = (frontPoint.transform.position - transform.position).normalized;
         rb.AddForce(moveDiscard * force, ForceMode.Impulse);
     }
-    /// <summary>
-    /// метод рывка
-    /// </summary>
-    /// <param name="force"></param>
     private void Dash(float force)
     {
         var moveDiscard = (frontPoint.transform.position - transform.position).normalized;
         rb.AddForce(moveDiscard * force * PlayerParametrs.DashRangeWeapon1, ForceMode.Impulse);
     }
+
     /// <summary>
     /// метод прыжка персонажа
     /// </summary>

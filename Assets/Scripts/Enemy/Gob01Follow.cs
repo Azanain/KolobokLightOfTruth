@@ -4,7 +4,9 @@ using UnityEngine.AI;
 public class Gob01Follow : MonoBehaviour
 {
     [SerializeField] private float agro; //радиус агро 
+    [SerializeField] private float agro_K;
     [SerializeField] private float amount;  //количество зайцев
+    [SerializeField] private float amount_K;  //количество зайцев
     private float radius = 20f;
     [SerializeField] private LayerMask layerEnemy;
     [HideInInspector] public float speed;
@@ -58,7 +60,7 @@ public class Gob01Follow : MonoBehaviour
     /// </summary>
     private void AgroAppropriations()
     {
-        agro = amount;
+        agro = agro_K+amount*amount_K;
     }
 
     /// <summary>
@@ -156,3 +158,4 @@ public class Gob01Follow : MonoBehaviour
     }
 
 }
+

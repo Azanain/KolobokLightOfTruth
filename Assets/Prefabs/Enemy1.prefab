@@ -194,7 +194,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 190931006181041067}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 38aed750e7370aa4aa731519902319b0, type: 2}
   m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5
@@ -235,15 +235,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7387b29dd3bcff4688cd39a17ae7dbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agro: 1
+  agro: 10
+  agro_K: 5
   amount: 1
+  amount_K: 0.4
   layerEnemy:
     serializedVersion: 2
     m_Bits: 64
   speed: 0
-  damage: 20
+  damage: 1
   attackPosition: {fileID: 8726499605920435302}
-  attackRadius: 1
+  attackRadius: 2
   layer:
     serializedVersion: 2
     m_Bits: 8
@@ -309,8 +311,8 @@ Rigidbody:
   m_GameObject: {fileID: 190931006181041067}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Drag: 1
+  m_AngularDrag: 1
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
