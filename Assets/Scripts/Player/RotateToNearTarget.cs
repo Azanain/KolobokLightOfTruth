@@ -60,10 +60,10 @@ public class RotateToNearTarget : MonoBehaviour
         transform.LookAt(positionEnemy);
     }
 #if UNITY_EDITOR
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawSphere(transform.position, radiusSphere);
-    }
+    //private void OnDrawGizmos()
+    //{
+    //    Gizmos.color = Color.red;
+    //    Gizmos.DrawSphere(transform.position, radiusSphere);
+    //}
 #endif
 }

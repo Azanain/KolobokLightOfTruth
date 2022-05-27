@@ -54,7 +54,7 @@ public class MobileContr : MonoBehaviour, IDragHandler, IPointerUpHandler, IPoin
 
     public float Vertical()
     {
-        if (inputVector.y != 0) return inputVector.x;
+        if (inputVector.x != 0) return inputVector.x;
         else return Input.GetAxis("Vertical");
     }
 }
