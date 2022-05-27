@@ -236,7 +236,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agro: 10
+  agro_K: 5
   amount: 1
+  amount_K: 0.4
   layerEnemy:
     serializedVersion: 2
     m_Bits: 64
