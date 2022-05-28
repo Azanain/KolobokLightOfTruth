@@ -6,6 +6,8 @@ public class DoorTrigger : MonoBehaviour
 {
     private Animator anim;
     private AudioSource sound;
+    [SerializeField] private AudioClip soundDoorOpen;
+    [SerializeField] private AudioClip soundDoorClose;
     // Start
     // is called before the first frame update
     void Start()
@@ -30,6 +32,7 @@ public class DoorTrigger : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         sound.Stop();
+        sound.clip = soundDoorOpen;
         anim.SetTrigger("Open");
         sound.Play();
         //Debug.Log("Open!");
@@ -38,6 +41,7 @@ public class DoorTrigger : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         sound.Stop();
+        sound.clip = soundDoorOpen;
         anim.SetTrigger("Close");
         sound.Play();
         //Debug.Log("Close!");
