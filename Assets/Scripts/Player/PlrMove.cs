@@ -5,8 +5,6 @@ public class PlrMove : MonoBehaviour
     [Header("Основные параметры")]
     public float speed;
     [SerializeField] private float jumpForce;
-    [SerializeField] private float SpeedMultiplier;
-    private Vector3 moveInput;
     private bool canMove;
     private GameObject frontPoint;
     [SerializeField] private GameObject body;
@@ -14,8 +12,7 @@ public class PlrMove : MonoBehaviour
     public static float moveVelosity { get; private set; }
 
     private PlayerAudio playerAudio;
-    public Joystick joystick;
-
+    
     //Ссылки на компоненты
     private Rigidbody rb;
     private MobileContr mContr;
@@ -42,9 +39,8 @@ public class PlrMove : MonoBehaviour
         EventManager.CanMoveEvent += CanMove;
 
         playerAudio = GetComponentInChildren<PlayerAudio>();
-        // speed = PlayerParametrs.Speed;
-        //mContr = GameObject.FindGameObjectWithTag("Joystick").GetComponent<MobileContr>();
-        joystick = GameObject.FindGameObjectWithTag("Joystick").GetComponent<Joystick>();
+        speed = PlayerParametrs.Speed;
+        mContr = GameObject.FindGameObjectWithTag("Joystick").GetComponent<MobileContr>();
         rb = GetComponent<Rigidbody>();
         Instantiate(body, transform.position, Quaternion.identity);
         canMove = true;
@@ -72,6 +68,7 @@ public class PlrMove : MonoBehaviour
         rotate.RotateToNearEnemy();
         moveVelosity = rb.velocity.magnitude;
     }
+
     /// <summary>
     /// запрет движения персонажа
     /// </summary>
@@ -85,7 +82,7 @@ public class PlrMove : MonoBehaviour
 
     private void RotateAimingLaser()
     {
-        transform.rotation *= Quaternion.Euler(0, joystick.Horizontal, 0);
+        transform.rotation *= Quaternion.Euler(0, -mContr.Horizontal(), 0);
     }
 
     //private void OnCollisionExit(Collision collision)
@@ -97,6 +94,11 @@ public class PlrMove : MonoBehaviour
     //    speed = 2f;
     //}
 
+    private void OnCollisionExit()
+    {
+        speed = 3;
+    }
+
     /// <summary>
     /// метод перемещение персонажа
     /// </summary>
@@ -104,11 +106,11 @@ public class PlrMove : MonoBehaviour
     {
         if (canMove)
         {
-            moveInput = new Vector3(-mContr.Horizontal() * speed, rb.velocity.y, -mContr.Vertical() * speed);
-            rb.AddForce(moveInput* SpeedMultiplier);
+            rb.velocity = new Vector3(-mContr.Horizontal() * speed, rb.velocity.y, -mContr.Vertical() * speed);
             playerAudio.Move();
         }
     }
+
     /// <summary>
     /// метод откидывания
     /// </summary>
@@ -139,6 +141,7 @@ public class PlrMove : MonoBehaviour
             playerAudio.Jump();
         }
     }
+
     /// <summary>
     /// отписка от евентов
     /// </summary>
