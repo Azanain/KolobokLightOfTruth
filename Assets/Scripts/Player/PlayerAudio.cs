@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class PlayerAudio : MonoBehaviour
 {
-    [SerializeField] private AudioSource shootWeapon1_1;
-    [SerializeField] private AudioSource shootWeapon1_2;
+    [SerializeField] private AudioSource shootWeapon2_1;
+    [SerializeField] private AudioSource shootWeapon2_2;
     [SerializeField] private AudioSource wepon1;
     [SerializeField] private AudioSource wepon3;
     [SerializeField] private AudioSource move;
@@ -16,14 +16,24 @@ public class PlayerAudio : MonoBehaviour
     {
         EventManager.AudioWeapon1Event += ActivationWeapon1;
         EventManager.AudioWeapon3Event += ActivationWeapon3;
+        EventManager.IsChargingLaserEvent += ChargingLaser;
     }
     public void ShootWeapon2_1()
     {
-        shootWeapon1_1.Play();
+        shootWeapon2_1.Play();
     }
-    public void ShootWeapon2_2()
+    public void ChargingLaser(bool isCarging)
     {
-        shootWeapon1_2.Play();
+        if (isCarging)
+        { 
+            charging.Play();
+        }
+        else
+        {
+            charging.Stop();
+            shootWeapon2_2.Play();
+        }
+            
     }
     public void ActivationWeapon1()
     {
@@ -58,5 +68,6 @@ public class PlayerAudio : MonoBehaviour
     {
         EventManager.AudioWeapon1Event -= ActivationWeapon1;
         EventManager.AudioWeapon3Event -= ActivationWeapon3;
+        EventManager.IsChargingLaserEvent -= ChargingLaser;
     }
 }

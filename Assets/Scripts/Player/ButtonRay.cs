@@ -8,8 +8,8 @@ public class ButtonRay : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     private Image ImageWeapon2_2;
     private bool isPressed;
     private bool isTimerWork;
-   // [Range(4,20)]private float forceDiscarding;
     [SerializeField] private float maxTimer;
+    [SerializeField] private bool isWeapon2_2Active;
     public static int DamageWeapon2_2 { get; private set; }
 
     private void Awake()
@@ -17,13 +17,16 @@ public class ButtonRay : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         ImageWeapon2_2 = GameObject.FindGameObjectWithTag("RayOfHope_2").GetComponent<Image>();
         ImageWeapon2_2.fillAmount = 0;
     }
+    private void Start()
+    {
+        isWeapon2_2Active = LoadSavedData.ImproveIsWeapon2_2;
+    }
     public void OnPointerDown(PointerEventData eventData)
     {
         isPressed = true;
         EventManager.CanMove();
-        if (!isTimerWork && ButtonSiclkleHit.ButtonLaserCharge)
+        if (!isTimerWork && ButtonSiclkleHit.ButtonLaserCharge && isWeapon2_2Active)
         {
-            int maxDamage = PlayerParametrs.DamageWeapon2_2Max;
             StartCoroutine(Timer());
         }
     }
@@ -36,13 +39,14 @@ public class ButtonRay : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     }
     private IEnumerator Timer()
     {
+        EventManager.IsChargingLaser(true);
         float damage = 1;
         float timer = 0;
         while (isPressed)
         {
+
             ImageWeapon2_2.fillAmount = timer / maxTimer;
             damage = PlayerParametrs.DamageWeapon2_2Max * ImageWeapon2_2.fillAmount;
-            //forceDiscarding = 20 * ImageWeapon2_2.fillAmount;
             yield return new WaitForSecondsRealtime(0.1f);
             timer += 0.1f;
         }
@@ -50,12 +54,14 @@ public class ButtonRay : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         {
             EventManager.ShootChargedLaser((int)damage);
             DamageWeapon2_2 = (int)damage;
+            EventManager.IsChargingLaser(false);
             EventManager.Discarding(PlayerParametrs.RecliningFromWeapon2_2);
             StopCoroutine(Timer());
         
         }
         else if (!isPressed && timer >= 10)
         {
+            EventManager.IsChargingLaser(false);
             EventManager.ShootChargedLaser(PlayerParametrs.DamageWeapon2_2Max);
             EventManager.Discarding(PlayerParametrs.RecliningFromWeapon2_2);
             StopCoroutine(Timer());

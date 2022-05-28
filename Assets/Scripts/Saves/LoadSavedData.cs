@@ -20,6 +20,7 @@ public class LoadSavedData : MonoBehaviour
     public static byte ImproveIimerReloadWeapon2_2 { get; private set; }
     public static byte ImproveDamageWeapon3 { get; private set; }
     public static byte ImproveForceJumpWeapon3 { get; private set; }
+    public static bool ImproveIsWeapon2_2 { get; private set; }
 
     private SavedData data;
     private Storage storage;
@@ -48,6 +49,7 @@ public class LoadSavedData : MonoBehaviour
         data.improveIimerReloadWeapon2_2 = ImproveIimerReloadWeapon2_2;
         data.improveDamageWeapon3 = ImproveDamageWeapon3;
         data.improveForceJumpWeapon3 = ImproveForceJumpWeapon3;
+        data.improveIsWeapon2_2 = ImproveIsWeapon2_2;
 
         storage.Save(data);
     }
@@ -70,6 +72,7 @@ public class LoadSavedData : MonoBehaviour
         ImproveIimerReloadWeapon2_2 = data.improveIimerReloadWeapon2_2;
         ImproveDamageWeapon3 = data.improveDamageWeapon3;
         ImproveForceJumpWeapon3 = data.improveForceJumpWeapon3;
+        ImproveIsWeapon2_2 = data.improveIsWeapon2_2;
     }
     private void OnDestroy()
     {

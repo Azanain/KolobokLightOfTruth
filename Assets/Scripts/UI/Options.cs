@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.Audio;
-using UnityEngine.UI;
 public class Options : MonoBehaviour
 {
     [SerializeField] private AudioMixerGroup mixer;
@@ -16,10 +15,10 @@ public class Options : MonoBehaviour
     [SerializeField] private AudioSource clickButton;
     private bool uIVolumeEnabled;
 
-    //private void Awake()
-    //{
-    //    EventManager.PauseEvent += Pause;
-    //}
+    private void Awake()
+    {
+        EventManager.PauseEvent += Pause;
+    }
     private void Start()
     {
         //заменить на загрузку данных
@@ -27,6 +26,9 @@ public class Options : MonoBehaviour
         effectsVolumeEnabled = true;
         uIVolumeEnabled = true;
     }
+    /// <summary>
+    /// пауза
+    /// </summary>
     public void Pause()
     {
         if (isPause)
@@ -40,18 +42,30 @@ public class Options : MonoBehaviour
             isPause = true;
         }
     }
+    /// <summary>
+    /// вызов трубы для перехода в хаб
+    /// </summary>
     public void Hub()
     {
         EventManager.CallCapsuleTeleport();
     }
+    /// <summary>
+    /// проигрывание звука нажатии кнопки
+    /// </summary>
     public void ClickAudio()
     {
         clickButton.Play();
     }
+    /// <summary>
+    /// выход из игры
+    /// </summary>
     public void QuitGame()
     {
         Application.Quit();
     }
+    /// <summary>
+    /// тумблер звука музыки
+    /// </summary>
     public void ToggleVolumeMusic()
     {
         if (!musicVolumeEnabled)
@@ -65,15 +79,25 @@ public class Options : MonoBehaviour
             musicVolumeEnabled = false;
         }
     }
-
+    /// <summary>
+    ///  слайдер настройки громкости музыки
+    /// </summary>
+    /// <param name="volume"></param>
     public void ChangeVolumeMusic(float volume)
     {
         mixer.audioMixer.SetFloat("MusicVolume", Mathf.Lerp(-80, 0, volume));
     }
+    /// <summary>
+    /// слайдер настройки громкости еффектов
+    /// </summary>
+    /// <param name="volume"></param>
     public void ChangeVolumeEffects(float volume)
     {
         mixer.audioMixer.SetFloat("EffectsVolume", Mathf.Lerp(-80, 0, volume));
     }
+    /// <summary>
+    /// тумблер звука еффектов
+    /// </summary>
     public void ToggleVolumeEffects()
     {
         if (!effectsVolumeEnabled)
@@ -87,7 +111,9 @@ public class Options : MonoBehaviour
             effectsVolumeEnabled = false;
         }
     }
-  
+  /// <summary>
+  /// тумблер звук UI
+  /// </summary>
     public void ToggleVolumeUI()
     {
         if (!uIVolumeEnabled)
@@ -101,8 +127,8 @@ public class Options : MonoBehaviour
             uIVolumeEnabled = false;
         }
     }
-    //private void OnDestroy()
-    //{
-    //    EventManager.PauseEvent -= Pause;
-    //}
+    private void OnDestroy()
+    {
+        EventManager.PauseEvent -= Pause;
+    }
 }

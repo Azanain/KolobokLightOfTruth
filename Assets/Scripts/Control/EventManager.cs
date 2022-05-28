@@ -1,12 +1,13 @@
 public class EventManager
 {
-    public delegate void IntEventmanagerDel(int value);
-    public static event IntEventmanagerDel LoadGameSceneEvent;
-    public static event IntEventmanagerDel TakeDamageEvent;
-    public static event IntEventmanagerDel TakeHPEvent;
-    public static event IntEventmanagerDel ShootChargedLaserEvent;
-    public static event IntEventmanagerDel AddCurrentMoneyEvent;
-    public static event IntEventmanagerDel AddTotalMoneyEvent;
+    public delegate void IntEventmanagerIntDel(int value);
+    public static event IntEventmanagerIntDel LoadGameSceneEvent;
+    public static event IntEventmanagerIntDel TakeDamageEvent;
+    public static event IntEventmanagerIntDel TakeHPEvent;
+    public static event IntEventmanagerIntDel ShootChargedLaserEvent;
+    public static event IntEventmanagerIntDel AddCurrentMoneyEvent;
+    public static event IntEventmanagerIntDel AddTotalMoneyEvent;
+    public static event IntEventmanagerIntDel ChangeNumberEnemyEvent;
 
     public delegate void EventManagerDel();
     public static event EventManagerDel ShootEvent;
@@ -16,6 +17,7 @@ public class EventManager
     public static event EventManagerDel SaveDataEvent;
     public static event EventManagerDel AudioWeapon1Event;
     public static event EventManagerDel AudioWeapon3Event;
+    public static event EventManagerDel PauseEvent;
 
     public delegate void EventManagerByteDel(byte value);
     public static event EventManagerByteDel ButtonEvent;
@@ -28,6 +30,10 @@ public class EventManager
     public delegate void EventManagerStringDel(string name);
     public static event EventManagerStringDel ButtonNameEvent;
     public static event EventManagerStringDel NameChosenLevelEvent;
+
+    public delegate void EventManagerBoolDel(bool isIt);
+    public static event EventManagerBoolDel IsChargingLaserEvent;
+    public static event EventManagerBoolDel WinEvent;
 
     public static void LoadGameScene(int idFloor)
     {
@@ -105,6 +111,22 @@ public class EventManager
     public static void AudioWeapon3()
     {
         AudioWeapon3Event.Invoke();
+    }
+    public static void IsChargingLaser(bool isCharging)
+    {
+        IsChargingLaserEvent?.Invoke(isCharging);
+    }
+    public static void ChangeNumberEnemy(int number)
+    {
+        ChangeNumberEnemyEvent.Invoke(number);
+    }
+    public static void Win(bool isWin)
+    {
+        WinEvent?.Invoke(isWin);
+    }
+    public static void Pause()
+    {
+        PauseEvent?.Invoke();
     }
 }
 

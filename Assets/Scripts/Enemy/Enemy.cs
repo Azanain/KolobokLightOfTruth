@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
         hp -= damage;
         if (hp <= 0)
         {
+            EventManager.ChangeNumberEnemy(-1);
             Destroy(gameObject);
         }
     }

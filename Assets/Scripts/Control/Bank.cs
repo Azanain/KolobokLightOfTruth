@@ -14,7 +14,8 @@ public class Bank : MonoBehaviour
     }
     private void Start()
     {
-        //load money
+        TotalMoney = LoadSavedData.TotalMoney;
+        UpdateText();
     }
     private void UpdateText()
     {

@@ -9,11 +9,13 @@ public class SceneTransition : MonoBehaviour
     [SerializeField] private Image loadingImage;
     [SerializeField] private Text progressText;
     [SerializeField] private GameObject main;
+    public static int NumberCurrentScene { get; private set; }
     private void Awake()
     {
         if(SceneManager.GetActiveScene().buildIndex == 0)
             StartCoroutine(AsyncLoad(1));
 
+        NumberCurrentScene = SceneManager.GetActiveScene().buildIndex;
         EventManager.LoadGameSceneEvent += LoadChosenScene;
     }
     public void LoadChosenScene(int idFloor)
