@@ -1,11 +1,12 @@
 using UnityEngine;
+using System.Collections;
 
 public class Bullet : MonoBehaviour
 {
     [SerializeField] private float speed;
     //[SerializeField] private LayerMask mask;
     private int damage;
-    [SerializeField] private int lifeTime;
+    [SerializeField] private float lifeTime;
     //[SerializeField] private bool isRicochet;
     private PoolObject poolObject;
     public bool IsCharge;
@@ -21,7 +22,6 @@ public class Bullet : MonoBehaviour
     private void CheckDamage(int damageChargedLaser)
     {
         damage = damageChargedLaser;
-        Debug.Log($"charged  = {damage}");
     }
     private void Update()
     {
@@ -38,7 +38,7 @@ public class Bullet : MonoBehaviour
         //        transform.eulerAngles = new Vector3(rot, 0, 0);
         //    }
         //}
-        Invoke("DestroyBullet", lifeTime);
+        StartCoroutine(TimerLife());
     }
 
     private void OnTriggerEnter(Collider other)
@@ -55,6 +55,20 @@ public class Bullet : MonoBehaviour
     private void DestroyBullet()
     {
         poolObject.ReturnToPool();
+        StopCoroutine(TimerLife());
+    }
+    private IEnumerator TimerLife()
+    {
+        float timer = lifeTime;
+        while (timer >= 0)
+        {
+            timer -= 0.1f;
+            yield return new WaitForSeconds(0.1f);
+        }
+        if (timer <= 0)
+        {
+            DestroyBullet();
+        }
     }
     private void OnDestroy()
     {

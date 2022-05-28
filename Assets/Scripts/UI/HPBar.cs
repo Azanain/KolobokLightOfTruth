@@ -19,6 +19,8 @@ public class HPBar : MonoBehaviour
     private void TakeDamage(int damage)
     {
         currentHp -= damage;
+        if (currentHp <= 0)
+            EventManager.Win(false);
         UpdateUI();
     }
     private void TakeHP(int damage)

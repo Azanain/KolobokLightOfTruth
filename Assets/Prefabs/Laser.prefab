@@ -130,6 +130,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 20
   lifeTime: 2
+  IsCharge: 0
 --- !u!136 &9086235532154949854
 CapsuleCollider:
   m_ObjectHideFlags: 0

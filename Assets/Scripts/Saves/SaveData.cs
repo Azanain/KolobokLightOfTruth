@@ -18,6 +18,7 @@ public class SavedData
     public byte improveIimerReloadWeapon2_2;
     public byte improveDamageWeapon3;
     public byte improveForceJumpWeapon3;
+    public bool improveIsWeapon2_2;
     //public int maxHp;
     //public float speed;
 }

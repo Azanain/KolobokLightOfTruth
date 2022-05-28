@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Spawner : MonoBehaviour
@@ -24,6 +22,7 @@ public class Spawner : MonoBehaviour
             rand = Random.Range(0, enemy.Length);
             randPosition = Random.Range(0, spawnPoint.Length);
             Instantiate(enemy[rand], spawnPoint[randPosition].transform.position, Quaternion.identity);
+            EventManager.ChangeNumberEnemy(+1);
             timeBtwSpawns = startTimeBtwSpawn;
         }
         else

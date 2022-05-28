@@ -30,7 +30,7 @@ public class PlayerShoot : MonoBehaviour
     private void ShootLaser_2(int damage)
     {
         Instantiate(chargedLaser, firePointLaser.position, firePointLaser.rotation);
-        //playerAudio.ShootWeapon2();
+        playerAudio.ChargingLaser(false);
     }
     private void OnDestroy()
     {
