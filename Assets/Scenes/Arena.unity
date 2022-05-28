@@ -654,6 +654,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: JoystickBG
       objectReference: {fileID: 0}
+    - target: {fileID: 3874753479476432131, guid: 58c18f28cd6700a4c92a59dfd04da7a2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58c18f28cd6700a4c92a59dfd04da7a2, type: 3}
 --- !u!1001 &610906237
@@ -2334,10 +2338,6 @@ PrefabInstance:
     - target: {fileID: 5935551132663997914, guid: dcc377488826752458563b4a3d5315a8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5935551132663997916, guid: dcc377488826752458563b4a3d5315a8, type: 3}
-      propertyPath: jumpForce
-      value: 300
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dcc377488826752458563b4a3d5315a8, type: 3}

@@ -1331,7 +1331,7 @@ Rigidbody:
   m_AngularDrag: 0.1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!114 &5935551132663997916
@@ -1348,9 +1348,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 8
   jumpForce: 300
-  SpeedMultiplier: 12
   body: {fileID: 4540189428939263071, guid: f5e358a416df8f048922382e4dd30bf3, type: 3}
-  joystick: {fileID: 0}
 --- !u!114 &5935551132663997917
 MonoBehaviour:
   m_ObjectHideFlags: 0
