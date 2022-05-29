@@ -161,11 +161,6 @@ Transform:
   m_Father: {fileID: 806308835}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!20 &125974162 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 8447044106552420749, guid: 4f5ab2ef0127a964cb26e6c29f1e622c, type: 3}
-  m_PrefabInstance: {fileID: 1808899267}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &156980793
 GameObject:
   m_ObjectHideFlags: 0
@@ -1242,18 +1237,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2227961046566964628, guid: a82995ddb45359e43b51115d49b87883, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -250
-      objectReference: {fileID: 0}
     - target: {fileID: 4675318815775537179, guid: a82995ddb45359e43b51115d49b87883, type: 3}
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
-    - target: {fileID: 4675318815775537180, guid: a82995ddb45359e43b51115d49b87883, type: 3}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 125974162}
     - target: {fileID: 4675318815775537183, guid: a82995ddb45359e43b51115d49b87883, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -2186,6 +2173,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -7757869598009653476, guid: dcc377488826752458563b4a3d5315a8, type: 3}
+      propertyPath: speedRotation
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 5935551132663997910, guid: dcc377488826752458563b4a3d5315a8, type: 3}
       propertyPath: m_Name
       value: Player2

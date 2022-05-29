@@ -7,12 +7,12 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(int damage)
     {
         hp -= damage;
-        Debug.Log(gameObject.ToString() + "HP=" + hp);
+        Debug.Log(gameObject.ToString() + "HP=" + hp +" damage " + damage.ToString());
         if (hp <= 0)
         {
             Debug.Log("Rabbit killed");
             EventManager.AddCurrentMoney(reward);
-            EventManager.ChangeNumberEnemy(-1);
+            //EventManager.ChangeNumberEnemy(-1);
             Destroy(gameObject);
         }
     }

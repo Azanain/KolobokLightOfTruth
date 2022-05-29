@@ -44,6 +44,7 @@ public class Bullet : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Enemy enemy = other.GetComponent<Enemy>();
+        Debug.Log("Hit!");
         if(enemy != null)
         {
             if (IsCharge)
