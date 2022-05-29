@@ -21,9 +21,10 @@ public class FollowCamera : MonoBehaviour
     {
         if (player)
         {
+            playerPosition = new Vector3(player.transform.position.x + offsetX, player.transform.position.y+10, player.transform.position.z + offsetZ);
             Vector3 currentPosition = Vector3.Lerp(transform.position, playerPosition, speed * Time.deltaTime);
             transform.position = currentPosition;
-            playerPosition = new Vector3(player.transform.position.x + offsetX, transform.position.y, player.transform.position.z + offsetZ);
+            
         }
             //    if(vertical > 0.5f)
         //    {
