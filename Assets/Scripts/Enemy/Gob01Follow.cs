@@ -20,13 +20,15 @@ public class Gob01Follow : MonoBehaviour
     [SerializeField] private int damage;
     [SerializeField] private Transform attackPosition;
     [SerializeField] private float attackRadius;
+    [SerializeField] private float attackTimeout;
     [SerializeField] private LayerMask layer;
     [SerializeField] private float attackDistance;
     private bool isAttacking;
+    private float attackTimer = 0;
 
     private void Start()
     {    
-        animator = GetComponent<Animator>();
+        animator = transform.GetChild(0).GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         enemyHare = GameObject.FindGameObjectWithTag("Enemy").GetComponent<Transform>();
         meshAgent = GetComponent<NavMeshAgent>();
@@ -49,9 +51,9 @@ public class Gob01Follow : MonoBehaviour
         {
             if (item.CompareTag("Enemy"))
             {
-                Debug.Log(item);
+                //Debug.Log(item);
                 amount++;
-                Debug.Log(amount);
+               // Debug.Log(amount);
             }
         }   
     }
@@ -93,14 +95,20 @@ public class Gob01Follow : MonoBehaviour
         switch (state)
         {
             case 0:
-               // animator.SetBool("Run", false);
+                animator.SetBool("Run", false);
                 speed = 0;
                 break;
             case 1:
                 PlayerPursuit();
                 break;
             case 2:
-                Attack();
+                attackTimer += Time.deltaTime;
+                if (attackTimer >= attackTimeout)
+                {
+                    attackTimer = 0;
+                    Attack();
+
+                }
                 break;
         }
     }
@@ -113,7 +121,8 @@ public class Gob01Follow : MonoBehaviour
       //  AudioStart();
         meshAgent.destination = player.transform.position;
         transform.LookAt(player);
-        //animator.SetBool("Run", true);
+        isAttacking = false;
+        animator.SetBool("Run", true);
     }
 
     /// <summary>
@@ -123,14 +132,18 @@ public class Gob01Follow : MonoBehaviour
     {
         speed = 0;
         transform.LookAt(player);
-        Debug.Log("Колобок, колобок, я тебя уничтожу!!");
+        int rnd = Mathf.RoundToInt(Random.Range(0.5f, 3.5f));
+
         //animator.SetBool("Run", false);
-        if (!isAttacking)
-        {
-            isAttacking = true;
-            animator.SetTrigger("Attack");
-        }
-       
+       // if (!isAttacking)
+       // {
+       //     isAttacking = true;
+           
+        //Debug.Log("Колобок, колобок, я тебя уничтожу!! "+ "Attack" + rnd.ToString());
+        animator.SetTrigger("Attack"+rnd.ToString());
+        OnAttack();
+       // }
+
     }
     public void OnAttack()
     {
@@ -142,7 +155,7 @@ public class Gob01Follow : MonoBehaviour
     }
     private void EndAttack()
     {
-        isAttacking = true;
+        isAttacking = false;
     }
     //private void AudioStart()
     //{
@@ -153,7 +166,7 @@ public class Gob01Follow : MonoBehaviour
     //}
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.blue;
+        Gizmos.color = new Color(0,0,1,0.1f);
         Gizmos.DrawSphere(attackPosition.position, attackRadius);
     }
 

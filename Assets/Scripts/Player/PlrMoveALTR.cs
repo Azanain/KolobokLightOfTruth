@@ -5,8 +5,6 @@ public class PlrMoveALTR : MonoBehaviour
     [Header("Основные параметры")]
     public float speed;
     [SerializeField] private float jumpForce;
-    [SerializeField] private float SpeedMultiplier;
-    private Vector3 moveInput;
     private bool canMove;
     private GameObject frontPoint;
     [SerializeField] private GameObject body;
@@ -14,11 +12,10 @@ public class PlrMoveALTR : MonoBehaviour
     public static float moveVelosity { get; private set; }
 
     private PlayerAudio playerAudio;
-    public Joystick joystick;
 
     //Ссылки на компоненты
     private Rigidbody rb;
-    public MobileContr mContr;
+    private MobileContr mContr;
     private RotateToNearTarget rotate;
 
     void OnCollisionEnter(Collision other)
@@ -26,7 +23,7 @@ public class PlrMoveALTR : MonoBehaviour
         isJumping = false;
         if (other.gameObject.CompareTag("Ground"))
         {
-            //playerAudio.Landing();
+            playerAudio.Landing();
         }
         else if (other.gameObject.CompareTag("Wall"))
         {
@@ -42,9 +39,8 @@ public class PlrMoveALTR : MonoBehaviour
         EventManager.CanMoveEvent += CanMove;
 
         playerAudio = GetComponentInChildren<PlayerAudio>();
-        // speed = PlayerParametrs.Speed;
+        speed = PlayerParametrs.Speed;
         mContr = GameObject.FindGameObjectWithTag("Joystick").GetComponent<MobileContr>();
-        joystick = GameObject.FindGameObjectWithTag("Joystick").GetComponent<Joystick>();
         rb = GetComponent<Rigidbody>();
         Instantiate(body, transform.position, Quaternion.identity);
         canMove = true;
@@ -61,17 +57,18 @@ public class PlrMoveALTR : MonoBehaviour
     {
         if (canMove)
         {
-           speed = PlayerParametrs.Speed;
+            speed = PlayerParametrs.Speed;
             Move();
         }
         else
         {
             //speed = 0;
-           // RotateAimingLaser();
+            // RotateAimingLaser();
         }
         rotate.RotateToNearEnemy();
         moveVelosity = rb.velocity.magnitude;
     }
+
     /// <summary>
     /// запрет движения персонажа
     /// </summary>
@@ -80,12 +77,12 @@ public class PlrMoveALTR : MonoBehaviour
         if (canMove)
             canMove = false;
         else
-            canMove = true;     
+            canMove = true;
     }
 
     private void RotateAimingLaser()
     {
-        transform.rotation *= Quaternion.Euler(0, joystick.Horizontal, 0);
+        transform.rotation *= Quaternion.Euler(0, -mContr.Horizontal(), 0);
     }
 
     //private void OnCollisionExit(Collision collision)
@@ -97,6 +94,11 @@ public class PlrMoveALTR : MonoBehaviour
     //    speed = 2f;
     //}
 
+    private void OnCollisionExit()
+    {
+        speed = 3;
+    }
+
     /// <summary>
     /// метод перемещение персонажа
     /// </summary>
@@ -104,18 +106,11 @@ public class PlrMoveALTR : MonoBehaviour
     {
         if (canMove)
         {
-            // moveInput = new Vector3(-mContr.Horizontal() * speed, rb.velocity.y, -mContr.Vertical() * speed);
-
-            //moveInput = new Vector3(-mContr.Horizontal * speed, 0, -mContr.Vertical * speed);
-            moveInput = new Vector3(-mContr.Horizontal() * speed, 0, -mContr.Vertical() * speed);
-            //moveInput = Quaternion.EulerAngles();
-            rb.AddForce(moveInput* SpeedMultiplier);
-
-            //Vector3.AngleBetween( rb.velocity
-
+            rb.velocity = new Vector3(-mContr.Horizontal() * speed, rb.velocity.y, -mContr.Vertical() * speed);
             playerAudio.Move();
         }
     }
+
     /// <summary>
     /// метод откидывания
     /// </summary>
@@ -146,11 +141,12 @@ public class PlrMoveALTR : MonoBehaviour
             playerAudio.Jump();
         }
     }
+
     /// <summary>
     /// отписка от евентов
     /// </summary>
     private void OnDestroy()
-    { 
+    {
         EventManager.JumpEvent -= Jump;
         EventManager.DiscardingEvent -= Discarding;
         EventManager.DashEvent -= Dash;
