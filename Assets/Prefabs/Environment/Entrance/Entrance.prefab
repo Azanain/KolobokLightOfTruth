@@ -259,8 +259,9 @@ GameObject:
   - component: {fileID: 7092641353047032002}
   - component: {fileID: 1579524579265149139}
   - component: {fileID: 6893924664264584274}
+  - component: {fileID: 4443771875012155294}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: NextLevelActivator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -354,7 +355,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47896c013b211fc4d92ab0dbb7869b0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameLevel: GameFloor1
+  nameLevel: 
+--- !u!114 &4443771875012155294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2216106707570655025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1ce6748450f9b94fad944dc0217aa9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idStage: 0
 --- !u!1 &2473128400551797869
 GameObject:
   m_ObjectHideFlags: 0
