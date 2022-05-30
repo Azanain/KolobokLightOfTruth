@@ -142,6 +142,7 @@ MonoBehaviour:
   capsule: {fileID: 3702910503767332672}
   botPosition: {fileID: 4427229438411271321}
   forcePlayer: 2.7
+  numberScene: 2
 --- !u!65 &3235288193006736218
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -165,7 +166,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3702910502556769443}
   - component: {fileID: 3702910502556769445}
-  - component: {fileID: 3702910502556769444}
   m_Layer: 0
   m_Name: triggerTeleport
   m_TagString: Untagged
@@ -201,19 +201,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3702910502556769444
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3702910502556769442}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1ce6748450f9b94fad944dc0217aa9a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  idStage: 2
 --- !u!1 &3702910503767332672
 GameObject:
   m_ObjectHideFlags: 0

@@ -30,11 +30,14 @@ public class EventManager
 
     public delegate void EventManagerStringDel(string name);
     public static event EventManagerStringDel ButtonNameEvent;
-    public static event EventManagerStringDel NameChosenLevelEvent;
+   // public static event EventManagerStringDel NameChosenLevelEvent;
 
     public delegate void EventManagerBoolDel(bool isIt);
     public static event EventManagerBoolDel IsChargingLaserEvent;
     public static event EventManagerBoolDel WinEvent;
+
+    public delegate void EventManagerStringByteDel(string name, byte number);
+    public static event EventManagerStringByteDel ChangeSceneEvent;
 
     public static void LoadGameScene(int idFloor)
     {
@@ -93,9 +96,9 @@ public class EventManager
     {
         CallCapsuleTeleportEvent?.Invoke();
     }
-    public static void NameChosenLevel(string nameLevel)
+    public static void ChangeScene(string nameLevel, byte numberScene)
     {
-        NameChosenLevelEvent?.Invoke(nameLevel);
+        ChangeSceneEvent?.Invoke(nameLevel, numberScene);
     }
     public static void CanMove()
     {

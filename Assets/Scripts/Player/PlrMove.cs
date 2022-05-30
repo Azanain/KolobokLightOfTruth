@@ -57,7 +57,7 @@ public class PlrMove : MonoBehaviour
     {
         if (canMove)
         {
-           speed = PlayerParametrs.Speed;
+            speed = PlayerParametrs.Speed;
             Move();
         }
         else
@@ -107,7 +107,8 @@ public class PlrMove : MonoBehaviour
         if (canMove)
         {
             rb.velocity = new Vector3(-mContr.Horizontal() * speed, rb.velocity.y, -mContr.Vertical() * speed);
-            playerAudio.Move();
+            //if(moveVelosity != 0)
+            //playerAudio.Move();
         }
     }
 

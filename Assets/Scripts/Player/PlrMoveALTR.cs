@@ -107,7 +107,7 @@ public class PlrMoveALTR : MonoBehaviour
         if (canMove)
         {
             rb.velocity = new Vector3(-mContr.Horizontal() * speed, rb.velocity.y, -mContr.Vertical() * speed);
-            playerAudio.Move();
+            //playerAudio.Move();
         }
     }
 

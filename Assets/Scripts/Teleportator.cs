@@ -37,15 +37,17 @@ public class Teleportator : MonoBehaviour
         {
             player.transform.position = Vector3.MoveTowards(player.position, new Vector3(player.position.x, player.position.y + 4, player.position.z), forcePlayer);
             EventManager.Jump(5);
-        }
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
+            yield return new WaitForSeconds(1f);
             EventManager.LoadGameScene(numberScene);
         }
     }
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.CompareTag("Player"))
+    //    {
+    //        EventManager.LoadGameScene(numberScene);
+    //    }
+    //}
     private void OnDestroy()
     {
         EventManager.CallCapsuleTeleportEvent -= CapsuleCall;

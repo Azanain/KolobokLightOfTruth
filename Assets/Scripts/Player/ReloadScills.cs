@@ -16,11 +16,11 @@ public class ReloadScills : MonoBehaviour
     private Explosion explosion;
 
     private bool Weapon1_1IsActive;
-    public static bool Weapon1_2IsActive { get; private set; }
+    //public static bool Weapon1_2IsActive { get; private set; }
 
-    public static bool Weapon2_2IsActive { get; private set; }
+    //public static bool Weapon2_2IsActive { get; private set; }
     public static bool Weapon3_1IsActive { get; private set; }
-    public static bool Weapon3_2IsActive { get; private set; }
+    //public static bool Weapon3_2IsActive { get; private set; }
     private void Awake()
     {
         EventManager.ButtonEvent += StartTimerReloadawapon;

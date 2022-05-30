@@ -44,13 +44,16 @@ public class Bullet : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Enemy enemy = other.GetComponent<Enemy>();
-        Debug.Log("Hit!");
         if(enemy != null)
         {
             if (IsCharge)
                 enemy.TakeDamage(ButtonRay.DamageWeapon2_2);
             else
                 enemy.TakeDamage(damage);
+        }
+        if (other.CompareTag("Wall") || other.CompareTag("Ground"))
+        {
+            DestroyBullet();
         }
     }
     private void DestroyBullet()

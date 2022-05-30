@@ -9,7 +9,7 @@ public class ButtonRay : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     private bool isPressed;
     private bool isTimerWork;
     [SerializeField] private float maxTimer;
-    [SerializeField] private bool isWeapon2_2Active;
+  //  [SerializeField] private bool isWeapon2_2Active;
     public static int DamageWeapon2_2 { get; private set; }
 
     private void Awake()
@@ -19,13 +19,13 @@ public class ButtonRay : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     }
     private void Start()
     {
-        isWeapon2_2Active = LoadSavedData.ImproveIsWeapon2_2;
+        //isWeapon2_2Active = LoadSavedData.ImproveIsWeapon2_2;
     }
     public void OnPointerDown(PointerEventData eventData)
     {
         isPressed = true;
         EventManager.CanMove();
-        if (!isTimerWork && ButtonSiclkleHit.ButtonLaserCharge && isWeapon2_2Active)
+        if (!isTimerWork && ButtonSiclkleHit.ButtonLaserCharge /*&& isWeapon2_2Active*/)
         {
             StartCoroutine(Timer());
         }

@@ -3,7 +3,11 @@ using UnityEngine.Audio;
 public class Options : MonoBehaviour
 {
     [SerializeField] private AudioMixerGroup mixer;
-    public static bool isPause { get; private set; } 
+    [SerializeField] private AudioSource audioSourceMusicScene;
+
+    [Header("Музыка сцен")]
+    [SerializeField] private AudioClip[] audioClips;
+    public static bool isPause { get; private set; }
 
     [Header("Music")]
     private bool musicVolumeEnabled;
@@ -11,7 +15,7 @@ public class Options : MonoBehaviour
     [Header("Effects")]
     private bool effectsVolumeEnabled;
 
-    [Header("UI")]
+    [Header("UI Audio")]
     [SerializeField] private AudioSource clickButton;
     private bool uIVolumeEnabled;
 
@@ -25,6 +29,33 @@ public class Options : MonoBehaviour
         musicVolumeEnabled = true;
         effectsVolumeEnabled = true;
         uIVolumeEnabled = true;
+        StartMusicOnCurrentScene();
+    }
+    /// <summary>
+    /// запуск музыки на текущей сцене
+    /// </summary>
+    private void StartMusicOnCurrentScene()
+    {
+        audioSourceMusicScene.Stop();
+        switch (SceneTransition.NumberCurrentScene)
+        {
+            case 1:
+                audioSourceMusicScene.PlayOneShot(audioClips[0]);
+                break;
+            case 3:
+                audioSourceMusicScene.PlayOneShot(audioClips[1]);
+                break;
+            case 4:
+                audioSourceMusicScene.PlayOneShot(audioClips[2]);
+                break;
+        }
+    }
+    /// <summary>
+    /// при нажатии кнопки запускает игру с хаба
+    /// </summary>
+    public void StartGame()
+    {
+        EventManager.LoadGameScene(2);
     }
     /// <summary>
     /// пауза
@@ -47,6 +78,7 @@ public class Options : MonoBehaviour
     /// </summary>
     public void Hub()
     {
+        EventManager.SaveData();
         EventManager.CallCapsuleTeleport();
     }
     /// <summary>
@@ -126,6 +158,13 @@ public class Options : MonoBehaviour
             mixer.audioMixer.SetFloat("UIVolume", -80);
             uIVolumeEnabled = false;
         }
+    }
+    /// <summary>
+    /// сохранение перед выход из игры
+    /// </summary>
+    private void OnApplicationQuit()
+    {
+        EventManager.SaveData();
     }
     private void OnDestroy()
     {

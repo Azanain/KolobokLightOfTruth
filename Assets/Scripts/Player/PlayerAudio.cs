@@ -3,14 +3,16 @@ using UnityEngine;
 public class PlayerAudio : MonoBehaviour
 {
     [SerializeField] private AudioSource shootWeapon2_1;
-    [SerializeField] private AudioSource shootWeapon2_2;
     [SerializeField] private AudioSource wepon1;
     [SerializeField] private AudioSource wepon3;
-    [SerializeField] private AudioSource move;
+    //[SerializeField] private AudioSource move;
     [SerializeField] private AudioSource jump;
     [SerializeField] private AudioSource landing;
     [SerializeField] private AudioSource charging;
     [SerializeField] private AudioSource hitWall;
+
+    [SerializeField] private AudioClip shootWeapon2_1Clip;
+    [SerializeField] private AudioClip shootWeapon2_2Clip;
 
     private void Awake()
     {
@@ -20,7 +22,7 @@ public class PlayerAudio : MonoBehaviour
     }
     public void ShootWeapon2_1()
     {
-        shootWeapon2_1.Play();
+        shootWeapon2_1.PlayOneShot(shootWeapon2_1Clip);
     }
     public void ChargingLaser(bool isCarging)
     {
@@ -31,9 +33,8 @@ public class PlayerAudio : MonoBehaviour
         else
         {
             charging.Stop();
-            shootWeapon2_2.Play();
+            shootWeapon2_1.PlayOneShot(shootWeapon2_2Clip);
         }
-            
     }
     public void ActivationWeapon1()
     {
@@ -43,10 +44,11 @@ public class PlayerAudio : MonoBehaviour
     {
         wepon3.Play();
     }
-    public void Move()
-    {
-        move.Play();
-    }
+    //public void Move()
+    //{
+    //    if(!move.isPlaying)
+    //        move.Play();
+    //}
     public void Jump()
     {
         jump.Play();
