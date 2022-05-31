@@ -42,10 +42,10 @@ public class Options : MonoBehaviour
             case 1:
                 audioSourceMusicScene.PlayOneShot(audioClips[0]);
                 break;
-            case 3:
+            case 2:
                 audioSourceMusicScene.PlayOneShot(audioClips[1]);
                 break;
-            case 4:
+            case 3:
                 audioSourceMusicScene.PlayOneShot(audioClips[2]);
                 break;
         }

@@ -5,7 +5,7 @@ public class PlayerAudio : MonoBehaviour
     [SerializeField] private AudioSource shootWeapon2_1;
     [SerializeField] private AudioSource wepon1;
     [SerializeField] private AudioSource wepon3;
-    //[SerializeField] private AudioSource move;
+    [SerializeField] private AudioSource move;
     [SerializeField] private AudioSource jump;
     [SerializeField] private AudioSource landing;
     [SerializeField] private AudioSource charging;
@@ -19,6 +19,7 @@ public class PlayerAudio : MonoBehaviour
         EventManager.AudioWeapon1Event += ActivationWeapon1;
         EventManager.AudioWeapon3Event += ActivationWeapon3;
         EventManager.IsChargingLaserEvent += ChargingLaser;
+        EventManager.AudioMoveEvent += Move;
     }
     public void ShootWeapon2_1()
     {
@@ -44,11 +45,10 @@ public class PlayerAudio : MonoBehaviour
     {
         wepon3.Play();
     }
-    //public void Move()
-    //{
-    //    if(!move.isPlaying)
-    //        move.Play();
-    //}
+    public void Move()
+    {
+        move.Play();
+    }
     public void Jump()
     {
         jump.Play();
@@ -71,5 +71,6 @@ public class PlayerAudio : MonoBehaviour
         EventManager.AudioWeapon1Event -= ActivationWeapon1;
         EventManager.AudioWeapon3Event -= ActivationWeapon3;
         EventManager.IsChargingLaserEvent -= ChargingLaser;
+        EventManager.AudioMoveEvent -= Move;
     }
 }

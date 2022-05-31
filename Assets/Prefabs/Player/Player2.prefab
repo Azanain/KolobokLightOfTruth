@@ -340,6 +340,7 @@ MonoBehaviour:
   shootWeapon2_1: {fileID: 1320051310317473909}
   wepon1: {fileID: 6268068386807005623}
   wepon3: {fileID: 6000176147210214583}
+  move: {fileID: 5974214525714831720}
   jump: {fileID: 2604756380328287307}
   landing: {fileID: 462295043381044405}
   charging: {fileID: 2572943539733177352}
