@@ -19,6 +19,7 @@ public class EventManager
     public static event EventManagerDel AudioWeapon3Event;
     public static event EventManagerDel PauseEvent;
     public static event EventManagerDel MoneyTransferEvent;
+    public static event EventManagerDel AudioMoveEvent;
 
     public delegate void EventManagerByteDel(byte value);
     public static event EventManagerByteDel ButtonEvent;
@@ -135,6 +136,10 @@ public class EventManager
     public static void MoneyTransfer()
     {
         MoneyTransferEvent?.Invoke();
+    }
+    public static void AudioMove()
+    {
+        AudioMoveEvent?.Invoke();
     }
 }
 
