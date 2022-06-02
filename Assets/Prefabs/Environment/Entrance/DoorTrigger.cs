@@ -6,6 +6,7 @@ public class DoorTrigger : MonoBehaviour
 {
     private Animator anim;
     private AudioSource sound;
+    [SerializeField] private bool doorEnabled ;
     [SerializeField] private AudioClip soundDoorOpen;
     [SerializeField] private AudioClip soundDoorClose;
     // Start
@@ -31,19 +32,23 @@ public class DoorTrigger : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        sound.Stop();
-        sound.clip = soundDoorOpen;
-        anim.SetTrigger("Open");
-        sound.Play();
-        //Debug.Log("Open!");
+        if (doorEnabled)
+        {
+            sound.Stop();
+            sound.clip = soundDoorOpen;
+            anim.SetTrigger("Open");
+            sound.Play();
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        sound.Stop();
-        sound.clip = soundDoorOpen;
-        anim.SetTrigger("Close");
-        sound.Play();
-        //Debug.Log("Close!");
+        if (doorEnabled)
+        {
+            sound.Stop();
+            sound.clip = soundDoorOpen;
+            anim.SetTrigger("Close");
+            sound.Play();
+        }
     }
 }
