@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5141913151472500848}
   - component: {fileID: 8749688545381788297}
   - component: {fileID: -3781351838993516052}
+  - component: {fileID: 1125730473730593561}
   m_Layer: 0
   m_Name: Box_LP
   m_TagString: Wall
@@ -113,3 +114,19 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -6791539005646845248, guid: f3e25e0c23657a146b324e83a67cb6ef, type: 3}
+--- !u!208 &1125730473730593561
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6654986217878331813}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.3, z: 0.35000002}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.3, z: 0}
+  m_TimeToStationary: 0.5

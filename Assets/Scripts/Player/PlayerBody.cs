@@ -16,6 +16,10 @@ public class PlayerBody : MonoBehaviour
     {
         transform.position = player.transform.position;
         if(!RotateToNearTarget.enemyFound)
-            transform.rotation = Quaternion.LookRotation(rb.velocity);
+            if (rb.velocity.magnitude!=0)
+            {
+                transform.rotation = Quaternion.LookRotation(rb.velocity);
+            }
+                
     }
 }

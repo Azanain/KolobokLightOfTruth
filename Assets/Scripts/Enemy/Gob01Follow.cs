@@ -110,6 +110,8 @@ public class Gob01Follow : MonoBehaviour
                     PlayerPursuit();
             break;
         case 2:
+            animator.SetBool("Run", false);
+            speed = 0;
             attackTimer += Time.deltaTime;
             if (attackTimer >= attackTimeout)
             {

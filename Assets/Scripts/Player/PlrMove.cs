@@ -122,8 +122,16 @@ public class PlrMove : MonoBehaviour
     }
     private void Dash(float force)
     {
-        var moveDiscard = (frontPoint.transform.position - transform.position).normalized;
-        rb.AddForce(moveDiscard * force * PlayerParametrs.DashRangeWeapon1, ForceMode.Impulse);
+        Vector3 dashDirection = new Vector3(-mContr.Horizontal() * speed, rb.velocity.y, -mContr.Vertical() * speed).normalized;
+        if (dashDirection.magnitude == 0) {
+            var moveDiscard = (frontPoint.transform.position - transform.position).normalized;
+            rb.AddForce(moveDiscard * force * PlayerParametrs.DashRangeWeapon1, ForceMode.Impulse);
+        }
+        else
+        {
+            rb.AddForce(dashDirection * force * PlayerParametrs.DashRangeWeapon1, ForceMode.Impulse);
+        }
+        
         playerAudio.Jump();
     }
 

@@ -50,7 +50,7 @@ public class ReloadScills : MonoBehaviour
                 {
                     Weapon1_1IsActive = true;
                     StartCoroutine((TimerUpdateImageWeapon1(PlayerParametrs.TimeReloadWeapon1)));
-                    EventManager.Dash(50);
+                    EventManager.Dash(80);
                     StartCoroutine(TimerActivationShield());
                     EventManager.AudioWeapon1();
                 }
@@ -160,8 +160,8 @@ public class ReloadScills : MonoBehaviour
     {
         float maxTimer = timer;
         while (timer > 0)
-        {
-            ImageWeapon3_1.fillAmount = 1- timer / maxTimer;
+        { 
+            ImageWeapon3_1.fillAmount = 1 - timer / maxTimer;
             yield return new WaitForSeconds(0.1f);
             timer -= 0.1f;
         }

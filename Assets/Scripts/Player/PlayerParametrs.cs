@@ -2,8 +2,8 @@ using UnityEngine;
 public class PlayerParametrs : MonoBehaviour
 {
     //основной режим
-    public static float TimeReloadWeapon1 { get; private set; } = 3;
-    public static float TimeReloadWeapon3 { get; private set; } = 5;
+    public static float TimeReloadWeapon1 { get; private set; } = 2;
+    public static float TimeReloadWeapon3 { get; private set; } = 3;
 
     public static int DamageWeapon1 { get; private set; }
     public static int DamageWeapon2 { get; private set; }
