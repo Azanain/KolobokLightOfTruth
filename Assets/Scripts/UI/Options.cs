@@ -10,26 +10,39 @@ public class Options : MonoBehaviour
     public static bool isPause { get; private set; }
 
     [Header("Music")]
-    private bool musicVolumeEnabled;
+    private bool musicVolumeEnabled = true;
 
     [Header("Effects")]
-    private bool effectsVolumeEnabled;
+    private bool effectsVolumeEnabled = true;
 
     [Header("UI Audio")]
     [SerializeField] private AudioSource clickButton;
-    private bool uIVolumeEnabled;
+    private bool uIVolumeEnabled = true;
 
+    private float valueVolumeMusic;
+    private float valueVolumeEffects;
     private void Awake()
     {
         EventManager.PauseEvent += Pause;
     }
     private void Start()
     {
-        //заменить на загрузку данных
-        musicVolumeEnabled = true;
-        effectsVolumeEnabled = true;
-        uIVolumeEnabled = true;
+        LoadData();
         StartMusicOnCurrentScene();
+    }
+    private void LoadData()
+    {
+        valueVolumeMusic = LoadSavedData.ValueVolumeMusic;
+        valueVolumeEffects = LoadSavedData.ValueVolumeEffects;
+        uIVolumeEnabled = LoadSavedData.UIVolumeEnabled;
+        effectsVolumeEnabled = LoadSavedData.EffectsVolumeEnabled;
+        musicVolumeEnabled = LoadSavedData.MusicVolumeEnabled;
+
+        ChangeVolumeMusic(valueVolumeMusic);
+        ChangeVolumeEffects(valueVolumeEffects);
+        ToggleVolumeMusic();
+        ToggleVolumeEffects();
+        ToggleVolumeUI();
     }
     /// <summary>
     /// запуск музыки на текущей сцене
@@ -118,6 +131,7 @@ public class Options : MonoBehaviour
     public void ChangeVolumeMusic(float volume)
     {
         mixer.audioMixer.SetFloat("MusicVolume", Mathf.Lerp(-80, 0, volume));
+        valueVolumeMusic = volume;
     }
     /// <summary>
     /// слайдер настройки громкости еффектов
@@ -126,6 +140,7 @@ public class Options : MonoBehaviour
     public void ChangeVolumeEffects(float volume)
     {
         mixer.audioMixer.SetFloat("EffectsVolume", Mathf.Lerp(-80, 0, volume));
+        valueVolumeEffects = volume;
     }
     /// <summary>
     /// тумблер звука еффектов
@@ -165,6 +180,10 @@ public class Options : MonoBehaviour
     private void OnApplicationQuit()
     {
         EventManager.SaveData();
+    }
+    public void ButtonSaveOptionsData()
+    {
+        EventManager.SaveDataOptions();
     }
     private void OnDestroy()
     {

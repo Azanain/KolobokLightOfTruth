@@ -11,7 +11,7 @@ public class Bank : MonoBehaviour
         EventManager.AddCurrentMoneyEvent += AddCurrentMoney;
         EventManager.AddTotalMoneyEvent += AddTotalMoney;
         EventManager.AuthorModeEvent += AuthorMode;
-        EventManager.MoneyTransferEvent += TransferMoney;
+        EventManager.TransferMoneyEvent += TransferMoney;
     }
     private void Start()
     {
@@ -66,6 +66,6 @@ public class Bank : MonoBehaviour
         EventManager.AddCurrentMoneyEvent -= AddCurrentMoney;
         EventManager.AddTotalMoneyEvent -= AddTotalMoney;
         EventManager.AuthorModeEvent -= AuthorMode;
-        EventManager.MoneyTransferEvent -= TransferMoney;
+        EventManager.TransferMoneyEvent -= TransferMoney;
     }
 }

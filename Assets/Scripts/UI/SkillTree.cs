@@ -10,21 +10,37 @@ public class SkillTree : MonoBehaviour
     private int priceSkill = 500;
     private string descriptionSkill;
     private bool[] isSkillBought;
+    private byte numSkill;
 
     private void Awake()
     {
         textDescription = GameObject.Find("TextDescriptionSkill").GetComponent<Text>();
         textPriceSkill =  GameObject.Find("TextPriseSkill").GetComponent<Text>();
         EventManager.ButtonNameEvent += CheckNameSkill;
+        buySkill.interactable = false;
     }
+    private void Start()
+    {
+        isSkillBought = new bool[15];
+        isSkillBought = LoadSavedData.IsSkillBought;
+        UpdateText();
+    }
+    /// <summary>
+    /// перевод из названия скила в его номер(обязательно: название должно закачиваться на _порядковый номер скила  !!!)
+    /// </summary>
+    /// <param name="name"></param>
     private void NumberSkill(string name)
     { 
         string result = name.Substring(name.IndexOf('_', 2));
         result = result.Replace("_",null);
         UpdateText();
         CheckPrice(result);
-        Debug.Log($"name = {name}, number = {result}");
+        //Debug.Log($"name = {name}, number = {result}");
     }
+    /// <summary>
+    /// описание кнопок при их выборе
+    /// </summary>
+    /// <param name="nameButton"></param>
     private void CheckNameSkill(string nameButton)
     {
         switch (nameButton)
@@ -98,22 +114,47 @@ public class SkillTree : MonoBehaviour
                 break;
         }
     }
+    /// <summary>
+    /// обновление теста
+    /// </summary>
     private void UpdateText()
     {
         textDescription.text = descriptionSkill;
         textPriceSkill.text = Bank.TotalMoney + " / " +priceSkill;
     }
+    /// <summary>
+    /// проверка возможности покупки скила
+    /// </summary>
+    /// <param name="numberSkill"></param>
     private void CheckPrice(string numberSkill)
     {
-        byte number = byte.Parse(numberSkill);
-        if (Bank.TotalMoney >= priceSkill && isSkillBought[number])
+        numSkill = byte.Parse(numberSkill);
+        if (Bank.TotalMoney >= priceSkill && !isSkillBought[numSkill])
         {
             buySkill.interactable = true;
         }
-        else if (Bank.TotalMoney < priceSkill || !isSkillBought[number])
+        else if (Bank.TotalMoney < priceSkill || isSkillBought[numSkill])
         {
             buySkill.interactable = false;
         }
+    }
+    /// <summary>
+    /// при нажатии на кнопку, если можно покупает скил
+    /// </summary>
+    public void ButtonBuySkill()
+    {
+        EventManager.AddTotalMoney(-priceSkill);
+        isSkillBought[numSkill]  = true;
+        UpdateText();
+        CheckPrice($"{numSkill}");
+        EventManager.UpgradeSkill(numSkill);
+    }
+    /// <summary>
+    /// сохранение при закрытии панели древа
+    /// </summary>
+    public void SaveData()
+    {
+        EventManager.SaveData();
     }
     private void OnDestroy()
     {

@@ -64,6 +64,7 @@ public class ReloadScills : MonoBehaviour
                     StartCoroutine(TimerActivationWord(5));
                     StartCoroutine((TimerUpdateImageWeapon3(PlayerParametrs.TimeReloadWeapon3)));
                     playerShoot.weapons[3].SetActive(true);
+                    Debug.Log(PlayerParametrs.DamageWeapon3);
                     EventManager.AudioWeapon3();
                 }
                 break;

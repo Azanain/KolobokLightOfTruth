@@ -443,6 +443,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 5.9420085
       objectReference: {fileID: 0}
+    - target: {fileID: 2827775184134063535, guid: 7f4a426d98d1cf64fa4a0a77b272c299, type: 3}
+      propertyPath: m_Name
+      value: AudioEnemy
+      objectReference: {fileID: 0}
     - target: {fileID: 3373728832226014149, guid: 7f4a426d98d1cf64fa4a0a77b272c299, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: -31.077024
@@ -1472,6 +1476,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1643851150, guid: a82995ddb45359e43b51115d49b87883, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 2.3798828
+      objectReference: {fileID: 0}
+    - target: {fileID: 1643851150, guid: a82995ddb45359e43b51115d49b87883, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 60.853638
+      objectReference: {fileID: 0}
     - target: {fileID: 4675318815775537179, guid: a82995ddb45359e43b51115d49b87883, type: 3}
       propertyPath: m_Name
       value: UI

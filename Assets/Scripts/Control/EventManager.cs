@@ -18,12 +18,14 @@ public class EventManager
     public static event EventManagerDel AudioWeapon1Event;
     public static event EventManagerDel AudioWeapon3Event;
     public static event EventManagerDel PauseEvent;
-    public static event EventManagerDel MoneyTransferEvent;
     public static event EventManagerDel AudioMoveEvent;
+    public static event EventManagerDel SaveDataOptionsEvent;
+    public static event EventManagerDel TransferMoneyEvent;
 
     public delegate void EventManagerByteDel(byte value);
     public static event EventManagerByteDel ButtonEvent;
     public static event EventManagerByteDel JumpEvent;
+    public static event EventManagerByteDel UpgradeSkillEvent;
 
     public delegate void EventManagerFloatDel(float value);
     public static event EventManagerFloatDel DiscardingEvent;//отбрасывание
@@ -133,13 +135,21 @@ public class EventManager
     {
         PauseEvent?.Invoke();
     }
-    public static void MoneyTransfer()
-    {
-        MoneyTransferEvent?.Invoke();
-    }
     public static void AudioMove()
     {
         AudioMoveEvent?.Invoke();
+    }
+    public static void SaveDataOptions()
+    {
+        SaveDataOptionsEvent?.Invoke();
+    }
+    public static void TransferMoney()
+    {
+        TransferMoneyEvent?.Invoke();
+    }
+    public static void UpgradeSkill(byte numberSkill)
+    {
+        UpgradeSkillEvent?.Invoke(numberSkill);
     }
 }
 
