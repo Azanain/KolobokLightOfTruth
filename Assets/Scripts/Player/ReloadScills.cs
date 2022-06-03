@@ -101,7 +101,7 @@ public class ReloadScills : MonoBehaviour
         float maxTimer = timer;
         while (timer > 0)
         {
-            ImageWeapon1_1.fillAmount = timer / maxTimer;
+            ImageWeapon1_1.fillAmount = 1-timer / maxTimer;
             yield return new WaitForSeconds(0.1f);
             timer -= 0.1f;
         }
@@ -161,7 +161,7 @@ public class ReloadScills : MonoBehaviour
         float maxTimer = timer;
         while (timer > 0)
         {
-            ImageWeapon3_1.fillAmount = timer / maxTimer;
+            ImageWeapon3_1.fillAmount = 1- timer / maxTimer;
             yield return new WaitForSeconds(0.1f);
             timer -= 0.1f;
         }
