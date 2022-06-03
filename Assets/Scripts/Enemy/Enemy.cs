@@ -4,16 +4,22 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private int hp;
     [SerializeField] private int reward;
+    private Gob01Follow gob;
+    public bool IsDead { get; private set; }
+    private void Awake()
+    {
+        gob = GetComponent<Gob01Follow>();
+    }
     public void TakeDamage(int damage)
     {
         hp -= damage;
-        Debug.Log(gameObject.ToString() + "HP=" + hp +" damage " + damage.ToString());
         if (hp <= 0)
         {
-            Debug.Log("Rabbit killed");
+            IsDead = true;
+            gob.StartAnimationDeath();
             EventManager.AddCurrentMoney(reward);
             //EventManager.ChangeNumberEnemy(-1);
-            Destroy(gameObject);
+           
         }
     }
 }

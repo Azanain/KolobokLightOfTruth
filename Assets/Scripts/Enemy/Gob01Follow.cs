@@ -11,10 +11,12 @@ public class Gob01Follow : MonoBehaviour
     [SerializeField] private LayerMask layerEnemy;
     [HideInInspector] public float speed;
     private Transform player;
-    private Transform enemyHare; 
+    //private Transform enemyHare; 
     private NavMeshAgent meshAgent;
     private Animator animator;
     private int state;
+    private Enemy enemy;
+    private EnemyAudio enemyAudio;
 
     [Header("Attack")]
     [SerializeField] private int damage;
@@ -23,22 +25,29 @@ public class Gob01Follow : MonoBehaviour
     [SerializeField] private float attackTimeout;
     [SerializeField] private LayerMask layer;
     [SerializeField] private float attackDistance;
-    private bool isAttacking;
+    [HideInInspector] public bool isAttacking;
+    private int rnd;
+    //private bool isAttacking;
     private float attackTimer = 0;
 
     private void Start()
-    {    
+    {
+        enemy = GetComponent<Enemy>();
+        enemyAudio = GetComponentInChildren<EnemyAudio>();
         animator = transform.GetChild(0).GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-        enemyHare = GameObject.FindGameObjectWithTag("Enemy").GetComponent<Transform>();
+        //enemyHare = GameObject.FindGameObjectWithTag("Enemy").GetComponent<Transform>();
         meshAgent = GetComponent<NavMeshAgent>();
         FindingNumberOfEnemies();
     }
 
     private void Update()
     {
-        state = ChangeState();
-        State();      
+        if (!enemy.IsDead)
+        {
+            state = ChangeState();
+            State();
+        }
     }
 
     /// <summary>
@@ -51,9 +60,7 @@ public class Gob01Follow : MonoBehaviour
         {
             if (item.CompareTag("Enemy"))
             {
-                //Debug.Log(item);
                 amount++;
-               // Debug.Log(amount);
             }
         }   
     }
@@ -94,22 +101,24 @@ public class Gob01Follow : MonoBehaviour
     {
         switch (state)
         {
-            case 0:
-                animator.SetBool("Run", false);
-                speed = 0;
-                break;
-            case 1:
-                PlayerPursuit();
-                break;
-            case 2:
-                attackTimer += Time.deltaTime;
-                if (attackTimer >= attackTimeout)
-                {
-                    attackTimer = 0;
+        case 0:
+            animator.SetBool("Run", false);
+            speed = 0;
+            break;
+        case 1:
+                if(!isAttacking)
+                    PlayerPursuit();
+            break;
+        case 2:
+            attackTimer += Time.deltaTime;
+            if (attackTimer >= attackTimeout)
+            {
+                attackTimer = 0;
+                if(!isAttacking)
                     Attack();
 
-                }
-                break;
+            }
+        break;
         }
     }
 
@@ -118,10 +127,8 @@ public class Gob01Follow : MonoBehaviour
     /// </summary>
     private void PlayerPursuit()
     {
-      //  AudioStart();
         meshAgent.destination = player.transform.position;
         transform.LookAt(player);
-        isAttacking = false;
         animator.SetBool("Run", true);
     }
 
@@ -130,21 +137,16 @@ public class Gob01Follow : MonoBehaviour
     /// </summary>
     private void Attack()
     {
+        isAttacking = true;
         speed = 0;
         transform.LookAt(player);
-        int rnd = Mathf.RoundToInt(Random.Range(0.5f, 3.5f));
-
-        //animator.SetBool("Run", false);
-       // if (!isAttacking)
-       // {
-       //     isAttacking = true;
-           
-        //Debug.Log("Колобок, колобок, я тебя уничтожу!! "+ "Attack" + rnd.ToString());
+        rnd = Mathf.RoundToInt(Random.Range(0.5f, 3.5f));
         animator.SetTrigger("Attack"+rnd.ToString());
-        OnAttack();
-       // }
-
+        //enemyAudio.SoundAttack(rnd);
     }
+    /// <summary>
+    /// во время анимаций атаки, метод поиска вражеского коллайдера для нанесения урона
+    /// </summary>
     public void OnAttack()
     {
         Collider[] players = Physics.OverlapSphere(attackPosition.position, attackRadius, layer);
@@ -152,23 +154,20 @@ public class Gob01Follow : MonoBehaviour
         {
             players[i].GetComponent<Player>().TakeDamage(damage);
         }
+        enemyAudio.SoundAttack(rnd);
     }
-    private void EndAttack()
+    public void StartAnimationDeath()
     {
-        isAttacking = false;
+        animator.SetTrigger("Death");
     }
-    //private void AudioStart()
-    //{
-    //    if (gameObject.TryGetComponent<AudioSource>(out var audioSource))
-    //    {
-    //        audioSource.Play();
-    //    }
-    //}
+    public void Death()
+    {
+        Destroy(gameObject);
+    }
     private void OnDrawGizmos()
     {
         Gizmos.color = new Color(0,0,1,0.1f);
         Gizmos.DrawSphere(attackPosition.position, attackRadius);
     }
-
 }
 

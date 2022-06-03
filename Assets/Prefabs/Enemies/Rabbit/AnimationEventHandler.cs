@@ -1,26 +1,37 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AnimationEventHandler : MonoBehaviour
 {
     private Gob01Follow enemyScript;
-    // Start is called before the first frame update
-    void Start()
+    public EnemyAudio enemyAudio;
+    private void  Start()
     {
         enemyScript = transform.GetComponentInParent<Gob01Follow>();
-        Debug.Log("Anim script started!");
+        enemyAudio = GameObject.Find("AudioEnemy").GetComponent<EnemyAudio>();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void OnAttackAnimationEnd()
+    /// <summary>
+    /// во время анимаций атаки, вызов метода поиска вражеского коллайдера для нанесения урона
+    /// </summary>
+    private void OnAttack()
     {
         enemyScript.OnAttack();
-        Debug.Log("Attack!");
+    }
+    /// <summary>
+    /// в конце анимации атаки, меняет буль для возможности движения
+    /// </summary>
+    private void EndAttack()
+    {
+        enemyScript.isAttacking = false;
+    }
+    /// <summary>
+    /// в конде анимации смерти, удаление объекта
+    /// </summary>
+    private void Death()
+    {
+        enemyScript.Death();
+    }
+    private void SoundStep()
+    {
+        enemyAudio.SoundSteps();
     }
 }
