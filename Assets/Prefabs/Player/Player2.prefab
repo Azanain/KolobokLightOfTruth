@@ -347,6 +347,7 @@ MonoBehaviour:
   hitWall: {fileID: 6662717228921231642}
   shootWeapon2_1Clip: {fileID: 8300000, guid: 6070132814397c84a809ee94e0bff403, type: 3}
   shootWeapon2_2Clip: {fileID: 8300000, guid: 1c86e95ba2d6e6b4583efc5481e93f99, type: 3}
+  moveClip: {fileID: 8300000, guid: 759768605a7a728499eccca03033145e, type: 3}
 --- !u!82 &5974214525714831720
 AudioSource:
   m_ObjectHideFlags: 0

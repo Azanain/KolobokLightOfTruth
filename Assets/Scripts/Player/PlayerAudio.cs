@@ -47,7 +47,7 @@ public class PlayerAudio : MonoBehaviour
     }
     public void Move()
     {
-        move.Play();
+         move.Play();
     }
     public void Jump()
     {

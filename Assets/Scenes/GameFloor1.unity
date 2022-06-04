@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3731193, g: 0.38073996, b: 0.35872698, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 6748567}
   m_Layer: 9
   m_Name: SpawnerVisual
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9656,7 +9656,7 @@ GameObject:
   - component: {fileID: 400331707}
   m_Layer: 0
   m_Name: Cylinder (1)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10542,6 +10542,10 @@ PrefabInstance:
     - target: {fileID: 507186003626764624, guid: 56e28edde978b2b40baac25cb23c834f, type: 3}
       propertyPath: m_Name
       value: Column_LP_2 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 507186003626764624, guid: 56e28edde978b2b40baac25cb23c834f, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 883323827093337066, guid: 56e28edde978b2b40baac25cb23c834f, type: 3}
       propertyPath: m_RootOrder
@@ -31799,6 +31803,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1517607567250854679, guid: 7175999d51ade3d4b88db3793f7da182, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 7325139194492468711, guid: 7175999d51ade3d4b88db3793f7da182, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -44600,7 +44608,7 @@ GameObject:
   - component: {fileID: 1471728690}
   m_Layer: 0
   m_Name: Capsule (2)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -59868,6 +59876,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Column_LP_2 (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 507186003626764624, guid: 56e28edde978b2b40baac25cb23c834f, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 883323827093337066, guid: 56e28edde978b2b40baac25cb23c834f, type: 3}
       propertyPath: m_RootOrder
       value: 19
@@ -72596,6 +72608,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Column_LP_2 (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 507186003626764624, guid: 56e28edde978b2b40baac25cb23c834f, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 883323827093337066, guid: 56e28edde978b2b40baac25cb23c834f, type: 3}
       propertyPath: m_RootOrder
       value: 18
@@ -80384,7 +80400,7 @@ GameObject:
   - component: {fileID: 2110836088}
   m_Layer: 0
   m_Name: Cylinder (4)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -83140,6 +83156,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1517607567250854679, guid: 7175999d51ade3d4b88db3793f7da182, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 7325139194492468711, guid: 7175999d51ade3d4b88db3793f7da182, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -83808,7 +83828,7 @@ GameObject:
   - component: {fileID: 3262499421882727330}
   m_Layer: 0
   m_Name: pCube1
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

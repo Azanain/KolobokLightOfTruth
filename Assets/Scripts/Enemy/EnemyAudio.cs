@@ -7,10 +7,13 @@ public class EnemyAudio : MonoBehaviour
     [SerializeField] private AudioSource attack;
     [SerializeField] private AudioSource death;
 
-    [Header("AudioClips")]
+    [Header("AudioClipsAttack")]
     [SerializeField] private AudioClip attack1;
     [SerializeField] private AudioClip attack2;
     [SerializeField] private AudioClip attack3;
+
+    [Header("AudioClipsDeath")]
+    [SerializeField] private AudioClip[] deathClips;
 
     public void SoundSteps()
     {
@@ -19,7 +22,8 @@ public class EnemyAudio : MonoBehaviour
     }
     public void SoundDeath()
     {
-        death.Play();
+        int randClip = Random.Range(0,4);
+        death.PlayOneShot(deathClips[randClip]);
     }
     public void SoundAttack(int numberSoundAttack)
     {

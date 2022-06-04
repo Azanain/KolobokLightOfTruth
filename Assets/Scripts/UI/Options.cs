@@ -158,9 +158,9 @@ public class Options : MonoBehaviour
             effectsVolumeEnabled = false;
         }
     }
-  /// <summary>
-  /// тумблер звук UI
-  /// </summary>
+      /// <summary>
+      /// тумблер звук UI
+      /// </summary>
     public void ToggleVolumeUI()
     {
         if (!uIVolumeEnabled)

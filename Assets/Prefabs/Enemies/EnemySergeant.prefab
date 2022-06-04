@@ -1114,7 +1114,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b63b5b33012ee6048a423d45d9703d9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyAudio: {fileID: 0}
 --- !u!1 &1313717660103955908
 GameObject:
   m_ObjectHideFlags: 0
@@ -1639,6 +1638,7 @@ MonoBehaviour:
   attack1: {fileID: 8300000, guid: fd47a985572f06549b8afd76c55b7b1f, type: 3}
   attack2: {fileID: 8300000, guid: bfed449d217825a439d43f76c8a95ab7, type: 3}
   attack3: {fileID: 8300000, guid: a55c5d928a8dd85459d20a858210c37e, type: 3}
+  deathClips: []
 --- !u!82 &6701643625121233766
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3820,7 +3820,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b63b5b33012ee6048a423d45d9703d9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyAudio: {fileID: 0}
 --- !u!95 &2046506170430808161
 Animator:
   serializedVersion: 3

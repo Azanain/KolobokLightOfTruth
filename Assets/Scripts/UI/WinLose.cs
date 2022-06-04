@@ -31,7 +31,8 @@ public class WinLose : MonoBehaviour
     /// </summary>
     public void ButtonTryAgain()
     {
-        EventManager.LoadGameScene(SceneTransition.NumberCurrentScene);
+        int numberScene = SceneTransition.NumberCurrentScene;
+        EventManager.LoadGameScene(numberScene);
     }
     /// <summary>
     /// при нажатии на кнопку, возврат в хаб
@@ -45,6 +46,7 @@ public class WinLose : MonoBehaviour
         winPanel.SetActive(true);
         yield return new WaitForSeconds(3);
         winPanel.SetActive(false);
+        EventManager.TransferMoney();
         StopCoroutine(TimerWinPanel());
     }
     private void OnDestroy()
