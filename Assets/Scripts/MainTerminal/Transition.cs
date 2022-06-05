@@ -8,6 +8,8 @@ public class Transition : MonoBehaviour
     [SerializeField] private GameObject buttonNo;
     [SerializeField] private GameObject uiMainTerminal;
     [SerializeField] private GameObject panelGoToTheMainTerminal;
+    [SerializeField] private GameObject uiPlayerController;
+
 
     /// <summary>
     /// метод активации меню главного терминала
@@ -25,6 +27,7 @@ public class Transition : MonoBehaviour
     public void CloseMainTerUI()
     {
         uiMainTerminal.SetActive(false);
+        uiPlayerController.SetActive(true);
         Time.timeScale = 1f;
     }
     
