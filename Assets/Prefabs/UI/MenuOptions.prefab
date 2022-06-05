@@ -1890,7 +1890,8 @@ MonoBehaviour:
   audioSourceMusicScene: {fileID: 5745144196811170053}
   audioClips:
   - {fileID: 8300000, guid: 770b93a9d9a5afd4a99629d98cdb6308, type: 3}
-  - {fileID: 8300000, guid: 951c9642774f2d24c9d7605d200d9eff, type: 3}
+  - {fileID: 8300000, guid: 62f6ce83a3d67a043b177a5ad79dd3b2, type: 3}
+  - {fileID: 8300000, guid: 4e09b823ff23ad6468796ce68e385db2, type: 3}
   - {fileID: 8300000, guid: 816a555cdcbce3c4da4bac1cdc70112d, type: 3}
   clickButton: {fileID: 1301391858985923406}
 --- !u!82 &1301391858985923406

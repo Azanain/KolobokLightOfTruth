@@ -61,6 +61,9 @@ public class Options : MonoBehaviour
             case 3:
                 audioSourceMusicScene.PlayOneShot(audioClips[2]);
                 break;
+            case 4:
+                audioSourceMusicScene.PlayOneShot(audioClips[2]);
+                break;
         }
     }
     /// <summary>
