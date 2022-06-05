@@ -17,8 +17,9 @@ public class EnemyAudio : MonoBehaviour
 
     public void SoundSteps()
     {
-        if (!steps.isPlaying)
-            steps.Play();
+        Debug.Log("sound steps enemy");
+        steps.Play();
+       
     }
     public void SoundDeath()
     {

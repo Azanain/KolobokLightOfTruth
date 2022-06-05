@@ -60,11 +60,11 @@ public class PlrMove : MonoBehaviour
             speed = PlayerParametrs.Speed;
             Move();
         }
-        else
-        {
-            //speed = 0;
-           // RotateAimingLaser();
-        }
+        //else
+        //{
+        //    //speed = 0;
+        //   // RotateAimingLaser();
+        //}
         rotate.RotateToNearEnemy();
         moveVelosity = rb.velocity.magnitude;
     }
@@ -108,6 +108,8 @@ public class PlrMove : MonoBehaviour
         {
             rb.velocity = new Vector3(-mContr.Horizontal() * speed, rb.velocity.y, -mContr.Vertical() * speed);
         }
+        if (moveVelosity == 0)
+            playerAudio.Move();
     }
 
     /// <summary>

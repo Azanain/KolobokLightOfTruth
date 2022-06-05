@@ -17,12 +17,12 @@ public class Enemy : MonoBehaviour
         hp -= damage;
         if (hp <= 0 && !IsDead)
         {
+            transform.gameObject.tag = "Untagged";
             IsDead = true;
             explosion.SetActive(true);
             gob.StartAnimationDeath();
             EventManager.AddCurrentMoney(reward);
             //EventManager.ChangeNumberEnemy(-1);
-           
         }
     }
 }

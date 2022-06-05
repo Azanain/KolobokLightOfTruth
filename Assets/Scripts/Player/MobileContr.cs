@@ -47,7 +47,6 @@ public class MobileContr : MonoBehaviour, IDragHandler, IPointerUpHandler, IPoin
         if (inputVector.x != 0) return -inputVector.y;
         else
         { 
-            EventManager.AudioMove();
             return Input.GetAxis("Horizontal") ;
         }
     }
@@ -57,7 +56,6 @@ public class MobileContr : MonoBehaviour, IDragHandler, IPointerUpHandler, IPoin
         if (inputVector.x != 0) return inputVector.x;
         else
         {
-            EventManager.AudioMove();
             return Input.GetAxis("Vertical");
         }
     }

@@ -1,5 +1,38 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &337280593988956646
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1009541275822430672}
+  m_Layer: 0
+  m_Name: Gun
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1009541275822430672
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 337280593988956646}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 71177025385832998}
+  - {fileID: 7048020472627680596}
+  - {fileID: 8933824588638827113}
+  m_Father: {fileID: 3767875266846185189}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &467589536193116303
 GameObject:
   m_ObjectHideFlags: 0
@@ -28,7 +61,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3767875266846185189}
-  m_RootOrder: 7
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1241052500492344177
 GameObject:
@@ -53,12 +86,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1241052500492344177}
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0.6121, y: 0.0466, z: 0.5085}
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -0.6220999, y: 0.046600103, z: 0.50849915}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 3767875266846185189}
-  m_RootOrder: 6
+  m_Father: {fileID: 1009541275822430672}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &2024653055516261869
 GameObject:
@@ -86,10 +119,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2024653055516261869}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 0.359, y: 0, z: 0}
-  m_LocalScale: {x: 160, y: 160, z: 160}
+  m_LocalPosition: {x: 0.34899998, y: 0, z: 0}
+  m_LocalScale: {x: 160, y: 159.99995, z: 159.99995}
   m_Children: []
-  m_Father: {fileID: 3767875266846185189}
+  m_Father: {fileID: 1009541275822430672}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5997914777450424797
@@ -172,12 +205,10 @@ Transform:
   m_Children:
   - {fileID: 210597591377741395}
   - {fileID: 3318047866625875361}
-  - {fileID: 8933824588638827113}
-  - {fileID: 7048020472627680596}
   - {fileID: 737203523031198237}
   - {fileID: 8730391848217986139}
-  - {fileID: 71177025385832998}
   - {fileID: 5627576814637574845}
+  - {fileID: 1009541275822430672}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -209,8 +240,8 @@ MonoBehaviour:
   layers:
     serializedVersion: 2
     m_Bits: 64
-  speedRotation: 5
-  offsetX: 0.5
+  Y: -0.3
+  speedRotation: 0
 --- !u!1 &5368107677395575093
 GameObject:
   m_ObjectHideFlags: 0
@@ -241,7 +272,7 @@ Transform:
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children: []
   m_Father: {fileID: 3767875266846185189}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3149038603998682620
 MeshFilter:
@@ -322,7 +353,7 @@ Transform:
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children: []
   m_Father: {fileID: 3767875266846185189}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4129352940013261546
 MeshFilter:
@@ -399,11 +430,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6919011206095346751}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 0.356, y: 0.041, z: -0.051}
-  m_LocalScale: {x: 160, y: 160, z: 160}
+  m_LocalPosition: {x: 0.34599972, y: 0.04099989, z: -0.051000595}
+  m_LocalScale: {x: 160, y: 159.99995, z: 159.99995}
   m_Children: []
-  m_Father: {fileID: 3767875266846185189}
-  m_RootOrder: 3
+  m_Father: {fileID: 1009541275822430672}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4944353351014229112
 MeshFilter:

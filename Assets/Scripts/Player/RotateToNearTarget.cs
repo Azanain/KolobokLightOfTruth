@@ -4,21 +4,14 @@ public class RotateToNearTarget : MonoBehaviour
 {
     [SerializeField] private float radiusSphere;
     [SerializeField] private LayerMask layers;
-    [SerializeField] private float speedRotation;
-    [SerializeField] private float offsetX;
-   // private PlrMove plrMove;
+    [SerializeField] private float Y;
+    private Transform gun;
     private Transform nearest;
     private Vector2 range;
     public static bool enemyFound;
-   // public bool iPlayer1;
-
     private void Start()
     {
-       // body = GameObject.FindGameObjectWithTag("PlayerBody");
-        //if(!iPlayer1)
-        //    plrMove = GetComponentInParent<PlrMove>();
-        //else
-        //    plrMove = GetComponent<PlrMove>();
+        gun = GameObject.Find("Gun").GetComponent<Transform>();
     }
     /// <summary>
     /// поиск ближайшей цели
@@ -39,13 +32,9 @@ public class RotateToNearTarget : MonoBehaviour
                 {
                     nearest = foe.transform;
                     dist = curDistance;
-                    //plrMove.speed = 0;
-                   // Debug.Log("enemyy");
                     LookAtNearestEnemy(nearest);
                 }
             }
-            //plrMove.speed = PlayerParametrs.Speed;
-            //Debug.Log("управление востановлена");
         }
         else
             enemyFound = false;
@@ -56,8 +45,9 @@ public class RotateToNearTarget : MonoBehaviour
     /// <param name="nearest"></param>
     private void LookAtNearestEnemy(Transform nearest)
     {
-        Vector3 positionEnemy = new Vector3(nearest.position.x + offsetX, transform.position.y, nearest.position.z);
-        transform.LookAt(positionEnemy);
+        transform.LookAt(nearest);
+        Vector3 pos = new Vector3(nearest.position.x, nearest.position.y + Y, nearest.position.z);
+        gun.LookAt(pos);
     }
 #if UNITY_EDITOR
     //private void OnDrawGizmos()
