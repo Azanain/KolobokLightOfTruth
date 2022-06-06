@@ -604,8 +604,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit
@@ -623,8 +623,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
@@ -683,8 +683,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_AgentTypeID: 0
   m_CollectObjects: 0
   m_Size: {x: 10, y: 10, z: 10}
@@ -922,7 +922,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7526430754964319040, guid: 6e25e153b69baee4f98b4adc50adc542, type: 3}
       propertyPath: panelUI
-      value: 
+      value:
       objectReference: {fileID: 514620707}
     - target: {fileID: 7526430754964319040, guid: 6e25e153b69baee4f98b4adc50adc542, type: 3}
       propertyPath: startTimeBtwSpawn
@@ -996,7 +996,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 658531296314718975, guid: 7175999d51ade3d4b88db3793f7da182, type: 3}
       propertyPath: m_Materials.Array.data[0]
-      value: 
+      value:
       objectReference: {fileID: 2100000, guid: 0813c53dafcf64c4b9e21a949754b4b6, type: 2}
     - target: {fileID: 1517607567250854679, guid: 7175999d51ade3d4b88db3793f7da182, type: 3}
       propertyPath: m_Name
@@ -1005,10 +1005,6 @@ PrefabInstance:
     - target: {fileID: 1517607567250854679, guid: 7175999d51ade3d4b88db3793f7da182, type: 3}
       propertyPath: m_Layer
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1517607567250854679, guid: 7175999d51ade3d4b88db3793f7da182, type: 3}
-      propertyPath: m_TagString
-      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 7325139194492468711, guid: 7175999d51ade3d4b88db3793f7da182, type: 3}
       propertyPath: m_RootOrder
@@ -1224,7 +1220,7 @@ LightingSettings:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: 
+  m_Name:
   serializedVersion: 3
   m_GIWorkflowMode: 1
   m_EnableBakedLightmaps: 1
@@ -1289,10 +1285,6 @@ PrefabInstance:
     - target: {fileID: 1517607567250854679, guid: 7175999d51ade3d4b88db3793f7da182, type: 3}
       propertyPath: m_Name
       value: TransparentCollider (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1517607567250854679, guid: 7175999d51ade3d4b88db3793f7da182, type: 3}
-      propertyPath: m_TagString
-      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 7325139194492468711, guid: 7175999d51ade3d4b88db3793f7da182, type: 3}
       propertyPath: m_RootOrder
@@ -1456,10 +1448,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: TransparentCollider
       objectReference: {fileID: 0}
-    - target: {fileID: 1517607567250854679, guid: 7175999d51ade3d4b88db3793f7da182, type: 3}
-      propertyPath: m_TagString
-      value: Wall
-      objectReference: {fileID: 0}
     - target: {fileID: 7325139194492468711, guid: 7175999d51ade3d4b88db3793f7da182, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -1532,7 +1520,7 @@ GameObject:
   - component: {fileID: 1163956909840849771}
   m_Layer: 0
   m_Name: polySurface1
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1565,7 +1553,7 @@ GameObject:
   - component: {fileID: 1283220437545895361}
   m_Layer: 0
   m_Name: polySurface4
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

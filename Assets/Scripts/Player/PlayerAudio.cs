@@ -19,7 +19,7 @@ public class PlayerAudio : MonoBehaviour
         EventManager.AudioWeapon1Event += ActivationWeapon1;
         EventManager.AudioWeapon3Event += ActivationWeapon3;
         EventManager.IsChargingLaserEvent += ChargingLaser;
-        EventManager.AudioMoveEvent += Move;
+        //EventManager.AudioMoveEvent += Move;
     }
     public void ShootWeapon2_1()
     {
@@ -71,6 +71,6 @@ public class PlayerAudio : MonoBehaviour
         EventManager.AudioWeapon1Event -= ActivationWeapon1;
         EventManager.AudioWeapon3Event -= ActivationWeapon3;
         EventManager.IsChargingLaserEvent -= ChargingLaser;
-        EventManager.AudioMoveEvent -= Move;
+        //EventManager.AudioMoveEvent -= Move;
     }
 }

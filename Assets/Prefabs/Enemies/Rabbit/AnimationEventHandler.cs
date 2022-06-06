@@ -3,7 +3,7 @@ using UnityEngine;
 public class AnimationEventHandler : MonoBehaviour
 {
     private Gob01Follow enemyScript;
-    public EnemyAudio enemyAudio;
+    private EnemyAudio enemyAudio;
     private void  Start()
     {
         enemyScript = transform.GetComponentInParent<Gob01Follow>();   
@@ -37,8 +37,8 @@ public class AnimationEventHandler : MonoBehaviour
     {
         enemyScript.Death();
     }
-    private void SoundStep()
-    {
-        enemyAudio.SoundSteps();
-    }
+    //private void SoundStep()
+    //{
+    //    //enemyAudio.SoundSteps();
+    //}
 }

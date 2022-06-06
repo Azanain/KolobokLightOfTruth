@@ -70,6 +70,9 @@ public class Options : MonoBehaviour
             case 3:
                 audioSourceMusicScene.PlayOneShot(audioClips[2]);
                 break;
+            case 4:
+                audioSourceMusicScene.PlayOneShot(audioClips[2]);
+                break;
         }
     }
     /// <summary>
@@ -178,9 +181,9 @@ public class Options : MonoBehaviour
             effectsBTN.GetComponent<Image>().sprite = effectsDisabled;
         }
     }
-  /// <summary>
-  /// тумблер звук UI
-  /// </summary>
+    /// <summary>
+    /// тумблер звук UI
+    /// </summary>
     public void ToggleVolumeUI()
     {
         if (!uIVolumeEnabled)

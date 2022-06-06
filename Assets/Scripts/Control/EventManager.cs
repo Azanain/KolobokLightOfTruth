@@ -18,7 +18,6 @@ public class EventManager
     public static event EventManagerDel AudioWeapon1Event;
     public static event EventManagerDel AudioWeapon3Event;
     public static event EventManagerDel PauseEvent;
-    public static event EventManagerDel AudioMoveEvent;
     public static event EventManagerDel SaveDataOptionsEvent;
     public static event EventManagerDel TransferMoneyEvent;
 
@@ -33,7 +32,6 @@ public class EventManager
 
     public delegate void EventManagerStringDel(string name);
     public static event EventManagerStringDel ButtonNameEvent;
-   // public static event EventManagerStringDel NameChosenLevelEvent;
 
     public delegate void EventManagerBoolDel(bool isIt);
     public static event EventManagerBoolDel IsChargingLaserEvent;
@@ -134,10 +132,6 @@ public class EventManager
     public static void Pause()
     {
         PauseEvent?.Invoke();
-    }
-    public static void AudioMove()
-    {
-        AudioMoveEvent?.Invoke();
     }
     public static void SaveDataOptions()
     {
