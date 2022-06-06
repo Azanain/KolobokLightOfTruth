@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(int damage)
     {
         hp -= damage;
-        if (hp <= 0)
+        if (hp <= 0&&!IsDead)
         {
             IsDead = true;
             gob.StartAnimationDeath();

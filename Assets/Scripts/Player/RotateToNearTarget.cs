@@ -59,11 +59,11 @@ public class RotateToNearTarget : MonoBehaviour
         Vector3 positionEnemy = new Vector3(nearest.position.x + offsetX, transform.position.y, nearest.position.z);
         transform.LookAt(positionEnemy);
     }
-#if UNITY_EDITOR
-    //private void OnDrawGizmos()
-    //{
-    //    Gizmos.color = Color.red;
-    //    Gizmos.DrawSphere(transform.position, radiusSphere);
-    //}
-#endif
+
+    private void OnDrawGizmos()
+    {
+        //Gizmos.color = Color.red;
+       //Gizmos.DrawSphere(transform.position, radiusSphere);
+    }
+
 }

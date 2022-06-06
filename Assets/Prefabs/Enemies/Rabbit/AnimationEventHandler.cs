@@ -6,8 +6,15 @@ public class AnimationEventHandler : MonoBehaviour
     public EnemyAudio enemyAudio;
     private void  Start()
     {
-        enemyScript = transform.GetComponentInParent<Gob01Follow>();
-        enemyAudio = GameObject.Find("AudioEnemy").GetComponent<EnemyAudio>();
+        enemyScript = transform.GetComponentInParent<Gob01Follow>();   
+        if (enemyAudio == null)
+        {
+            enemyAudio = GameObject.Find("AudioEnemy").GetComponent<EnemyAudio>();
+        }
+        if (enemyAudio == null)
+        {
+            enemyAudio = transform.parent.gameObject.GetComponent<EnemyAudio>();
+        }
     }
     /// <summary>
     /// во время анимаций атаки, вызов метода поиска вражеского коллайдера для нанесения урона

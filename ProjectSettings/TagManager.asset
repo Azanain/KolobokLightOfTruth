@@ -21,6 +21,7 @@ TagManager:
   - Wall
   - SpawnerEnemy
   - terminal
+  - ArenaText
   layers:
   - Default
   - TransparentFX

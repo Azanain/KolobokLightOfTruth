@@ -23,7 +23,7 @@ public class PlayerParametrs : MonoBehaviour
     //  ///////////////////
     private float[] dashRangeWeapon1 = new float[2] {1f, 1.25f };
     private float[] speedWeapon1 = new float[4] { 1f, 1.1f, 1.2f, 1.3f };
-    private const int damageWeapon2_1 = 2;
+    private const int damageWeapon2_1 = 5;
     private float[] improveDamageWeapon2 = new float[5] {1f, 1.1f, 1.2f, 1.3f,1.4f};
     private const int damageWeapon2_2 = 30;
     private float[] recliningFromWeapon2_2 = new float[2] {5f, 0};

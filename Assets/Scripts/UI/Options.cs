@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Audio;
 public class Options : MonoBehaviour
 {
@@ -18,6 +19,14 @@ public class Options : MonoBehaviour
     [Header("UI Audio")]
     [SerializeField] private AudioSource clickButton;
     private bool uIVolumeEnabled = true;
+
+    [Header("Options sprites")]
+    [SerializeField] private GameObject musicBTN;
+    [SerializeField] private GameObject effectsBTN;
+    [SerializeField] private Sprite musicEnabled;
+    [SerializeField] private Sprite musicDisabled;
+    [SerializeField] private Sprite effectsEnabled;
+    [SerializeField] private Sprite effectsDisabled;
 
     private float valueVolumeMusic;
     private float valueVolumeEffects;
@@ -99,7 +108,14 @@ public class Options : MonoBehaviour
     /// </summary>
     public void ClickAudio()
     {
-        clickButton.Play();
+        try
+        {
+            clickButton.Play();
+        }
+        catch
+        {
+
+        }
     }
     /// <summary>
     /// выход из игры
@@ -115,13 +131,15 @@ public class Options : MonoBehaviour
     {
         if (!musicVolumeEnabled)
         {
-            mixer.audioMixer.SetFloat("MusicVolume", 0);
+            mixer.audioMixer.SetFloat("MusicVolume", valueVolumeMusic);
             musicVolumeEnabled = true;
+            musicBTN.GetComponent<Image>().sprite = musicEnabled;
         }
         else
         {
             mixer.audioMixer.SetFloat("MusicVolume", -80);
             musicVolumeEnabled = false;
+            musicBTN.GetComponent<Image>().sprite = musicDisabled;
         }
     }
     /// <summary>
@@ -149,13 +167,15 @@ public class Options : MonoBehaviour
     {
         if (!effectsVolumeEnabled)
         { 
-            mixer.audioMixer.SetFloat("EffectsVolume", 0);
+            mixer.audioMixer.SetFloat("EffectsVolume", valueVolumeEffects);
             effectsVolumeEnabled = true;
+            effectsBTN.GetComponent<Image>().sprite = effectsEnabled;
         }
         else
         { 
             mixer.audioMixer.SetFloat("EffectsVolume", -80);
             effectsVolumeEnabled = false;
+            effectsBTN.GetComponent<Image>().sprite = effectsDisabled;
         }
     }
   /// <summary>

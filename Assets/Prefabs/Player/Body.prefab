@@ -205,12 +205,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2de28ae250099746a21933b6c9b7158, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radiusSphere: 5
+  radiusSphere: 10
   layers:
     serializedVersion: 2
     m_Bits: 64
-  speedRotation: 5
-  offsetX: 0.5
+  speedRotation: 0.1
+  offsetX: -0.5
 --- !u!1 &5368107677395575093
 GameObject:
   m_ObjectHideFlags: 0

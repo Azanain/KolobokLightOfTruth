@@ -14,8 +14,16 @@ public class EnemyAudio : MonoBehaviour
 
     public void SoundSteps()
     {
-        if (!steps.isPlaying)
-            steps.Play();
+        try
+        {
+            if (!steps.isPlaying)
+                steps.Play();
+        }
+        catch
+        {
+
+        }
+
     }
     public void SoundDeath()
     {

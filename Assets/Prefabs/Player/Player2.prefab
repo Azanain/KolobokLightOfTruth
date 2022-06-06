@@ -359,7 +359,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 7808537616732891398, guid: 86ccd5d979201f6428b81ffb8bb13b3f, type: 2}
   m_audioClip: {fileID: 8300000, guid: 759768605a7a728499eccca03033145e, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.8
+  m_Volume: 1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -455,7 +455,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 7808537616732891398, guid: 86ccd5d979201f6428b81ffb8bb13b3f, type: 2}
   m_audioClip: {fileID: 8300000, guid: 6070132814397c84a809ee94e0bff403, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.8
+  m_Volume: 0.709
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -551,7 +551,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 7808537616732891398, guid: 86ccd5d979201f6428b81ffb8bb13b3f, type: 2}
   m_audioClip: {fileID: 8300000, guid: 18f6a72021961c644aa9259a9a5b4eeb, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.8
+  m_Volume: 0.705
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -647,7 +647,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 7808537616732891398, guid: 86ccd5d979201f6428b81ffb8bb13b3f, type: 2}
   m_audioClip: {fileID: 8300000, guid: a55c5d928a8dd85459d20a858210c37e, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.6
+  m_Volume: 0.499
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -839,7 +839,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 7808537616732891398, guid: 86ccd5d979201f6428b81ffb8bb13b3f, type: 2}
   m_audioClip: {fileID: 8300000, guid: 2680f22d37d5f904cb9285b855bed6e1, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.8
+  m_Volume: 0.693
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1031,7 +1031,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 7808537616732891398, guid: 86ccd5d979201f6428b81ffb8bb13b3f, type: 2}
   m_audioClip: {fileID: 8300000, guid: 55274462c6b5a6f438e999cb58e0baea, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.8
+  m_Volume: 1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1412,7 +1412,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04c95f052335224429ab6f711607d7e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 100
+  force: 300
   scale: {fileID: 0}
 --- !u!114 &-7757869598009653476
 MonoBehaviour:
@@ -1430,8 +1430,8 @@ MonoBehaviour:
   layers:
     serializedVersion: 2
     m_Bits: 64
-  speedRotation: 1
-  offsetX: 0.5
+  speedRotation: 0.1
+  offsetX: 0
 --- !u!114 &6696423157180735759
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1472,7 +1472,7 @@ Transform:
   m_GameObject: {fileID: 5935551132712330701}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children: []
   m_Father: {fileID: 5935551133746998041}
   m_RootOrder: 0

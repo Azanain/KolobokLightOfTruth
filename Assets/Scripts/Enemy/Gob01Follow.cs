@@ -129,9 +129,12 @@ public class Gob01Follow : MonoBehaviour
     /// </summary>
     private void PlayerPursuit()
     {
-        meshAgent.destination = player.transform.position;
-        transform.LookAt(player);
-        animator.SetBool("Run", true);
+        if (!enemy.IsDead)
+        {
+            meshAgent.destination = player.transform.position;
+            transform.LookAt(player);
+            animator.SetBool("Run", true);
+        }      
     }
 
     /// <summary>
@@ -166,10 +169,10 @@ public class Gob01Follow : MonoBehaviour
     {
         Destroy(gameObject);
     }
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = new Color(0,0,1,0.1f);
-        Gizmos.DrawSphere(attackPosition.position, attackRadius);
-    }
+    //private void OnDrawGizmos()
+    //{
+    //   Gizmos.color = new Color(0,0,1,0.1f);
+    //    Gizmos.DrawSphere(attackPosition.position, attackRadius);
+    //}
 }
 

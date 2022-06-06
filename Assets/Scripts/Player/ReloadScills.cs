@@ -120,7 +120,8 @@ public class ReloadScills : MonoBehaviour
         float scale = 0f;
         while (scale < 3f)
         {
-            playerShoot.weapons[0].transform.localScale = new Vector3(scale, scale, scale);
+            playerShoot.weapons[0].SetActive(true);
+            playerShoot.weapons[0].transform.localScale = new Vector3(1, 1, 1);
             playerShoot.weapons[3].transform.localScale = new Vector3(scale, scale, scale);
             Collider[] colliders = Physics.OverlapSphere(transform.position, scale);
             foreach (var foe in colliders)
