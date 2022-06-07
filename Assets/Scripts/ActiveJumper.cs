@@ -22,11 +22,20 @@ public class ActiveJumper : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            EventManager.CanMove();
             Debug.Log("Push!");
-            wallCollider.enabled = false;
+            try
+            {
+                wallCollider.enabled = false;
+            }
+            catch
+            {
+
+            };
             var moveDiscard = new Vector3(0, 0, -1);
-            rb.AddForce(moveDiscard * force , ForceMode.Impulse);
+            rb.AddForce(moveDiscard * force , ForceMode.Force);
             Debug.Log("Push me!");
+            EventManager.CanMove();
             //playerAudio.Jump();
         }
     }

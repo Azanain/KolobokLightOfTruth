@@ -37,8 +37,8 @@ public class AnimationEventHandler : MonoBehaviour
     {
         enemyScript.Death();
     }
-    //private void SoundStep()
-    //{
-    //    //enemyAudio.SoundSteps();
-    //}
+    private void SoundStep()
+    {
+        enemyAudio.SoundSteps();
+    }
 }

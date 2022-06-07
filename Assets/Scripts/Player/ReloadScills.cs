@@ -34,7 +34,7 @@ public class ReloadScills : MonoBehaviour
         ImageWeapon2_2 = GameObject.FindGameObjectWithTag("RayOfHope_2").GetComponent<Image>();
        // ImageWeapon3_2 = GameObject.FindGameObjectWithTag("WordOfPower_2").GetComponent<Image>();
         
-        playerShoot.weapons[0].SetActive(true);
+        //playerShoot.weapons[0].SetActive(true);
 
         ImageWeapon1_1.fillAmount = 1;
         ImageWeapon2_1.fillAmount = 1;
@@ -120,7 +120,7 @@ public class ReloadScills : MonoBehaviour
         float scale = 0f;
         while (scale < 3f)
         {
-            playerShoot.weapons[0].SetActive(true);
+            //playerShoot.weapons[0].SetActive(true);
             playerShoot.weapons[0].transform.localScale = new Vector3(1, 1, 1);
             playerShoot.weapons[3].transform.localScale = new Vector3(scale, scale, scale);
             Collider[] colliders = Physics.OverlapSphere(transform.position, scale);

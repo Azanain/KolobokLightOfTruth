@@ -148,6 +148,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 150
   reward: 20
+  explosion: {fileID: 447227618944265250, guid: e9e261bc048e2a2489ca8b3de67f3ef1, type: 3}
 --- !u!114 &-3025627017124474375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182,7 +183,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!1 &428658467413078821
 GameObject:
@@ -397,7 +398,7 @@ Transform:
   m_GameObject: {fileID: 2101334532399509552}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.931, z: 0}
-  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 7697343776258570772}
   - {fileID: 7315970342841723606}
@@ -435,7 +436,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b63b5b33012ee6048a423d45d9703d9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyAudio: {fileID: 2730590630241083614}
 --- !u!1 &2225191580489799626
 GameObject:
   m_ObjectHideFlags: 0
@@ -550,6 +550,7 @@ MonoBehaviour:
   attack1: {fileID: 8300000, guid: fd47a985572f06549b8afd76c55b7b1f, type: 3}
   attack2: {fileID: 8300000, guid: bfed449d217825a439d43f76c8a95ab7, type: 3}
   attack3: {fileID: 8300000, guid: a55c5d928a8dd85459d20a858210c37e, type: 3}
+  deathClips: []
 --- !u!82 &6701643625121233766
 AudioSource:
   m_ObjectHideFlags: 0

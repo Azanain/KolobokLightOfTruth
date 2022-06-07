@@ -5,8 +5,10 @@ using UnityEngine;
 public class ActiveTerminalScript : MonoBehaviour
 {
     [SerializeField] private GameObject terminal;
-    public GameObject[] ObjectsToActivate = new GameObject[4];
-    public GameObject[] ObjectsToDeActivate = new GameObject[4];
+    public GameObject[] ObjectsToActivate;
+    public GameObject[] ObjectsToDeActivate;
+    public GameObject[] AnimationsToPlay;
+    public GameObject[] AnimatorsToAdd;
 
     private void Awake()
     {
@@ -75,6 +77,32 @@ public class ActiveTerminalScript : MonoBehaviour
                 try
                 {
                     _object.SetActive(false);
+                }
+                catch
+                {
+
+                };
+            }
+
+            foreach (GameObject _anim in AnimationsToPlay)
+            {
+                try
+                {
+                    _anim.GetComponent<Animation>().Play();
+                }
+                catch
+                {
+
+                };
+            }
+
+
+            foreach (GameObject _anim in AnimationsToPlay)
+            {
+                try
+                {
+                    int btns = _anim.GetComponent<Animator>().GetInteger("BTNS");
+                    _anim.GetComponent<Animator>().SetInteger("BTNS",btns++);
                 }
                 catch
                 {

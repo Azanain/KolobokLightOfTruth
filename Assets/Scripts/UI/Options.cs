@@ -20,13 +20,13 @@ public class Options : MonoBehaviour
     [SerializeField] private AudioSource clickButton;
     private bool uIVolumeEnabled = true;
 
-    [Header("Options sprites")]
-    [SerializeField] private GameObject musicBTN;
-    [SerializeField] private GameObject effectsBTN;
-    [SerializeField] private Sprite musicEnabled;
-    [SerializeField] private Sprite musicDisabled;
-    [SerializeField] private Sprite effectsEnabled;
-    [SerializeField] private Sprite effectsDisabled;
+   // [Header("Options sprites")]
+   // [SerializeField] private GameObject musicBTN;
+   // [SerializeField] private GameObject effectsBTN;
+   // [SerializeField] private Sprite musicEnabled;
+   // [SerializeField] private Sprite musicDisabled;
+   // [SerializeField] private Sprite effectsEnabled;
+   // [SerializeField] private Sprite effectsDisabled;
 
     private float valueVolumeMusic;
     private float valueVolumeEffects;
@@ -136,13 +136,13 @@ public class Options : MonoBehaviour
         {
             mixer.audioMixer.SetFloat("MusicVolume", valueVolumeMusic);
             musicVolumeEnabled = true;
-            musicBTN.GetComponent<Image>().sprite = musicEnabled;
+           // musicBTN.GetComponent<Image>().sprite = musicEnabled;
         }
         else
         {
             mixer.audioMixer.SetFloat("MusicVolume", -80);
             musicVolumeEnabled = false;
-            musicBTN.GetComponent<Image>().sprite = musicDisabled;
+           // musicBTN.GetComponent<Image>().sprite = musicDisabled;
         }
     }
     /// <summary>
@@ -172,13 +172,13 @@ public class Options : MonoBehaviour
         { 
             mixer.audioMixer.SetFloat("EffectsVolume", valueVolumeEffects);
             effectsVolumeEnabled = true;
-            effectsBTN.GetComponent<Image>().sprite = effectsEnabled;
+            //effectsBTN.GetComponent<Image>().sprite = effectsEnabled;
         }
         else
         { 
             mixer.audioMixer.SetFloat("EffectsVolume", -80);
             effectsVolumeEnabled = false;
-            effectsBTN.GetComponent<Image>().sprite = effectsDisabled;
+            //effectsBTN.GetComponent<Image>().sprite = effectsDisabled;
         }
     }
     /// <summary>
