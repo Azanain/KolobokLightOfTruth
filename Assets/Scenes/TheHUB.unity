@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.06864999, g: 0.15307403, b: 0.062157914, a: 1}
+  m_IndirectSpecularColor: {r: 0.06615649, g: 0.15344906, b: 0.0577884, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1527,11 +1527,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 47cc30047bcea814fb53a2ce320de539, type: 3}
---- !u!1 &499670592 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7755810428665225855, guid: a82995ddb45359e43b51115d49b87883, type: 3}
-  m_PrefabInstance: {fileID: 764401906}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &514582249 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6273674912828914463, guid: 0dd32aa194bcc2247bffc53b40a6f051, type: 3}
@@ -1792,11 +1787,6 @@ Transform:
   m_Father: {fileID: 107809988}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &605743175 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7755810429956484906, guid: a82995ddb45359e43b51115d49b87883, type: 3}
-  m_PrefabInstance: {fileID: 764401906}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &607252521 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6273674912828914463, guid: 0dd32aa194bcc2247bffc53b40a6f051, type: 3}
@@ -2093,34 +2083,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2452958839693598497, guid: a82995ddb45359e43b51115d49b87883, type: 3}
-      propertyPath: uiLogbook
-      value: 
-      objectReference: {fileID: 605743175}
-    - target: {fileID: 2452958839693598497, guid: a82995ddb45359e43b51115d49b87883, type: 3}
-      propertyPath: uiPlayerController
-      value: 
-      objectReference: {fileID: 1193583904}
-    - target: {fileID: 2452958840653932790, guid: a82995ddb45359e43b51115d49b87883, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 2452958840653932790, guid: a82995ddb45359e43b51115d49b87883, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 651435114}
-    - target: {fileID: 2452958840653932790, guid: a82995ddb45359e43b51115d49b87883, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetActive
-      objectReference: {fileID: 0}
-    - target: {fileID: 2452958840653932790, guid: a82995ddb45359e43b51115d49b87883, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: UnityEngine.GameObject, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 4198990816558967850, guid: a82995ddb45359e43b51115d49b87883, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4675318815775537179, guid: a82995ddb45359e43b51115d49b87883, type: 3}
       propertyPath: m_Name
       value: UI
@@ -2209,31 +2171,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6907060468476998156, guid: a82995ddb45359e43b51115d49b87883, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7755810428665225853, guid: a82995ddb45359e43b51115d49b87883, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 7755810428665225853, guid: a82995ddb45359e43b51115d49b87883, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 499670592}
-    - target: {fileID: 7755810428665225853, guid: a82995ddb45359e43b51115d49b87883, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetActive
-      objectReference: {fileID: 0}
-    - target: {fileID: 7755810428665225853, guid: a82995ddb45359e43b51115d49b87883, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: UnityEngine.GameObject, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 7755810429012609390, guid: a82995ddb45359e43b51115d49b87883, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7755810429956484906, guid: a82995ddb45359e43b51115d49b87883, type: 3}
+    - target: {fileID: 6011416038494960349, guid: a82995ddb45359e43b51115d49b87883, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -3116,11 +3054,6 @@ PrefabInstance:
       objectReference: {fileID: 651435114}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c74c10d0fb07ef9449913e71f4612853, type: 3}
---- !u!1 &1193583904 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4675318816066157123, guid: a82995ddb45359e43b51115d49b87883, type: 3}
-  m_PrefabInstance: {fileID: 764401906}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1204007531 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6273674912828914463, guid: 0dd32aa194bcc2247bffc53b40a6f051, type: 3}
